@@ -1,20 +1,21 @@
 package com.sweetzpot.stravazpot.activity;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 
 import java.util.Date;
 
 public class Comment {
-    private int id;
-    private ResourceState resourceState;
-    private int activityID;
-    private String text;
-    private Athlete athlete;
-    private Date createdAt;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("activity_id") private int activityID;
+    @SerializedName("text") private String text;
+    @SerializedName("athlete") private Athlete athlete;
+    @SerializedName("created_at") private Date createdAt;
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
     public ResourceState getResourceState() {

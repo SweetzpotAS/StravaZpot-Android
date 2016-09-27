@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.segment;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.common.Time;
@@ -8,26 +9,26 @@ import com.sweetzpot.stravazpot.athlete.Athlete;
 import java.util.Date;
 
 public class SegmentEffort {
-    private long ID;
-    private ResourceState resourceState;
-    private String name;
-    private Athlete athlete;
-    private Time elapsedTime;
-    private Time movingTime;
-    private Date startDate;
-    private Date startDateLocal;
-    private Distance distance;
-    private int startIndex;
-    private int endIndex;
-    private float averageCadence;
-    private float averageWatts;
-    private boolean deviceWatts;
-    private float averageHeartRate;
-    private int maxHeartRate;
-    private Segment segment;
-    private int komRank;
-    private int prRank;
-    private boolean hidden;
+    @SerializedName("id") private long ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("name") private String name;
+    @SerializedName("athlete") private Athlete athlete;
+    @SerializedName("elapsed_time") private Time elapsedTime;
+    @SerializedName("moving_time") private Time movingTime;
+    @SerializedName("start_date") private Date startDate;
+    @SerializedName("start_date_local") private Date startDateLocal;
+    @SerializedName("distance") private Distance distance;
+    @SerializedName("start_index") private int startIndex;
+    @SerializedName("end_index") private int endIndex;
+    @SerializedName("average_cadence") private float averageCadence;
+    @SerializedName("average_watts") private float averageWatts;
+    @SerializedName("device_watts") private boolean deviceWatts;
+    @SerializedName("average_heartrate") private float averageHeartRate;
+    @SerializedName("max_heartrate") private int maxHeartRate;
+    @SerializedName("segment") private Segment segment;
+    @SerializedName("kom_rank") private int komRank;
+    @SerializedName("pr_rank") private int prRank;
+    @SerializedName("hidden") private boolean hidden;
 
     public long getID() {
         return ID;

@@ -1,9 +1,12 @@
 package com.sweetzpot.stravazpot.athlete;
 
+import com.sweetzpot.stravazpot.club.Club;
 import com.sweetzpot.stravazpot.common.Gender;
 import com.sweetzpot.stravazpot.common.ResourceState;
+import com.sweetzpot.stravazpot.gear.Gear;
 
 import java.util.Date;
+import java.util.List;
 
 public class Athlete {
     private long id;
@@ -30,6 +33,9 @@ public class Athlete {
     private String email;
     private int ftp;
     private float weight;
+    private List<Club> clubs;
+    private List<Gear> bikes;
+    private List<Gear> shoes;
 
     public long getId() {
         return id;
@@ -125,5 +131,17 @@ public class Athlete {
 
     public float getWeight() {
         return weight;
+    }
+
+    public List<Club> getClubs() {
+        return clubs;
+    }
+
+    public List<Gear> getBikes() {
+        return bikes;
+    }
+
+    public List<Gear> getShoes() {
+        return shoes;
     }
 }

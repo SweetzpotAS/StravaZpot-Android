@@ -1,8 +1,10 @@
 package com.sweetzpot.stravazpot.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Interval<T> {
-    private T min;
-    private T max;
+    @SerializedName("min") private T min;
+    @SerializedName("max") private T max;
 
     public T getMin() {
         return min;

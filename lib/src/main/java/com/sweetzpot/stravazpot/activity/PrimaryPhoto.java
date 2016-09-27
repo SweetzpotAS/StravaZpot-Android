@@ -1,15 +1,17 @@
 package com.sweetzpot.stravazpot.activity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 
 public class PrimaryPhoto {
-    private int id;
-    private PhotoSource source;
-    private String uniqueID;
-    private HashMap<String, String> urls;
+    @SerializedName("id") private int ID;
+    @SerializedName("source") private PhotoSource source;
+    @SerializedName("unique_id") private String uniqueID;
+    @SerializedName("urls") private HashMap<String, String> urls;
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
     public PhotoSource getSource() {

@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.segment;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Coordinates;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.Percentage;
@@ -10,31 +11,31 @@ import com.sweetzpot.stravazpot.route.Map;
 import java.util.Date;
 
 public class Segment {
-    private int ID;
-    private ResourceState resourceState;
-    private String name;
-    private ActivityType activityType;
-    private Distance distance;
-    private Percentage averageGrade;
-    private Percentage maximumGrade;
-    private Distance elevationHigh;
-    private Distance elevationLow;
-    private Coordinates startCoordinates;
-    private Coordinates endCoordinates;
-    private int climbCategory;
-    private String city;
-    private String state;
-    private String country;
-    private boolean isPrivate;
-    private boolean starred;
-    private Date createdAt;
-    private Date updatedAt;
-    private Distance totalElevationGain;
-    private Map map;
-    private int effortCount;
-    private int athleteCount;
-    private boolean hazardous;
-    private int starCount;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("name") private String name;
+    @SerializedName("activity_type") private ActivityType activityType;
+    @SerializedName("distance") private Distance distance;
+    @SerializedName("average_grade") private Percentage averageGrade;
+    @SerializedName("maximum_grade") private Percentage maximumGrade;
+    @SerializedName("elevation_high") private Distance elevationHigh;
+    @SerializedName("elevation_low") private Distance elevationLow;
+    @SerializedName("start_latlng") private Coordinates startCoordinates;
+    @SerializedName("end_latlng") private Coordinates endCoordinates;
+    @SerializedName("climb_category") private int climbCategory;
+    @SerializedName("city") private String city;
+    @SerializedName("state") private String state;
+    @SerializedName("country") private String country;
+    @SerializedName("private") private boolean isPrivate;
+    @SerializedName("starred") private boolean starred;
+    @SerializedName("created_at") private Date createdAt;
+    @SerializedName("updated_at") private Date updatedAt;
+    @SerializedName("total_elevation_gain") private Distance totalElevationGain;
+    @SerializedName("map") private Map map;
+    @SerializedName("effort_count") private int effortCount;
+    @SerializedName("athlete_count") private int athleteCount;
+    @SerializedName("hazardous") private boolean hazardous;
+    @SerializedName("star_count") private int starCount;
 
     public int getID() {
         return ID;

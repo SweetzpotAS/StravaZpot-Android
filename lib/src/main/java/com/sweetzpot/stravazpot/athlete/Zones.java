@@ -1,8 +1,10 @@
 package com.sweetzpot.stravazpot.athlete;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Zones {
-    private HeartRate heartRate;
-    private Power power;
+    @SerializedName("heart_rate") private HeartRate heartRate;
+    @SerializedName("power") private Power power;
 
     public HeartRate getHeartRate() {
         return heartRate;

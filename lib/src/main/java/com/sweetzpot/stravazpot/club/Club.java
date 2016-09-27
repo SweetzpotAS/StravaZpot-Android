@@ -1,30 +1,31 @@
 package com.sweetzpot.stravazpot.club;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.ResourceState;
 
 public class Club {
-    private int ID;
-    private ResourceState resourceState;
-    private String name;
-    private String profileMedium;
-    private String profile;
-    private String coverPhoto;
-    private String coverPhotoSmall;
-    private String description;
-    private ClubType clubType;
-    private SportType sportType;
-    private String city;
-    private String state;
-    private String country;
-    private boolean isPrivate;
-    private int memberCount;
-    private boolean featured;
-    private boolean verified;
-    private Membership membership;
-    private boolean admin;
-    private boolean owner;
-    private int followingCount;
-    private String url;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("name") private String name;
+    @SerializedName("profile_medium") private String profileMedium;
+    @SerializedName("profile") private String profile;
+    @SerializedName("cover_photo") private String coverPhoto;
+    @SerializedName("cover_photo_small") private String coverPhotoSmall;
+    @SerializedName("description") private String description;
+    @SerializedName("club_type") private ClubType clubType;
+    @SerializedName("sport_type") private SportType sportType;
+    @SerializedName("city") private String city;
+    @SerializedName("state") private String state;
+    @SerializedName("country") private String country;
+    @SerializedName("private") private boolean isPrivate;
+    @SerializedName("member_count") private int memberCount;
+    @SerializedName("featured") private boolean featured;
+    @SerializedName("verified") private boolean verified;
+    @SerializedName("membership") private Membership membership;
+    @SerializedName("admin") private boolean admin;
+    @SerializedName("owner") private boolean owner;
+    @SerializedName("following_count") private int followingCount;
+    @SerializedName("url") private String url;
 
     public int getID() {
         return ID;

@@ -1,9 +1,11 @@
 package com.sweetzpot.stravazpot.activity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Achievement {
-    private AchievementType typeID;
-    private String type;
-    private int rank;
+    @SerializedName("type_id") private AchievementType typeID;
+    @SerializedName("type") private String type;
+    @SerializedName("rank") private int rank;
 
     public AchievementType getTypeID() {
         return typeID;

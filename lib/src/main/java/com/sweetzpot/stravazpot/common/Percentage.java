@@ -1,4 +1,4 @@
-package com.sweetzpot.stravazpot;
+package com.sweetzpot.stravazpot.common;
 
 public class Percentage {
     private float value;

@@ -1,6 +1,6 @@
 package com.sweetzpot.stravazpot.activity;
 
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 
 import java.util.Date;

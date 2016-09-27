@@ -1,7 +1,7 @@
 package com.sweetzpot.stravazpot.activity;
 
-import com.sweetzpot.stravazpot.Coordinates;
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.Coordinates;
+import com.sweetzpot.stravazpot.common.ResourceState;
 
 import java.util.Date;
 import java.util.HashMap;

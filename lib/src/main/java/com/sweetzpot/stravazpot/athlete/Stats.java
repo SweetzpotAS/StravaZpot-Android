@@ -1,6 +1,6 @@
 package com.sweetzpot.stravazpot.athlete;
 
-import com.sweetzpot.stravazpot.Distance;
+import com.sweetzpot.stravazpot.common.Distance;
 
 public class Stats {
     private Distance biggestRideDistance;

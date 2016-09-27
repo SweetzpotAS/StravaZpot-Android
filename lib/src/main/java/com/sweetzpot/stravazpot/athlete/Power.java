@@ -1,6 +1,6 @@
 package com.sweetzpot.stravazpot.athlete;
 
-import com.sweetzpot.stravazpot.Interval;
+import com.sweetzpot.stravazpot.common.Interval;
 
 import java.util.List;
 

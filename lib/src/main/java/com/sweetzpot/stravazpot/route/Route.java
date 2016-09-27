@@ -1,7 +1,7 @@
 package com.sweetzpot.stravazpot.route;
 
-import com.sweetzpot.stravazpot.Distance;
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.Distance;
+import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 import com.sweetzpot.stravazpot.segment.Segment;
 

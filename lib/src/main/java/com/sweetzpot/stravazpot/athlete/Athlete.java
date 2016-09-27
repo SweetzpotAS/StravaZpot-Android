@@ -1,7 +1,7 @@
 package com.sweetzpot.stravazpot.athlete;
 
-import com.sweetzpot.stravazpot.Gender;
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.Gender;
+import com.sweetzpot.stravazpot.common.ResourceState;
 
 import java.util.Date;
 

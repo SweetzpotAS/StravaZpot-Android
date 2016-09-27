@@ -1,6 +1,6 @@
 package com.sweetzpot.stravazpot.club;
 
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.activity.ActivityType;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 

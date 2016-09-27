@@ -1,7 +1,7 @@
 package com.sweetzpot.stravazpot.athlete;
 
-import com.sweetzpot.stravazpot.Distance;
-import com.sweetzpot.stravazpot.Time;
+import com.sweetzpot.stravazpot.common.Distance;
+import com.sweetzpot.stravazpot.common.Time;
 
 public class Totals {
     private int count;

@@ -1,9 +1,9 @@
 package com.sweetzpot.stravazpot.segment;
 
-import com.sweetzpot.stravazpot.Coordinates;
-import com.sweetzpot.stravazpot.Distance;
-import com.sweetzpot.stravazpot.Percentage;
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.Coordinates;
+import com.sweetzpot.stravazpot.common.Distance;
+import com.sweetzpot.stravazpot.common.Percentage;
+import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.activity.ActivityType;
 import com.sweetzpot.stravazpot.route.Map;
 

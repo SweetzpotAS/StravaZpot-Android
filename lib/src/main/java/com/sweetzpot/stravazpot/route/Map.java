@@ -1,6 +1,6 @@
 package com.sweetzpot.stravazpot.route;
 
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.ResourceState;
 
 public class Map {
     private int ID;

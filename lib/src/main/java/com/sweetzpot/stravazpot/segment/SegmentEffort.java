@@ -1,8 +1,8 @@
 package com.sweetzpot.stravazpot.segment;
 
-import com.sweetzpot.stravazpot.Distance;
-import com.sweetzpot.stravazpot.ResourceState;
-import com.sweetzpot.stravazpot.Time;
+import com.sweetzpot.stravazpot.common.Distance;
+import com.sweetzpot.stravazpot.common.ResourceState;
+import com.sweetzpot.stravazpot.common.Time;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 
 import java.util.Date;

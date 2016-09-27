@@ -1,4 +1,4 @@
-package com.sweetzpot.stravazpot;
+package com.sweetzpot.stravazpot.common;
 
 /**
  * Created by tomasruizlopez on 16/9/16.

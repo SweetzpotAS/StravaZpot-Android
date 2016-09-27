@@ -1,4 +1,4 @@
-package com.sweetzpot.stravazpot;
+package com.sweetzpot.stravazpot.common;
 
 public class Temperature {
     private float celsiusDegrees;

@@ -1,7 +1,7 @@
 package com.sweetzpot.stravazpot.gear;
 
-import com.sweetzpot.stravazpot.Distance;
-import com.sweetzpot.stravazpot.ResourceState;
+import com.sweetzpot.stravazpot.common.Distance;
+import com.sweetzpot.stravazpot.common.ResourceState;
 
 public class Gear {
     private String ID;

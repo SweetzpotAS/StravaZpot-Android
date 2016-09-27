@@ -7,7 +7,7 @@ import java.util.List;
 public class Stream {
     @SerializedName("type") private StreamType type;
     @SerializedName("data") private List<Object> data;
-    @SerializedName("series_type") private String seriesType;
+    @SerializedName("series_type") private SeriesType seriesType;
     @SerializedName("original_size") private int originalSize;
     @SerializedName("resolution") private Resolution resolution;
 
@@ -19,7 +19,7 @@ public class Stream {
         return data;
     }
 
-    public String getSeriesType() {
+    public SeriesType getSeriesType() {
         return seriesType;
     }
 

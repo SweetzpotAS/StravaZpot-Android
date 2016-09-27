@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.club;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.activity.ActivityType;
 import com.sweetzpot.stravazpot.athlete.Athlete;
@@ -8,21 +9,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Event {
-    private int ID;
-    private ResourceState resourceState;
-    private String title;
-    private String description;
-    private int clubID;
-    private Athlete organizingAthlete;
-    private ActivityType activityType;
-    private Date createdAt;
-    private int routeID;
-    private boolean womanOnly;
-    private boolean isPrivate;
-    private SkillLevel skillLevel;
-    private Terrain terrain;
-    private List<Date> upcomingOccurrences;
-    private String address;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("title") private String title;
+    @SerializedName("description") private String description;
+    @SerializedName("club_id") private int clubID;
+    @SerializedName("organizing_athlete") private Athlete organizingAthlete;
+    @SerializedName("activity_type") private ActivityType activityType;
+    @SerializedName("created_at") private Date createdAt;
+    @SerializedName("route_id") private int routeID;
+    @SerializedName("woman_only") private boolean womanOnly;
+    @SerializedName("private") private boolean isPrivate;
+    @SerializedName("skill_levels") private SkillLevel skillLevel;
+    @SerializedName("terrain") private Terrain terrain;
+    @SerializedName("upcoming_occurrences") private List<Date> upcomingOccurrences;
+    @SerializedName("address") private String address;
 
     public int getID() {
         return ID;

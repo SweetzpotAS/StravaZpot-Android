@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.route;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.athlete.Athlete;
@@ -8,20 +9,20 @@ import com.sweetzpot.stravazpot.segment.Segment;
 import java.util.List;
 
 public class Route {
-    private int ID;
-    private ResourceState resourceState;
-    private String name;
-    private String description;
-    private Athlete athlete;
-    private Distance distance;
-    private Distance elevationGain;
-    private Map map;
-    private RouteType type;
-    private RouteSubtype subtype;
-    private boolean isPrivate;
-    private boolean starred;
-    private long timestamp;
-    private List<Segment> segments;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("name") private String name;
+    @SerializedName("description") private String description;
+    @SerializedName("athlete") private Athlete athlete;
+    @SerializedName("distance") private Distance distance;
+    @SerializedName("elevation_gain") private Distance elevationGain;
+    @SerializedName("map") private Map map;
+    @SerializedName("type") private RouteType type;
+    @SerializedName("sub_type") private RouteSubtype subtype;
+    @SerializedName("private") private boolean isPrivate;
+    @SerializedName("starred") private boolean starred;
+    @SerializedName("timestamp") private long timestamp;
+    @SerializedName("segments") private List<Segment> segments;
 
     public int getID() {
         return ID;

@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.segment;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.Gender;
 import com.sweetzpot.stravazpot.common.Time;
@@ -7,20 +8,20 @@ import com.sweetzpot.stravazpot.common.Time;
 import java.util.Date;
 
 public class LeaderboardEntry {
-    private String athleteName;
-    private int athleteID;
-    private Gender athleteGender;
-    private float averageHeartRate;
-    private float averageWatts;
-    private Distance distance;
-    private Time elapsedTime;
-    private Time movingTime;
-    private Date startDate;
-    private Date startDateLocal;
-    private int activityID;
-    private int effortID;
-    private int rank;
-    private String athleteProfile;
+    @SerializedName("athlete_name") private String athleteName;
+    @SerializedName("athlete_id") private int athleteID;
+    @SerializedName("athlete_gender") private Gender athleteGender;
+    @SerializedName("average_hr") private float averageHeartRate;
+    @SerializedName("average_watts") private float averageWatts;
+    @SerializedName("average_distance") private Distance distance;
+    @SerializedName("elapsed_time") private Time elapsedTime;
+    @SerializedName("moving_time") private Time movingTime;
+    @SerializedName("start_date") private Date startDate;
+    @SerializedName("start_date_local") private Date startDateLocal;
+    @SerializedName("activity_id") private int activityID;
+    @SerializedName("effort_id") private int effortID;
+    @SerializedName("rank") private int rank;
+    @SerializedName("athlete_profile") private String athleteProfile;
 
     public String getAthleteName() {
         return athleteName;

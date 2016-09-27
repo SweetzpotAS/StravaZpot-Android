@@ -69,6 +69,8 @@ public class Activity {
     private boolean hasKudoed;
     private List<SegmentEffort> segmentEfforts;
     private List<SegmentEffort> bestEfforts;
+    private List<Split> splitsMetric;
+    private List<Split> splitsStandard;
 
     public int getID() {
         return ID;
@@ -284,5 +286,13 @@ public class Activity {
 
     public List<SegmentEffort> getBestEfforts() {
         return bestEfforts;
+    }
+
+    public List<Split> getSplitsMetric() {
+        return splitsMetric;
+    }
+
+    public List<Split> getSplitsStandard() {
+        return splitsStandard;
     }
 }

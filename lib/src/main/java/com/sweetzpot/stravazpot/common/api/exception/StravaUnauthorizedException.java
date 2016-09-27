@@ -1,4 +1,4 @@
-package com.sweetzpot.stravazpot.common.api;
+package com.sweetzpot.stravazpot.common.api.exception;
 
 public class StravaUnauthorizedException extends RuntimeException {
 }

@@ -1,15 +1,16 @@
 package com.sweetzpot.stravazpot.athlete;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.Time;
 
 public class Totals {
-    private int count;
-    private Distance distance;
-    private Time movingTime;
-    private Time elapsedTime;
-    private Distance elevationGain;
-    private int achievementCount;
+    @SerializedName("count") private int count;
+    @SerializedName("distance") private Distance distance;
+    @SerializedName("moving_time") private Time movingTime;
+    @SerializedName("elapsed_time") private Time elapsedTime;
+    @SerializedName("elevation_gain") private Distance elevationGain;
+    @SerializedName("achievement_count") private int achievementCount;
 
     public int getCount() {
         return count;

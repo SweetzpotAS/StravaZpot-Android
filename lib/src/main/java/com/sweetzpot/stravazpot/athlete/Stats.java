@@ -1,19 +1,20 @@
 package com.sweetzpot.stravazpot.athlete;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 
 public class Stats {
-    private Distance biggestRideDistance;
-    private Distance biggestClimbElevationGain;
-    private Totals recentRideTotals;
-    private Totals recentRunTotals;
-    private Totals recentSwimTotals;
-    private Totals yearToDateRideTotals;
-    private Totals yearToDateRunTotals;
-    private Totals yearToDateSwimTotals;
-    private Totals allRideTotals;
-    private Totals allRunTotals;
-    private Totals allSwimTotals;
+    @SerializedName("biggest_ride_distance") private Distance biggestRideDistance;
+    @SerializedName("biggest_climb_elevation_gain") private Distance biggestClimbElevationGain;
+    @SerializedName("recent_ride_totals") private Totals recentRideTotals;
+    @SerializedName("recent_run_totals") private Totals recentRunTotals;
+    @SerializedName("recent_swim_totals") private Totals recentSwimTotals;
+    @SerializedName("ytd_ride_totals") private Totals yearToDateRideTotals;
+    @SerializedName("ytd_run_totals") private Totals yearToDateRunTotals;
+    @SerializedName("ytd_swim_totals") private Totals yearToDateSwimTotals;
+    @SerializedName("all_ride_totals") private Totals allRideTotals;
+    @SerializedName("all_run_totals") private Totals allRunTotals;
+    @SerializedName("all_swim_totals") private Totals allSwimTotals;
 
     public Distance getBiggestRideDistance() {
         return biggestRideDistance;

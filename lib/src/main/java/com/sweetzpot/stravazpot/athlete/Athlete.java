@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.athlete;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.club.Club;
 import com.sweetzpot.stravazpot.common.Gender;
 import com.sweetzpot.stravazpot.common.ResourceState;
@@ -9,36 +10,36 @@ import java.util.Date;
 import java.util.List;
 
 public class Athlete {
-    private long id;
-    private ResourceState resourceState;
-    private String firstName;
-    private String lastName;
-    private String profileMedium;
-    private String profile;
-    private String city;
-    private String state;
-    private String country;
-    private Gender sex;
-    private FriendStatus friend;
-    private FriendStatus follower;
-    private boolean premium;
-    private Date createdAt;
-    private Date updatedAt;
-    private int followerCount;
-    private int friendCount;
-    private int mutualFriendCount;
-    private AthleteType athleteType;
-    private String datePreference;
-    private MeasurementPreference measurementPreference;
-    private String email;
-    private int ftp;
-    private float weight;
-    private List<Club> clubs;
-    private List<Gear> bikes;
-    private List<Gear> shoes;
+    @SerializedName("id") private long ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("firstname") private String firstName;
+    @SerializedName("lastname") private String lastName;
+    @SerializedName("profile_medium") private String profileMedium;
+    @SerializedName("profile") private String profile;
+    @SerializedName("city") private String city;
+    @SerializedName("state") private String state;
+    @SerializedName("country") private String country;
+    @SerializedName("sex") private Gender sex;
+    @SerializedName("friend") private FriendStatus friend;
+    @SerializedName("follower") private FriendStatus follower;
+    @SerializedName("premium") private boolean premium;
+    @SerializedName("created_at") private Date createdAt;
+    @SerializedName("updated_at") private Date updatedAt;
+    @SerializedName("follower_count") private int followerCount;
+    @SerializedName("friend_count") private int friendCount;
+    @SerializedName("mutual_friend_count") private int mutualFriendCount;
+    @SerializedName("athlete_type") private AthleteType athleteType;
+    @SerializedName("date_preference") private String datePreference;
+    @SerializedName("measurement_preference") private MeasurementPreference measurementPreference;
+    @SerializedName("email") private String email;
+    @SerializedName("ftp") private int ftp;
+    @SerializedName("weight") private float weight;
+    @SerializedName("clubs") private List<Club> clubs;
+    @SerializedName("bikes") private List<Gear> bikes;
+    @SerializedName("shoes") private List<Gear> shoes;
 
-    public long getId() {
-        return id;
+    public long getID() {
+        return ID;
     }
 
     public ResourceState getResourceState() {

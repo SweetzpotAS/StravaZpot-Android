@@ -1,8 +1,10 @@
 package com.sweetzpot.stravazpot.activity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PhotoSummary {
-    private int count;
-    private PrimaryPhoto primaryPhoto;
+    @SerializedName("count") private int count;
+    @SerializedName("primary") private PrimaryPhoto primaryPhoto;
 
     public int getCount() {
         return count;

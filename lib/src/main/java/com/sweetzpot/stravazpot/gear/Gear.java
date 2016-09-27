@@ -1,18 +1,19 @@
 package com.sweetzpot.stravazpot.gear;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Distance;
 import com.sweetzpot.stravazpot.common.ResourceState;
 
 public class Gear {
-    private String ID;
-    private ResourceState resourceState;
-    private boolean primary;
-    private String name;
-    private Distance distance;
-    private String brandName;
-    private String modelName;
-    private FrameType frameType;
-    private String description;
+    @SerializedName("id") private String ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("primary") private boolean primary;
+    @SerializedName("name") private String name;
+    @SerializedName("distance") private Distance distance;
+    @SerializedName("brand_name") private String brandName;
+    @SerializedName("model_name") private String modelName;
+    @SerializedName("frame_type") private FrameType frameType;
+    @SerializedName("description") private String description;
 
     public String getID() {
         return ID;

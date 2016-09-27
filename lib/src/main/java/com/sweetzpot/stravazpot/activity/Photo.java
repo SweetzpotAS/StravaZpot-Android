@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.activity;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.Coordinates;
 import com.sweetzpot.stravazpot.common.ResourceState;
 
@@ -7,19 +8,19 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Photo {
-    private String uniqueID;
-    private int ID;
-    private int activityID;
-    private ResourceState resourceState;
-    private HashMap<String, String> urls;
-    private String caption;
-    private PhotoSource source;
-    private Date uploadedAt;
-    private Date createdAt;
-    private Coordinates location;
-    private String ref;
-    private String uid;
-    private String type;
+    @SerializedName("unique_id") private String uniqueID;
+    @SerializedName("id") private int ID;
+    @SerializedName("activity_id") private int activityID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("urls") private HashMap<String, String> urls;
+    @SerializedName("caption") private String caption;
+    @SerializedName("source") private PhotoSource source;
+    @SerializedName("uploaded_at") private Date uploadedAt;
+    @SerializedName("created_at") private Date createdAt;
+    @SerializedName("location") private Coordinates location;
+    @SerializedName("ref") private String ref;
+    @SerializedName("uid") private String uid;
+    @SerializedName("type") private String type;
 
     public String getUniqueID() {
         return uniqueID;

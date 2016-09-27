@@ -1,17 +1,18 @@
 package com.sweetzpot.stravazpot.club;
 
+import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.ResourceState;
 import com.sweetzpot.stravazpot.athlete.Athlete;
 
 import java.util.Date;
 
 public class Announcement {
-    private int ID;
-    private ResourceState resourceState;
-    private int clubID;
-    private Athlete athlete;
-    private Date createdAt;
-    private String message;
+    @SerializedName("id") private int ID;
+    @SerializedName("resource_state") private ResourceState resourceState;
+    @SerializedName("club_id") private int clubID;
+    @SerializedName("athlete") private Athlete athlete;
+    @SerializedName("created_at") private Date createdAt;
+    @SerializedName("message") private String message;
 
     public int getID() {
         return ID;

@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.athlete.api;
 
 import com.sweetzpot.stravazpot.athlete.request.GetAthleteFollowersRequest;
 import com.sweetzpot.stravazpot.athlete.request.GetAthleteFriendsRequest;
+import com.sweetzpot.stravazpot.athlete.request.GetBothFollowingRequest;
 import com.sweetzpot.stravazpot.athlete.request.GetMyFollowersRequest;
 import com.sweetzpot.stravazpot.athlete.request.GetMyFriendsRequest;
 import com.sweetzpot.stravazpot.athlete.rest.FriendRest;
@@ -28,5 +29,9 @@ public class FriendAPI extends StravaAPI {
 
     public GetAthleteFollowersRequest getAthleteFollowers(int athleteID) {
         return new GetAthleteFollowersRequest(athleteID, getAPI(FriendRest.class), this);
+    }
+
+    public GetBothFollowingRequest getBothFollowing(int athleteID) {
+        return new GetBothFollowingRequest(athleteID, getAPI(FriendRest.class), this);
     }
 }

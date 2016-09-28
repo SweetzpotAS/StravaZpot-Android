@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 public class StravaAPITest {
@@ -66,7 +66,6 @@ public class StravaAPITest {
     public void assertRequestSentTo(String url) throws InterruptedException {
         RecordedRequest request = server.takeRequest();
         String path = request.getPath();
-        path = path.substring(0, path.lastIndexOf("?"));
-        assertThat(path, endsWith(url));
+        assertThat(path, startsWith(url));
     }
 }

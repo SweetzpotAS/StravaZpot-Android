@@ -4,6 +4,7 @@ import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.athlete.model.Zones;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
 import com.sweetzpot.stravazpot.common.api.StravaConfig;
 import com.sweetzpot.stravazpot.common.model.Gender;
@@ -67,6 +68,18 @@ public class AthleteAPITest extends StravaAPITest{
                 "sex=F",
                 "weight=91.2"
                 );
+    }
+
+    @Test
+    public void shouldRetrieveAthleteZones() throws Exception {
+        enqueueZones();
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        Zones zones = athleteAPI.getAthleteZones()
+                                .execute();
+
+        assertRequestSentTo("/athlete/zones");
+        assertZonesParsedCorrectly(zones);
     }
 
     private void assertAthleteParsedCorrectly(Athlete athlete) {
@@ -182,6 +195,42 @@ public class AthleteAPITest extends StravaAPITest{
                 "}";
 
         enqueueResponse(athleteJSON);
+    }
+
+    private void assertZonesParsedCorrectly(Zones zones) {
+        assertThat(zones.getHeartRate().hasCustomZones(), is(false));
+        assertThat(zones.getHeartRate().getZones().size(), is(5));
+        assertThat(zones.getPower().getZones().size(), is(7));
+        assertThat(zones.getPower().getZones().get(0).getMin(), is(0f));
+        assertThat(zones.getPower().getZones().get(0).getMax(), is(180f));
+    }
+
+    private void enqueueZones() {
+        String zonesJSON = "{\n" +
+                "  \"heart_rate\": {\n" +
+                "    \"custom_zones\": false,\n" +
+                "    \"zones\": [\n" +
+                "      { \"min\": 0, \"max\": 115 },\n" +
+                "      { \"min\": 115, \"max\": 152 },\n" +
+                "      { \"min\": 152, \"max\": 171 },\n" +
+                "      { \"min\": 171, \"max\": 190 },\n" +
+                "      { \"min\": 190,  \"max\": -1 }\n" +
+                "    ]\n" +
+                "  },\n" +
+                "  \"power\": {\n" +
+                "      \"zones\": [\n" +
+                "        { \"min\": 0, \"max\": 180 },\n" +
+                "        { \"min\": 181, \"max\": 246 },\n" +
+                "        { \"min\": 247, \"max\": 295 },\n" +
+                "        { \"min\": 296, \"max\": 344 },\n" +
+                "        { \"min\": 345, \"max\": 393 },\n" +
+                "        { \"min\": 394, \"max\": 492 },\n" +
+                "        { \"min\": 493,  \"max\": -1 }\n" +
+                "      ]\n" +
+                "    }\n" +
+                "}";
+
+        enqueueResponse(zonesJSON);
     }
 
     public Date makeDate(int day, int month, int year, int hour, int minute, int second) {

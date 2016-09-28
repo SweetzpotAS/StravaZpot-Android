@@ -47,6 +47,28 @@ public class AthleteAPITest extends StravaAPITest{
         assertAthleteParsedCorrectly(athlete);
     }
 
+    @Test
+    public void shouldUpdateAthlete() throws Exception {
+        enqueueAthlete();
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        athleteAPI.updateAthlete()
+                    .newCity("Albuquerque")
+                    .newState("New Mexico")
+                    .newCountry("USA")
+                    .newSex(Gender.FEMALE)
+                    .newWeight(91.2f)
+                    .execute();
+
+        assertRequestBodyContains(
+                "city=Albuquerque",
+                "state=New%20Mexico",
+                "country=USA",
+                "sex=F",
+                "weight=91.2"
+                );
+    }
+
     private void assertAthleteParsedCorrectly(Athlete athlete) {
         assertThat(athlete.getID(), is(227615L));
         assertThat(athlete.getResourceState(), is(ResourceState.DETAILED));

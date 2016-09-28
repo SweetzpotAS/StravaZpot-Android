@@ -46,7 +46,7 @@ public class StravaAPITest {
         enqueueResponse(HTTP_UNAUTHORIZED, "{}");
     }
 
-    public void assertRequestSentToContains(String... paths) throws InterruptedException {
+    public void assertRequestPathContains(String... paths) throws InterruptedException {
         RecordedRequest request = server.takeRequest();
 
         for (String path : paths) {
@@ -54,8 +54,19 @@ public class StravaAPITest {
         }
     }
 
+    public void assertRequestBodyContains(String... paths) throws InterruptedException {
+        RecordedRequest request = server.takeRequest();
+        String body = request.getBody().readUtf8();
+
+        for (String path : paths) {
+            assertThat(body, containsString(path));
+        }
+    }
+
     public void assertRequestSentTo(String url) throws InterruptedException {
         RecordedRequest request = server.takeRequest();
-        assertThat(request.getPath(), endsWith(url));
+        String path = request.getPath();
+        path = path.substring(0, path.lastIndexOf("?"));
+        assertThat(path, endsWith(url));
     }
 }

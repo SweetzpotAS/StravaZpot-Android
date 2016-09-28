@@ -1,5 +1,20 @@
 package com.sweetzpot.stravazpot.common.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.sweetzpot.stravazpot.athlete.model.AthleteType;
+import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
+import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.common.model.Distance;
+import com.sweetzpot.stravazpot.common.model.Gender;
+import com.sweetzpot.stravazpot.common.model.ResourceState;
+import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.DistanceTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -59,10 +74,21 @@ public class StravaConfig {
 
             Retrofit retrofit = new Retrofit.Builder().baseUrl(baseURL)
                     .client(client)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(makeGson()))
                     .build();
 
             return retrofit;
+        }
+
+        private Gson makeGson() {
+            return new GsonBuilder()
+                        .registerTypeAdapter(Distance.class, new DistanceTypeAdapter())
+                        .registerTypeAdapter(ResourceState.class, new ResourceStateTypeAdapter())
+                        .registerTypeAdapter(Gender.class, new GenderTypeAdapter())
+                        .registerTypeAdapter(FriendStatus.class, new FriendStatusTypeAdapter())
+                        .registerTypeAdapter(AthleteType.class, new AthleteTypeTypeAdapter())
+                        .registerTypeAdapter(MeasurementPreference.class, new MeasurementPreferenceTypeAdapter())
+                        .create();
         }
     }
 }

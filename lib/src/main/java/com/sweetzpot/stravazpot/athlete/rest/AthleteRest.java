@@ -1,10 +1,11 @@
 package com.sweetzpot.stravazpot.athlete.rest;
 
-import com.sun.tools.javac.util.List;
 import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import com.sweetzpot.stravazpot.athlete.model.Stats;
 import com.sweetzpot.stravazpot.athlete.model.Zones;
 import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

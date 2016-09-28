@@ -43,6 +43,23 @@ public class FriendAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldRetrieveMyFollowers() throws Exception {
+        enqueueResponse("[]");
+        FriendAPI friendAPI = givenAFriendAPI();
+
+        List<Athlete> followers = friendAPI.getMyFollowers()
+                                        .inPage(2)
+                                        .perPage(10)
+                                        .execute();
+
+        assertRequestPathContains(
+                "/athlete/followers",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
     private FriendAPI givenAFriendAPI() {
         return new FriendAPI(givenAValidConfig());
     }

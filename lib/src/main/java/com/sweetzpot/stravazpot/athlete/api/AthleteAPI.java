@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.athlete.api;
 
 import com.sweetzpot.stravazpot.athlete.request.AthleteRequest;
 import com.sweetzpot.stravazpot.athlete.request.CurrentAthleteRequest;
+import com.sweetzpot.stravazpot.athlete.request.GetTotalsAndStatsRequest;
 import com.sweetzpot.stravazpot.athlete.request.GetZonesRequest;
 import com.sweetzpot.stravazpot.athlete.request.UpdateAthleteRequest;
 import com.sweetzpot.stravazpot.athlete.rest.AthleteRest;
@@ -28,5 +29,9 @@ public class AthleteAPI extends StravaAPI {
 
     public GetZonesRequest getAthleteZones() {
         return new GetZonesRequest(getAPI(AthleteRest.class), this);
+    }
+
+    public GetTotalsAndStatsRequest getAthleteTotalsAndStats(int athleteID) {
+        return new GetTotalsAndStatsRequest(athleteID, getAPI(AthleteRest.class), this);
     }
 }

@@ -4,11 +4,15 @@ import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.athlete.model.Stats;
+import com.sweetzpot.stravazpot.athlete.model.Totals;
 import com.sweetzpot.stravazpot.athlete.model.Zones;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
 import com.sweetzpot.stravazpot.common.api.StravaConfig;
+import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
+import com.sweetzpot.stravazpot.common.model.Time;
 
 import org.junit.Test;
 
@@ -17,7 +21,9 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AthleteAPITest extends StravaAPITest{
@@ -80,6 +86,18 @@ public class AthleteAPITest extends StravaAPITest{
 
         assertRequestSentTo("/athlete/zones");
         assertZonesParsedCorrectly(zones);
+    }
+
+    @Test
+    public void shouldRetrieveAthleteTotalsAndStats() throws Exception {
+        enqueueTotalsAndStats();
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615)
+                                .execute();
+
+        assertRequestSentTo("/athletes/227615/stats");
+        assertStatsParsedCorrectly(stats);
     }
 
     private void assertAthleteParsedCorrectly(Athlete athlete) {
@@ -231,6 +249,102 @@ public class AthleteAPITest extends StravaAPITest{
                 "}";
 
         enqueueResponse(zonesJSON);
+    }
+
+    private void assertStatsParsedCorrectly(Stats stats) {
+        assertThat(stats.getBiggestRideDistance(), is(equalTo(Distance.meters(175454.0f))));
+        assertThat(stats.getBiggestClimbElevationGain(), is(equalTo(Distance.meters(1882.6999999999998f))));
+        assertThat(stats.getAllRideTotals(), is(notNullValue()));
+        assertThat(stats.getAllRunTotals(), is(notNullValue()));
+        assertThat(stats.getAllSwimTotals(), is(notNullValue()));
+        assertThat(stats.getRecentRideTotals(), is(notNullValue()));
+        assertThat(stats.getRecentRunTotals(), is(notNullValue()));
+        assertThat(stats.getRecentSwimTotals(), is(notNullValue()));
+        assertThat(stats.getYearToDateRideTotals(), is(notNullValue()));
+        assertThat(stats.getYearToDateRunTotals(), is(notNullValue()));
+        assertThat(stats.getYearToDateSwimTotals(), is(notNullValue()));
+        Totals totals = stats.getRecentRideTotals();
+        assertThat(totals.getCount(), is(3));
+        assertThat(totals.getDistance(), is(Distance.meters(12054.900146484375f)));
+        assertThat(totals.getMovingTime(), is(Time.seconds(2190)));
+        assertThat(totals.getElapsedTime(), is(Time.seconds(2331)));
+        assertThat(totals.getElevationGain(), is(Distance.meters(36)));
+        assertThat(totals.getAchievementCount(), is(0));
+    }
+
+    private void enqueueTotalsAndStats() {
+        String statsJSON = "{\n" +
+                "  \"biggest_ride_distance\": 175454.0,\n" +
+                "  \"biggest_climb_elevation_gain\": 1882.6999999999998,\n" +
+                "  \"recent_ride_totals\": {\n" +
+                "    \"count\": 3,\n" +
+                "    \"distance\": 12054.900146484375,\n" +
+                "    \"moving_time\": 2190,\n" +
+                "    \"elapsed_time\": 2331,\n" +
+                "    \"elevation_gain\": 36.0,\n" +
+                "    \"achievement_count\": 0\n" +
+                "  },\n" +
+                "  \"recent_run_totals\": {\n" +
+                "    \"count\": 23,\n" +
+                "    \"distance\": 195948.40002441406,\n" +
+                "    \"moving_time\": 65513,\n" +
+                "    \"elapsed_time\": 75232,\n" +
+                "    \"elevation_gain\": 2934.3999996185303,\n" +
+                "    \"achievement_count\": 46\n" +
+                "  },\n" +
+                "  \"recent_swim_totals\": {\n" +
+                "    \"count\": 2,\n" +
+                "    \"distance\": 1117.2000122070312,\n" +
+                "    \"moving_time\": 1744,\n" +
+                "    \"elapsed_time\": 1942,\n" +
+                "    \"elevation_gain\": 0.0,\n" +
+                "    \"achievement_count\": 0\n" +
+                "  },\n" +
+                "  \"ytd_ride_totals\": {\n" +
+                "    \"count\": 134,\n" +
+                "    \"distance\": 4927252,\n" +
+                "    \"moving_time\": 659982,\n" +
+                "    \"elapsed_time\": 892644,\n" +
+                "    \"elevation_gain\": 49940\n" +
+                "  },\n" +
+                "  \"ytd_run_totals\": {\n" +
+                "    \"count\": 111,\n" +
+                "    \"distance\": 917100,\n" +
+                "    \"moving_time\": 272501,\n" +
+                "    \"elapsed_time\": 328059,\n" +
+                "    \"elevation_gain\": 7558\n" +
+                "  },\n" +
+                "  \"ytd_swim_totals\": {\n" +
+                "    \"count\": 8,\n" +
+                "    \"distance\": 10372,\n" +
+                "    \"moving_time\": 8784,\n" +
+                "    \"elapsed_time\": 11123,\n" +
+                "    \"elevation_gain\": 0\n" +
+                "  },\n" +
+                "  \"all_ride_totals\": {\n" +
+                "    \"count\": 375,\n" +
+                "    \"distance\": 15760015,\n" +
+                "    \"moving_time\": 2155741,\n" +
+                "    \"elapsed_time\": 2684286,\n" +
+                "    \"elevation_gain\": 189238\n" +
+                "  },\n" +
+                "  \"all_run_totals\": {\n" +
+                "    \"count\": 272,\n" +
+                "    \"distance\": 2269557,\n" +
+                "    \"moving_time\": 673678,\n" +
+                "    \"elapsed_time\": 812095,\n" +
+                "    \"elevation_gain\": 23780\n" +
+                "  },\n" +
+                "  \"all_swim_totals\": {\n" +
+                "    \"count\": 8,\n" +
+                "    \"distance\": 10372,\n" +
+                "    \"moving_time\": 8784,\n" +
+                "    \"elapsed_time\": 11123,\n" +
+                "    \"elevation_gain\": 0\n" +
+                "  }\n" +
+                "}";
+
+        enqueueResponse(statsJSON);
     }
 
     public Date makeDate(int day, int month, int year, int hour, int minute, int second) {

@@ -11,11 +11,13 @@ import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
 import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.DistanceTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.FrameTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
+import com.sweetzpot.stravazpot.gear.model.FrameType;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -91,6 +93,7 @@ public class StravaConfig {
                         .registerTypeAdapter(AthleteType.class, new AthleteTypeTypeAdapter())
                         .registerTypeAdapter(MeasurementPreference.class, new MeasurementPreferenceTypeAdapter())
                         .registerTypeAdapter(Time.class, new TimeTypeAdapter())
+                        .registerTypeAdapter(FrameType.class, new FrameTypeTypeAdapter())
                         .create();
         }
     }

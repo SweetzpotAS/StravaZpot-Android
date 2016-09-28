@@ -13,11 +13,13 @@ import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
+import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
 
 import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
@@ -98,6 +100,23 @@ public class AthleteAPITest extends StravaAPITest{
 
         assertRequestSentTo("/athletes/227615/stats");
         assertStatsParsedCorrectly(stats);
+    }
+
+    @Test
+    public void shouldListAthleteKOMS() throws Exception {
+        enqueueResponse("[]");
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        List<SegmentEffort> koms = athleteAPI.listAthleteKOMS(227615)
+                                            .inPage(2)
+                                            .perPage(10)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/athletes/227615/koms",
+                "page=2",
+                "per_page=10"
+        );
     }
 
     private void assertAthleteParsedCorrectly(Athlete athlete) {

@@ -14,6 +14,7 @@ import static org.junit.Assert.assertThat;
 public class StravaAPITest {
     private static final int HTTP_OK = 200;
     private static final int HTTP_UNAUTHORIZED = 401;
+    protected static final String ANY_TOKEN = "Bearer 83ebeabdec09f6670863766f792ead24d61fe3f9";
     private MockWebServer server;
 
     @Before
@@ -67,5 +68,13 @@ public class StravaAPITest {
         RecordedRequest request = server.takeRequest();
         String path = request.getPath();
         assertThat(path, startsWith(url));
+    }
+
+    protected StravaConfig givenAValidConfig() {
+        return StravaConfig
+                .withToken(ANY_TOKEN)
+                .debug()
+                .baseURL(getBaseURL())
+                .build();
     }
 }

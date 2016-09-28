@@ -8,7 +8,6 @@ import com.sweetzpot.stravazpot.athlete.model.Stats;
 import com.sweetzpot.stravazpot.athlete.model.Totals;
 import com.sweetzpot.stravazpot.athlete.model.Zones;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
-import com.sweetzpot.stravazpot.common.api.StravaConfig;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
@@ -29,8 +28,6 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AthleteAPITest extends StravaAPITest{
-
-    private static final String ANY_TOKEN = "Bearer 83ebeabdec09f6670863766f792ead24d61fe3f9";
 
     @Test
     public void shouldRetrieveCurrentAthlete() throws Exception {
@@ -150,13 +147,7 @@ public class AthleteAPITest extends StravaAPITest{
     }
 
     private AthleteAPI givenAnAthleteAPI() {
-        StravaConfig config = StravaConfig
-                                .withToken(ANY_TOKEN)
-                                .debug()
-                                .baseURL(getBaseURL())
-                                .build();
-
-        return new AthleteAPI(config);
+        return new AthleteAPI(givenAValidConfig());
     }
 
     private void enqueueAthlete() {

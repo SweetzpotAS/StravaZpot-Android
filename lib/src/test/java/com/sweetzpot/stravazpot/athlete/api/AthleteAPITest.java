@@ -31,6 +31,19 @@ public class AthleteAPITest extends StravaAPITest{
         Athlete athlete = athleteAPI.retrieveCurrentAthlete()
                                     .execute();
 
+        assertRequestSentTo("/athlete");
+        assertAthleteParsedCorrectly(athlete);
+    }
+
+    @Test
+    public void shouldRetrieveAthlete() throws Exception {
+        enqueueAthlete();
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        Athlete athlete = athleteAPI.retrieveAthlete(227615)
+                                    .execute();
+
+        assertRequestSentTo("/athletes/227615");
         assertAthleteParsedCorrectly(athlete);
     }
 

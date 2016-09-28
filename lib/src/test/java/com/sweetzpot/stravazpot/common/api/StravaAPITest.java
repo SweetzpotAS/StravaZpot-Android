@@ -5,10 +5,11 @@ import com.squareup.okhttp.mockwebserver.MockWebServer;
 import com.squareup.okhttp.mockwebserver.RecordedRequest;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.junit.Assert.assertThat;
 
 public class StravaAPITest {
     private static final int HTTP_OK = 200;
@@ -49,7 +50,12 @@ public class StravaAPITest {
         RecordedRequest request = server.takeRequest();
 
         for (String path : paths) {
-            Assert.assertThat(request.getPath(), containsString(path));
+            assertThat(request.getPath(), containsString(path));
         }
+    }
+
+    public void assertRequestSentTo(String url) throws InterruptedException {
+        RecordedRequest request = server.takeRequest();
+        assertThat(request.getPath(), endsWith(url));
     }
 }

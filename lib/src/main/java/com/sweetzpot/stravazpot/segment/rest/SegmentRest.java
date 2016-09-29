@@ -14,6 +14,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -34,7 +35,7 @@ public interface SegmentRest {
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
-    @PUT("segments/{id}/starred")
+    @PUT("segments/{id}/starred") @FormUrlEncoded
     Call<Segment> starSegment(
             @Path("id") Integer id,
             @Field("starred") Boolean starred);

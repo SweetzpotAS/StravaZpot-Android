@@ -68,6 +68,39 @@ public class SegmentAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldStarASegmentWithCorrectID() throws Exception {
+        enqueueSegment();
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        Segment segment = segmentAPI.starSegment(229781)
+                .execute();
+
+        assertRequestPathContains("/segments/229781/starred");
+    }
+
+    @Test
+    public void shouldStarASegment() throws Exception {
+        enqueueSegment();
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        Segment segment = segmentAPI.starSegment(229781)
+                                    .execute();
+
+        assertRequestBodyContains("starred=true");
+    }
+
+    @Test
+    public void shouldUnstarASegment() throws Exception {
+        enqueueSegment();
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        Segment segment = segmentAPI.unstarSegment(229781)
+                .execute();
+
+        assertRequestBodyContains("starred=false");
+    }
+
     private SegmentAPI givenASegmentAPI() {
         return new SegmentAPI(givenAValidConfig());
     }

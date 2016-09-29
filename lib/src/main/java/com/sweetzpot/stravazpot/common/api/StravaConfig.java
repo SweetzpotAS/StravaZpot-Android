@@ -16,9 +16,11 @@ import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
 import com.sweetzpot.stravazpot.gear.model.FrameType;
+import com.sweetzpot.stravazpot.route.model.RouteSubtype;
 import com.sweetzpot.stravazpot.route.model.RouteType;
 
 import okhttp3.OkHttpClient;
@@ -97,6 +99,7 @@ public class StravaConfig {
                         .registerTypeAdapter(Time.class, new TimeTypeAdapter())
                         .registerTypeAdapter(FrameType.class, new FrameTypeTypeAdapter())
                         .registerTypeAdapter(RouteType.class, new RouteTypeTypeAdapter())
+                        .registerTypeAdapter(RouteSubtype.class, new RouteSubtypeTypeAdapter())
                         .create();
         }
     }

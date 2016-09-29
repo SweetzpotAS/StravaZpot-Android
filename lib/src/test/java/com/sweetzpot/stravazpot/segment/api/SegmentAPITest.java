@@ -11,6 +11,7 @@ import com.sweetzpot.stravazpot.segment.model.Segment;
 import org.junit.Test;
 
 import java.util.Calendar;
+import java.util.List;
 
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
@@ -31,6 +32,23 @@ public class SegmentAPITest extends StravaAPITest{
 
         assertRequestSentTo("/segments/229781");
         assertSegmentParsedCorrectly(segment);
+    }
+
+    @Test
+    public void shouldListUsersStarredSegments() throws Exception {
+        enqueueResponse("[]");
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        List<Segment> segments = segmentAPI.listMyStarredSegments()
+                                            .inPage(2)
+                                            .perPage(10)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/segments/starred",
+                "page=2",
+                "per_page=10"
+        );
     }
 
     private SegmentAPI givenASegmentAPI() {

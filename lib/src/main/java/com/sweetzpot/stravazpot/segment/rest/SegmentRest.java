@@ -1,9 +1,9 @@
 package com.sweetzpot.stravazpot.segment.rest;
 
-import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.segment.model.AgeGroup;
 import com.sweetzpot.stravazpot.segment.model.DateRange;
+import com.sweetzpot.stravazpot.segment.model.ExploreType;
 import com.sweetzpot.stravazpot.segment.model.Leaderboard;
 import com.sweetzpot.stravazpot.segment.model.Segment;
 import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
@@ -64,7 +64,7 @@ public interface SegmentRest {
     @GET("segments/explore")
     Call<List<Segment>> exploreSegments(
             @Query("bounds") String bounds,
-            @Query("activity_type") ActivityType activityType,
+            @Query("activity_type") ExploreType activityType,
             @Query("min_cat") Integer minCat,
             @Query("max_cat") Integer maxCat);
 

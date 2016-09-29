@@ -8,6 +8,7 @@ import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
+import com.sweetzpot.stravazpot.segment.model.Bounds;
 import com.sweetzpot.stravazpot.segment.model.Leaderboard;
 import com.sweetzpot.stravazpot.segment.model.LeaderboardEntry;
 import com.sweetzpot.stravazpot.segment.model.Segment;
@@ -22,6 +23,7 @@ import static com.sweetzpot.stravazpot.common.model.Gender.FEMALE;
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
 import static com.sweetzpot.stravazpot.segment.model.AgeGroup.AGE_25_34;
 import static com.sweetzpot.stravazpot.segment.model.DateRange.THIS_WEEK;
+import static com.sweetzpot.stravazpot.segment.model.ExploreType.RUNNING;
 import static com.sweetzpot.stravazpot.segment.model.WeightClass.KG_75_84;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -163,6 +165,26 @@ public class SegmentAPITest extends StravaAPITest{
                 "per_page=10"
         );
         assertLeaderboardParsedCorrectly(leaderboard);
+    }
+
+    @Test
+    public void shouldExploreSegments() throws Exception {
+        enqueueResponse("[]");
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        List<Segment> segments = segmentAPI.exploreSegmentsInRegion(Bounds.with(Coordinates.at(-42, 73), Coordinates.at(27, 128)))
+                                            .forActivityType(RUNNING)
+                                            .withMinimumClimbCategory(3)
+                                            .withMaximumClimbCategory(8)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/segments/explore",
+                "bounds=-42.0,73.0,27.0,128.0",
+                "activity_type=running",
+                "min_cat=3",
+                "max_cat=8"
+        );
     }
 
     private SegmentAPI givenASegmentAPI() {

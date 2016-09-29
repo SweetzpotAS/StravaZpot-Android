@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 
 public class Map {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private String ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("summary_polyline") private String summaryPolyline;
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 

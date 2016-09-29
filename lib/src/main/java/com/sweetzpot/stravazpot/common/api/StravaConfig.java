@@ -96,6 +96,7 @@ public class StravaConfig {
 
         private Gson makeGson() {
             return new GsonBuilder()
+                        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
                         .registerTypeAdapter(Distance.class, new DistanceTypeAdapter())
                         .registerTypeAdapter(ResourceState.class, new ResourceStateTypeAdapter())
                         .registerTypeAdapter(Gender.class, new GenderTypeAdapter())

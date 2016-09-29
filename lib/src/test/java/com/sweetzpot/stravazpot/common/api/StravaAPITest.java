@@ -19,6 +19,7 @@ public class StravaAPITest {
 
     @Before
     public void setUp() throws Exception {
+        System.setProperty("user.timezone", "GMT");
         server = new MockWebServer();
         server.start();
     }

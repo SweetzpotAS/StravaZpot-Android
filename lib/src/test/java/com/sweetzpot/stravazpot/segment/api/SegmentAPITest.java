@@ -7,6 +7,7 @@ import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.segment.model.Segment;
+import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
 
 import org.junit.Test;
 
@@ -99,6 +100,29 @@ public class SegmentAPITest extends StravaAPITest{
                 .execute();
 
         assertRequestBodyContains("starred=false");
+    }
+
+    @Test
+    public void shouldListSegmentEfforts() throws Exception {
+        enqueueResponse("[]");
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        List<SegmentEffort> efforts = segmentAPI.listSegmentEfforts(123456)
+                                                .forAthlete(98765)
+                                                .startingOn(makeDate(20, Calendar.JANUARY, 2015, 12, 33, 50))
+                                                .endingOn(makeDate(12, Calendar.SEPTEMBER, 2016, 22, 0, 59))
+                                                .inPage(2)
+                                                .perPage(10)
+                                                .execute();
+
+        assertRequestPathContains(
+                "/segments/123456/all_efforts",
+                "athlete_id=98765",
+                "start_date_local=2015-01-20T12:33:50Z",
+                "end_date_local=2016-09-12T22:00:59Z",
+                "page=2",
+                "per_page=10"
+        );
     }
 
     private SegmentAPI givenASegmentAPI() {

@@ -9,7 +9,6 @@ import com.sweetzpot.stravazpot.segment.model.Segment;
 import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
 import com.sweetzpot.stravazpot.segment.model.WeightClass;
 
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -44,8 +43,8 @@ public interface SegmentRest {
     Call<List<SegmentEffort>> getSegmentEfforts(
             @Path("id") Integer id,
             @Query("athlete_id") Integer athleteID,
-            @Query("start_date_local") Date startDate,
-            @Query("end_date_local") Date endDate,
+            @Query("start_date_local") String startDate,
+            @Query("end_date_local") String endDate,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 

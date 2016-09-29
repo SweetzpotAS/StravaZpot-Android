@@ -17,11 +17,10 @@ import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
 import org.junit.Test;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
+import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -355,17 +354,5 @@ public class AthleteAPITest extends StravaAPITest{
                 "}";
 
         enqueueResponse(statsJSON);
-    }
-
-    public Date makeDate(int day, int month, int year, int hour, int minute, int second) {
-        Calendar instance = Calendar.getInstance();
-        instance.setTimeZone(TimeZone.getTimeZone("GMT"));
-        instance.set(Calendar.YEAR, year);
-        instance.set(Calendar.MONTH, month);
-        instance.set(Calendar.DAY_OF_MONTH, day);
-        instance.set(Calendar.HOUR_OF_DAY, hour);
-        instance.set(Calendar.MINUTE, minute);
-        instance.set(Calendar.SECOND, second);
-        return instance.getTime();
     }
 }

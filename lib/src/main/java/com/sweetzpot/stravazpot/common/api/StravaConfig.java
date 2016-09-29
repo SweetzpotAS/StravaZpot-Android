@@ -21,13 +21,19 @@ import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.PercentageTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.ResolutionTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.SeriesTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
 import com.sweetzpot.stravazpot.gear.model.FrameType;
 import com.sweetzpot.stravazpot.route.model.RouteSubtype;
 import com.sweetzpot.stravazpot.route.model.RouteType;
+import com.sweetzpot.stravazpot.stream.model.Resolution;
+import com.sweetzpot.stravazpot.stream.model.SeriesType;
+import com.sweetzpot.stravazpot.stream.model.StreamType;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -110,6 +116,9 @@ public class StravaConfig {
                         .registerTypeAdapter(Percentage.class, new PercentageTypeAdapter())
                         .registerTypeAdapter(Coordinates.class, new CoordinatesTypeAdapter())
                         .registerTypeAdapter(ActivityType.class, new ActivityTypeTypeAdapter())
+                        .registerTypeAdapter(StreamType.class, new StreamTypeTypeAdapter())
+                        .registerTypeAdapter(SeriesType.class, new SeriesTypeTypeAdapter())
+                        .registerTypeAdapter(Resolution.class, new ResolutionTypeAdapter())
                         .create();
         }
     }

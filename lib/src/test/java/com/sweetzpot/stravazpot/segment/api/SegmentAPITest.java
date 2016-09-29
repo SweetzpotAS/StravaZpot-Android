@@ -51,6 +51,23 @@ public class SegmentAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldListAthleteStarredSegments() throws Exception {
+        enqueueResponse("[]");
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        List<Segment> segments = segmentAPI.listStarredSegmentsByAthlete(123456)
+                                            .inPage(2)
+                                            .perPage(10)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/athletes/123456/segments/starred",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
     private SegmentAPI givenASegmentAPI() {
         return new SegmentAPI(givenAValidConfig());
     }

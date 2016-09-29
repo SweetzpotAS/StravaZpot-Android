@@ -28,7 +28,7 @@ public abstract class StravaAPI {
             throw new StravaAPIException("A network error happened contacting Strava API", e);
         }
 
-        if(response.isSuccess()) {
+        if(response.isSuccessful()) {
             return response.body();
         } else if(response.code() == UNAUTHORIZED_CODE){
             throw new StravaUnauthorizedException();

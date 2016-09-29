@@ -1,6 +1,7 @@
 package com.sweetzpot.stravazpot.segment.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.sweetzpot.stravazpot.activity.model.Activity;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
@@ -12,6 +13,7 @@ public class SegmentEffort {
     @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("name") private String name;
+    @SerializedName("activity") private Activity activity;
     @SerializedName("athlete") private Athlete athlete;
     @SerializedName("elapsed_time") private Time elapsedTime;
     @SerializedName("moving_time") private Time movingTime;
@@ -24,7 +26,7 @@ public class SegmentEffort {
     @SerializedName("average_watts") private float averageWatts;
     @SerializedName("device_watts") private boolean deviceWatts;
     @SerializedName("average_heartrate") private float averageHeartRate;
-    @SerializedName("max_heartrate") private int maxHeartRate;
+    @SerializedName("max_heartrate") private float maxHeartRate;
     @SerializedName("segment") private Segment segment;
     @SerializedName("kom_rank") private int komRank;
     @SerializedName("pr_rank") private int prRank;
@@ -40,6 +42,10 @@ public class SegmentEffort {
 
     public String getName() {
         return name;
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 
     public Athlete getAthlete() {
@@ -90,7 +96,7 @@ public class SegmentEffort {
         return averageHeartRate;
     }
 
-    public int getMaxHeartRate() {
+    public float getMaxHeartRate() {
         return maxHeartRate;
     }
 

@@ -2,19 +2,25 @@ package com.sweetzpot.stravazpot.common.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
+import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
+import com.sweetzpot.stravazpot.common.typeadapter.ActivityTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.CoordinatesTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.DistanceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.FrameTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.PercentageTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
@@ -100,6 +106,9 @@ public class StravaConfig {
                         .registerTypeAdapter(FrameType.class, new FrameTypeTypeAdapter())
                         .registerTypeAdapter(RouteType.class, new RouteTypeTypeAdapter())
                         .registerTypeAdapter(RouteSubtype.class, new RouteSubtypeTypeAdapter())
+                        .registerTypeAdapter(Percentage.class, new PercentageTypeAdapter())
+                        .registerTypeAdapter(Coordinates.class, new CoordinatesTypeAdapter())
+                        .registerTypeAdapter(ActivityType.class, new ActivityTypeTypeAdapter())
                         .create();
         }
     }

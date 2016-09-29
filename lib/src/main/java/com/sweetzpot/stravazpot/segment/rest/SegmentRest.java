@@ -50,13 +50,13 @@ public interface SegmentRest {
 
     @GET("segments/{id}/leaderboard")
     Call<Leaderboard> getSegmentLeaderboard(
-            @Path("id") Long id,
+            @Path("id") Integer id,
             @Query("gender") Gender gender,
             @Query("age_group") AgeGroup ageGroup,
             @Query("weight_class") WeightClass weightClass,
             @Query("following") Boolean following,
             @Query("club_id") Integer clubID,
-            @Query("date_rage") DateRange dateRange,
+            @Query("date_range") DateRange dateRange,
             @Query("context_entries") Integer contextEntries,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);

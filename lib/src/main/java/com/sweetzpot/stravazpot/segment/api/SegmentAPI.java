@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.segment.api;
 
 import com.sweetzpot.stravazpot.common.api.StravaAPI;
 import com.sweetzpot.stravazpot.common.api.StravaConfig;
+import com.sweetzpot.stravazpot.segment.request.GetSegmentLeaderboardRequest;
 import com.sweetzpot.stravazpot.segment.request.GetSegmentRequest;
 import com.sweetzpot.stravazpot.segment.request.ListAthleteStarredSegmentsRequest;
 import com.sweetzpot.stravazpot.segment.request.ListMyStarredSegmentsRequest;
@@ -37,5 +38,9 @@ public class SegmentAPI extends StravaAPI{
 
     public ListSegmentEffortsRequest listSegmentEfforts(int segmentID) {
         return new ListSegmentEffortsRequest(segmentID, getAPI(SegmentRest.class), this);
+    }
+
+    public GetSegmentLeaderboardRequest getLeaderboardForSegment(int segmentID) {
+        return new GetSegmentLeaderboardRequest(segmentID, getAPI(SegmentRest.class), this);
     }
 }

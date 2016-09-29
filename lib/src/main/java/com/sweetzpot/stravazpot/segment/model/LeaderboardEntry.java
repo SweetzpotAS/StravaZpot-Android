@@ -13,7 +13,7 @@ public class LeaderboardEntry {
     @SerializedName("athlete_gender") private Gender athleteGender;
     @SerializedName("average_hr") private float averageHeartRate;
     @SerializedName("average_watts") private float averageWatts;
-    @SerializedName("average_distance") private Distance distance;
+    @SerializedName("distance") private Distance distance;
     @SerializedName("elapsed_time") private Time elapsedTime;
     @SerializedName("moving_time") private Time movingTime;
     @SerializedName("start_date") private Date startDate;

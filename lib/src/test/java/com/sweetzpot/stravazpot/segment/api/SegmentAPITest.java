@@ -4,8 +4,12 @@ import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
+import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
+import com.sweetzpot.stravazpot.common.model.Time;
+import com.sweetzpot.stravazpot.segment.model.Leaderboard;
+import com.sweetzpot.stravazpot.segment.model.LeaderboardEntry;
 import com.sweetzpot.stravazpot.segment.model.Segment;
 import com.sweetzpot.stravazpot.segment.model.SegmentEffort;
 
@@ -14,7 +18,11 @@ import org.junit.Test;
 import java.util.Calendar;
 import java.util.List;
 
+import static com.sweetzpot.stravazpot.common.model.Gender.FEMALE;
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
+import static com.sweetzpot.stravazpot.segment.model.AgeGroup.AGE_25_34;
+import static com.sweetzpot.stravazpot.segment.model.DateRange.THIS_WEEK;
+import static com.sweetzpot.stravazpot.segment.model.WeightClass.KG_75_84;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -125,6 +133,38 @@ public class SegmentAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldRetrieveSegmentLeaderboard() throws Exception {
+        enqueueLeaderboard();
+        SegmentAPI segmentAPI = givenASegmentAPI();
+
+        Leaderboard leaderboard = segmentAPI.getLeaderboardForSegment(123456)
+                                            .withGender(FEMALE)
+                                            .inAgeGroup(AGE_25_34)
+                                            .inWeightClass(KG_75_84)
+                                            .following(true)
+                                            .inClub(9876)
+                                            .inDateRange(THIS_WEEK)
+                                            .withContextEntries(3)
+                                            .inPage(2)
+                                            .perPage(10)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/segments/123456/leaderboard",
+                "gender=F",
+                "age_group=25_34",
+                "weight_class=75_84",
+                "following=true",
+                "club_id=9876",
+                "date_range=this_week",
+                "context_entries=3",
+                "page=2",
+                "per_page=10"
+        );
+        assertLeaderboardParsedCorrectly(leaderboard);
+    }
+
     private SegmentAPI givenASegmentAPI() {
         return new SegmentAPI(givenAValidConfig());
     }
@@ -196,5 +236,66 @@ public class SegmentAPITest extends StravaAPITest{
                 "  \"star_count\": 0\n" +
                 "}";
         enqueueResponse(segmentJSON);
+    }
+
+    private void assertLeaderboardParsedCorrectly(Leaderboard leaderboard) {
+        assertThat(leaderboard.getEntryCount(), is(7037));
+        assertThat(leaderboard.getEntries().size(), is(2));
+        LeaderboardEntry entry = leaderboard.getEntries().get(0);
+        assertThat(entry.getAthleteName(), is("Jim Whimpey"));
+        assertThat(entry.getAthleteID(), is(123529));
+        assertThat(entry.getAthleteGender(), is(Gender.MALE));
+        assertThat(entry.getAverageHeartRate(), is(190.5f));
+        assertThat(entry.getAverageWatts(), is(460.8f));
+        assertThat(entry.getDistance(), is(equalTo(Distance.meters(2659.89f))));
+        assertThat(entry.getElapsedTime(), is(equalTo(Time.seconds(360))));
+        assertThat(entry.getMovingTime(), is(equalTo(Time.seconds(360))));
+        assertThat(entry.getStartDate(), isSameDate(makeDate(29, Calendar.MARCH, 2013, 13, 49, 35)));
+        assertThat(entry.getStartDateLocal(), isSameDate(makeDate(29, Calendar.MARCH, 2013, 6, 49, 35)));
+        assertThat(entry.getActivityID(), is(46320211));
+        assertThat(entry.getEffortID(), is(801006623));
+        assertThat(entry.getRank(), is(1));
+        assertThat(entry.getAthleteProfile(), is("http://pics.com/227615/large.jpg"));
+    }
+
+    private void enqueueLeaderboard() {
+        String leaderboardJSON = "{\n" +
+                "  \"entry_count\": 7037,\n" +
+                "  \"entries\": [\n" +
+                "    {\n" +
+                "      \"athlete_name\": \"Jim Whimpey\",\n" +
+                "      \"athlete_id\": 123529,\n" +
+                "      \"athlete_gender\": \"M\",\n" +
+                "      \"average_hr\": 190.5,\n" +
+                "      \"average_watts\": 460.8,\n" +
+                "      \"distance\": 2659.89,\n" +
+                "      \"elapsed_time\": 360,\n" +
+                "      \"moving_time\": 360,\n" +
+                "      \"start_date\": \"2013-03-29T13:49:35Z\",\n" +
+                "      \"start_date_local\": \"2013-03-29T06:49:35Z\",\n" +
+                "      \"activity_id\": 46320211,\n" +
+                "      \"effort_id\": 801006623,\n" +
+                "      \"rank\": 1,\n" +
+                "      \"athlete_profile\": \"http://pics.com/227615/large.jpg\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"athlete_name\": \"Chris Zappala\",\n" +
+                "      \"athlete_id\": 11673,\n" +
+                "      \"athlete_gender\": \"M\",\n" +
+                "      \"average_hr\": null,\n" +
+                "      \"average_watts\": 368.3,\n" +
+                "      \"distance\": 2705.7,\n" +
+                "      \"elapsed_time\": 374,\n" +
+                "      \"moving_time\": 374,\n" +
+                "      \"start_date\": \"2012-02-23T14:50:16Z\",\n" +
+                "      \"start_date_local\": \"2012-02-23T06:50:16Z\",\n" +
+                "      \"activity_id\": 4431903,\n" +
+                "      \"effort_id\": 83383918,\n" +
+                "      \"rank\": 2,\n" +
+                "      \"athlete_profile\": \"http://pics.com/227615/large.jpg\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
+        enqueueResponse(leaderboardJSON);
     }
 }

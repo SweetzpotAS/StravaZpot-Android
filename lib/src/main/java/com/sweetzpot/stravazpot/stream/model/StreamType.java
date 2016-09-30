@@ -23,4 +23,21 @@ public enum StreamType {
     public String toString() {
         return rawValue;
     }
+
+    public static String getQueryString(StreamType[] types) {
+        if(types != null){
+            String result = "";
+
+            for(int i = 0; i < types.length; i++) {
+                if(i > 0) {
+                    result += ",";
+                }
+                result += types[i].toString();
+            }
+
+            return result;
+        }
+
+        return null;
+    }
 }

@@ -42,24 +42,9 @@ public class GetActivityStreamsRequest {
     }
 
     public List<Stream> execute() {
-        Call<List<Stream>> call = restService.getActivityStreams(activityID, getTypesString(), resolution, seriesType);
+        Call<List<Stream>> call = restService.getActivityStreams(activityID,
+                StreamType.getQueryString(types), resolution, seriesType);
         return api.execute(call);
     }
 
-    private String getTypesString() {
-        if(types != null){
-            String result = "";
-
-            for(int i = 0; i < types.length; i++) {
-                if(i > 0) {
-                    result += ",";
-                }
-                result += types[i].toString();
-            }
-
-            return result;
-        }
-
-        return null;
-    }
 }

@@ -18,7 +18,7 @@ public class Event {
     @SerializedName("activity_type") private ActivityType activityType;
     @SerializedName("created_at") private Date createdAt;
     @SerializedName("route_id") private int routeID;
-    @SerializedName("woman_only") private boolean womanOnly;
+    @SerializedName("women_only") private boolean womenOnly;
     @SerializedName("private") private boolean isPrivate;
     @SerializedName("skill_levels") private SkillLevel skillLevel;
     @SerializedName("terrain") private Terrain terrain;
@@ -61,8 +61,8 @@ public class Event {
         return routeID;
     }
 
-    public boolean isWomanOnly() {
-        return womanOnly;
+    public boolean isWomenOnly() {
+        return womenOnly;
     }
 
     public boolean isPrivate() {

@@ -1,10 +1,14 @@
 package com.sweetzpot.stravazpot.club.api;
 
+import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.club.model.Announcement;
 import com.sweetzpot.stravazpot.club.model.Club;
 import com.sweetzpot.stravazpot.club.model.ClubType;
+import com.sweetzpot.stravazpot.club.model.Event;
 import com.sweetzpot.stravazpot.club.model.Membership;
+import com.sweetzpot.stravazpot.club.model.SkillLevel;
 import com.sweetzpot.stravazpot.club.model.SportType;
+import com.sweetzpot.stravazpot.club.model.Terrain;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 
@@ -43,6 +47,18 @@ public class ClubAPITest extends StravaAPITest {
 
         assertRequestPathContains("/clubs/109984/announcements");
         assertAnnouncementsParsedCorrectly(announcements);
+    }
+
+    @Test
+    public void shouldListClubGroupEvents() throws Exception {
+        enqueueGroupEvents();
+        ClubAPI clubAPI = givenAClubAPI();
+
+        List<Event> events = clubAPI.listClubGroupEvents(1)
+                                    .execute();
+
+        assertRequestPathContains("/clubs/1/group_events");
+        assertEventsParsedCorrectly(events);
     }
 
     private ClubAPI givenAClubAPI() {
@@ -141,5 +157,70 @@ public class ClubAPITest extends StravaAPITest {
                 "  }\n" +
                 "]";
         enqueueResponse(announcementsJSON);
+    }
+
+    private void assertEventsParsedCorrectly(List<Event> events) {
+        assertThat(events.size(), is(1));
+        Event event = events.get(0);
+        assertThat(event.getID(), is(1234567));
+        assertThat(event.getResourceState(), is(ResourceState.SUMMARY));
+        assertThat(event.getTitle(), is("Test Group Event"));
+        assertThat(event.getDescription(), is("Very fun group ride"));
+        assertThat(event.getClubID(), is(1));
+        assertThat(event.getOrganizingAthlete(), is(notNullValue()));
+        assertThat(event.getActivityType(), is(ActivityType.RIDE));
+        assertThat(event.getCreatedAt(), isSameDate(makeDate(26, Calendar.AUGUST, 2009, 13, 42, 5)));
+        assertThat(event.getRouteID(), is(123456));
+        assertThat(event.isWomenOnly(), is(false));
+        assertThat(event.isPrivate(), is(true));
+        assertThat(event.getSkillLevel(), is(SkillLevel.CASUAL));
+        assertThat(event.getTerrain(), is(Terrain.MOSTLY_FLAT));
+        assertThat(event.getUpcomingOccurrences().size(), is(5));
+        assertThat(event.getAddress(), is("1 Happening St. Reno, NV"));
+    }
+
+    private void enqueueGroupEvents() {
+        String groupEventsJSON = "[\n" +
+                "  {\n" +
+                "    \"id\": 1234567,\n" +
+                "    \"resource_state\": 2,\n" +
+                "    \"title\": \"Test Group Event\",\n" +
+                "    \"description\": \"Very fun group ride\",\n" +
+                "    \"club_id\": 1,\n" +
+                "    \"organizing_athlete\": {\n" +
+                "      \"id\": 227615,\n" +
+                "      \"resource_state\": 2,\n" +
+                "      \"firstname\": \"John\",\n" +
+                "      \"lastname\": \"Applestrava\",\n" +
+                "      \"profile_medium\": \"http://pics.com/227615/medium.jpg\",\n" +
+                "      \"profile\": \"http://pics.com/227615/large.jpg\",\n" +
+                "      \"city\": \"San Francisco\",\n" +
+                "      \"state\": \"California\",\n" +
+                "      \"country\": \"United States\",\n" +
+                "      \"sex\": \"M\",\n" +
+                "      \"friend\": \"accepted\",\n" +
+                "      \"follower\": \"accepted\",\n" +
+                "      \"premium\": true,\n" +
+                "      \"created_at\": \"2009-08-26T13:42:05Z\",\n" +
+                "      \"updated_at\": \"2013-01-11T18:51:00Z\"\n" +
+                "    },\n" +
+                "    \"activity_type\": \"Ride\",\n" +
+                "    \"created_at\": \"2009-08-26T13:42:05Z\",\n" +
+                "    \"route_id\": 123456,\n" +
+                "    \"women_only\": false,\n" +
+                "    \"private\": true,\n" +
+                "    \"skill_levels\": 1,\n" +
+                "    \"terrain\": 0,\n" +
+                "    \"upcoming_occurrences\": [\n" +
+                "      \"2015-04-19T18:47:59Z\",\n" +
+                "      \"2015-04-20T18:47:59Z\",\n" +
+                "      \"2015-04-21T18:47:59Z\",\n" +
+                "      \"2015-04-22T18:47:59Z\",\n" +
+                "      \"2015-04-23T18:47:59Z\"\n" +
+                "    ],\n" +
+                "    \"address\": \"1 Happening St. Reno, NV\"\n" +
+                "  }\n" +
+                "]";
+        enqueueResponse(groupEventsJSON);
     }
 }

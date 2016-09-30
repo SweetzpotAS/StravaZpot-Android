@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.club.api;
 
 import com.sweetzpot.stravazpot.club.request.GetClubRequest;
 import com.sweetzpot.stravazpot.club.request.JoinClubRequest;
+import com.sweetzpot.stravazpot.club.request.LeaveClubRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubActivitiesRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubAdminsRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubAnnouncementsRequest;
@@ -48,5 +49,9 @@ public class ClubAPI extends StravaAPI {
 
     public JoinClubRequest joinClub(int clubID) {
         return new JoinClubRequest(clubID, getAPI(ClubRest.class), this);
+    }
+
+    public LeaveClubRequest leaveClub(int clubID) {
+        return new LeaveClubRequest(clubID, getAPI(ClubRest.class), this);
     }
 }

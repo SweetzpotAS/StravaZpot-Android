@@ -8,6 +8,7 @@ import com.sweetzpot.stravazpot.club.model.Club;
 import com.sweetzpot.stravazpot.club.model.ClubType;
 import com.sweetzpot.stravazpot.club.model.Event;
 import com.sweetzpot.stravazpot.club.model.JoinResult;
+import com.sweetzpot.stravazpot.club.model.LeaveResult;
 import com.sweetzpot.stravazpot.club.model.Membership;
 import com.sweetzpot.stravazpot.club.model.SkillLevel;
 import com.sweetzpot.stravazpot.club.model.SportType;
@@ -138,6 +139,18 @@ public class ClubAPITest extends StravaAPITest {
 
         assertRequestPathContains("/clubs/123456/join");
         assertJoinResultParsedCorrectly(joinResult);
+    }
+
+    @Test
+    public void shouldLeaveAClub() throws Exception {
+        enqueueLeaveResult();
+        ClubAPI clubAPI = givenAClubAPI();
+
+        LeaveResult leaveResult = clubAPI.leaveClub(123456)
+                                            .execute();
+
+        assertRequestPathContains("/clubs/123456/leave");
+        assertLeaveResultParsedCorrectly(leaveResult);
     }
 
     private ClubAPI givenAClubAPI() {
@@ -316,5 +329,18 @@ public class ClubAPITest extends StravaAPITest {
                 "  \"membership\": \"member\"\n" +
                 "}";
         enqueueResponse(joinJSON);
+    }
+
+    private void assertLeaveResultParsedCorrectly(LeaveResult leaveResult) {
+        assertThat(leaveResult.isSuccess(), is(true));
+        assertThat(leaveResult.isActive(), is(false));
+    }
+
+    private void enqueueLeaveResult() {
+        String leaveJSON = "{\n" +
+                "  \"success\": true,\n" +
+                "  \"active\": false\n" +
+                "}";
+        enqueueResponse(leaveJSON);
     }
 }

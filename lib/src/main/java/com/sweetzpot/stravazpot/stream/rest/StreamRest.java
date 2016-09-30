@@ -33,6 +33,6 @@ public interface StreamRest {
             @Query("resolution") Resolution resolution,
             @Query("series_type") SeriesType seriesType);
 
-    @GET("routed/{id}/streams")
+    @GET("routes/{id}/streams")
     Call<List<Stream>> getRouteStreams(@Path("id") Integer id);
 }

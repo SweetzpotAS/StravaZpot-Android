@@ -72,6 +72,19 @@ public class StreamAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldRetrieveRouteStreams() throws Exception {
+        enqueueStreams();
+        StreamAPI streamAPI = givenAStreamAPI();
+
+        List<Stream> streams = streamAPI.getRouteStreams(123456)
+                                        .execute();
+
+        assertRequestPathContains(
+                "/routes/123456/streams"
+        );
+    }
+
     private StreamAPI givenAStreamAPI() {
         return new StreamAPI(givenAValidConfig());
     }

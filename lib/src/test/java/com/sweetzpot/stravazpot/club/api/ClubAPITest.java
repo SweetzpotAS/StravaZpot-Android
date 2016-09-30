@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.club.api;
 
+import com.sweetzpot.stravazpot.activity.model.Activity;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import com.sweetzpot.stravazpot.club.model.Announcement;
@@ -102,6 +103,25 @@ public class ClubAPITest extends StravaAPITest {
 
         assertRequestPathContains(
                 "/clubs/123456/admins",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
+    @Test
+    public void shouldListClubActivities() throws Exception {
+        enqueueResponse("[]");
+        ClubAPI clubAPI = givenAClubAPI();
+
+        List<Activity> activities = clubAPI.listClubActivities(123456)
+                                            .before(12598723)
+                                            .inPage(2)
+                                            .perPage(10)
+                                            .execute();
+
+        assertRequestPathContains(
+                "/clubs/123456/activities",
+                "before=12598723",
                 "page=2",
                 "per_page=10"
         );

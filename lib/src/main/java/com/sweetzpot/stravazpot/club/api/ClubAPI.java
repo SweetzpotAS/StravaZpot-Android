@@ -1,6 +1,7 @@
 package com.sweetzpot.stravazpot.club.api;
 
 import com.sweetzpot.stravazpot.club.request.GetClubRequest;
+import com.sweetzpot.stravazpot.club.request.ListClubActivitiesRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubAdminsRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubAnnouncementsRequest;
 import com.sweetzpot.stravazpot.club.request.ListClubGroupEventsRequest;
@@ -38,5 +39,9 @@ public class ClubAPI extends StravaAPI {
 
     public ListClubAdminsRequest listClubAdmins(int clubID) {
         return new ListClubAdminsRequest(clubID, getAPI(ClubRest.class), this);
+    }
+
+    public ListClubActivitiesRequest listClubActivities(int clubID) {
+        return new ListClubActivitiesRequest(clubID, getAPI(ClubRest.class), this);
     }
 }

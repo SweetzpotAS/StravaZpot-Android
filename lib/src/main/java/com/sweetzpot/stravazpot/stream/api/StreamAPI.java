@@ -4,6 +4,7 @@ import com.sweetzpot.stravazpot.common.api.StravaAPI;
 import com.sweetzpot.stravazpot.common.api.StravaConfig;
 import com.sweetzpot.stravazpot.stream.request.GetActivityStreamsRequest;
 import com.sweetzpot.stravazpot.stream.request.GetSegmentEffortStreamsRequest;
+import com.sweetzpot.stravazpot.stream.request.GetSegmentStreamsRequest;
 import com.sweetzpot.stravazpot.stream.rest.StreamRest;
 
 public class StreamAPI extends StravaAPI {
@@ -18,5 +19,9 @@ public class StreamAPI extends StravaAPI {
 
     public GetSegmentEffortStreamsRequest getSegmentEffortStreams(long segmentEffortID) {
         return new GetSegmentEffortStreamsRequest(segmentEffortID, getAPI(StreamRest.class), this);
+    }
+
+    public GetSegmentStreamsRequest getSegmentStreams(int segmentID) {
+        return new GetSegmentStreamsRequest(segmentID, getAPI(StreamRest.class), this);
     }
 }

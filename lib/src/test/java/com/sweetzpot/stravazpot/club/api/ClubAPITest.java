@@ -1,5 +1,6 @@
 package com.sweetzpot.stravazpot.club.api;
 
+import com.sweetzpot.stravazpot.club.model.Announcement;
 import com.sweetzpot.stravazpot.club.model.Club;
 import com.sweetzpot.stravazpot.club.model.ClubType;
 import com.sweetzpot.stravazpot.club.model.Membership;
@@ -9,7 +10,13 @@ import com.sweetzpot.stravazpot.common.model.ResourceState;
 
 import org.junit.Test;
 
+import java.util.Calendar;
+import java.util.List;
+
+import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
+import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ClubAPITest extends StravaAPITest {
@@ -24,6 +31,18 @@ public class ClubAPITest extends StravaAPITest {
 
         assertRequestPathContains("/clubs/1");
         assertClubParsedCorrectly(club);
+    }
+
+    @Test
+    public void shouldListClubAnnouncements() throws Exception {
+        enqueueAnnouncements();
+        ClubAPI clubAPI = givenAClubAPI();
+
+        List<Announcement> announcements = clubAPI.listClubAnnouncements(109984)
+                                                    .execute();
+
+        assertRequestPathContains("/clubs/109984/announcements");
+        assertAnnouncementsParsedCorrectly(announcements);
     }
 
     private ClubAPI givenAClubAPI() {
@@ -81,5 +100,46 @@ public class ClubAPITest extends StravaAPITest {
                 "  \"url\": \"strava-cycling\"\n" +
                 "}";
         enqueueResponse(clubJSON);
+    }
+
+    private void assertAnnouncementsParsedCorrectly(List<Announcement> announcements) {
+        assertThat(announcements.size(), is(1));
+        Announcement announcement = announcements.get(0);
+        assertThat(announcement.getID(), is(1219827));
+        assertThat(announcement.getResourceState(), is(ResourceState.SUMMARY));
+        assertThat(announcement.getClubID(), is(109984));
+        assertThat(announcement.getAthlete(), is(notNullValue()));
+        assertThat(announcement.getCreatedAt(), isSameDate(makeDate(1, Calendar.APRIL, 2015, 21, 14, 2)));
+        assertThat(announcement.getMessage(), is("hello club"));
+    }
+
+    private void enqueueAnnouncements() {
+        String announcementsJSON = "[\n" +
+                "  {\n" +
+                "    \"id\": 1219827,\n" +
+                "    \"resource_state\": 2,\n" +
+                "    \"club_id\": 109984,\n" +
+                "    \"athlete\": {\n" +
+                "      \"id\": 227615,\n" +
+                "      \"resource_state\": 2,\n" +
+                "      \"firstname\": \"John\",\n" +
+                "      \"lastname\": \"Applestrava\",\n" +
+                "      \"profile_medium\": \"http://pics.com/227615/medium.jpg\",\n" +
+                "      \"profile\": \"http://pics.com/227615/large.jpg\",\n" +
+                "      \"city\": \"San Francisco\",\n" +
+                "      \"state\": \"California\",\n" +
+                "      \"country\": \"United States\",\n" +
+                "      \"sex\": \"M\",\n" +
+                "      \"friend\": \"accepted\",\n" +
+                "      \"follower\": \"accepted\",\n" +
+                "      \"premium\": true,\n" +
+                "      \"created_at\": \"2009-08-26T13:42:05Z\",\n" +
+                "      \"updated_at\": \"2013-01-11T18:51:00Z\"\n" +
+                "    },\n" +
+                "    \"created_at\": \"2015-04-01T21:14:02Z\",\n" +
+                "    \"message\": \"hello club\"\n" +
+                "  }\n" +
+                "]";
+        enqueueResponse(announcementsJSON);
     }
 }

@@ -7,6 +7,7 @@ import com.sweetzpot.stravazpot.club.model.Announcement;
 import com.sweetzpot.stravazpot.club.model.Club;
 import com.sweetzpot.stravazpot.club.model.ClubType;
 import com.sweetzpot.stravazpot.club.model.Event;
+import com.sweetzpot.stravazpot.club.model.JoinResult;
 import com.sweetzpot.stravazpot.club.model.Membership;
 import com.sweetzpot.stravazpot.club.model.SkillLevel;
 import com.sweetzpot.stravazpot.club.model.SportType;
@@ -125,6 +126,18 @@ public class ClubAPITest extends StravaAPITest {
                 "page=2",
                 "per_page=10"
         );
+    }
+
+    @Test
+    public void shouldJoinAClub() throws Exception {
+        enqueueJoinResult();
+        ClubAPI clubAPI = givenAClubAPI();
+
+        JoinResult joinResult = clubAPI.joinClub(123456)
+                                        .execute();
+
+        assertRequestPathContains("/clubs/123456/join");
+        assertJoinResultParsedCorrectly(joinResult);
     }
 
     private ClubAPI givenAClubAPI() {
@@ -288,5 +301,20 @@ public class ClubAPITest extends StravaAPITest {
                 "  }\n" +
                 "]";
         enqueueResponse(groupEventsJSON);
+    }
+
+    private void assertJoinResultParsedCorrectly(JoinResult joinResult) {
+        assertThat(joinResult.isSuccess(), is(true));
+        assertThat(joinResult.isActive(), is(true));
+        assertThat(joinResult.getMembership(), is(Membership.MEMBER));
+    }
+
+    private void enqueueJoinResult() {
+        String joinJSON = "{\n" +
+                "  \"success\": true,\n" +
+                "  \"active\": true,\n" +
+                "  \"membership\": \"member\"\n" +
+                "}";
+        enqueueResponse(joinJSON);
     }
 }

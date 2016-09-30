@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class JoinResult {
     @SerializedName("success") boolean success;
     @SerializedName("active") boolean active;
-    @SerializedName("membership") String membership;
+    @SerializedName("membership") Membership membership;
 
     public boolean isSuccess() {
         return success;
@@ -15,7 +15,7 @@ public class JoinResult {
         return active;
     }
 
-    public String getMembership() {
+    public Membership getMembership() {
         return membership;
     }
 }

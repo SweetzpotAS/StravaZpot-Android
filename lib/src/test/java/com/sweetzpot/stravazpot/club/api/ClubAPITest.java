@@ -90,6 +90,23 @@ public class ClubAPITest extends StravaAPITest {
         );
     }
 
+    @Test
+    public void shouldListClubAdmins() throws Exception {
+        enqueueResponse("[]");
+        ClubAPI clubAPI = givenAClubAPI();
+
+        List<Athlete> athletes = clubAPI.listClubAdmins(123456)
+                .inPage(2)
+                .perPage(10)
+                .execute();
+
+        assertRequestPathContains(
+                "/clubs/123456/admins",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
     private ClubAPI givenAClubAPI() {
         return new ClubAPI(givenAValidConfig());
     }

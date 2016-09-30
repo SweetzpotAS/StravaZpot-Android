@@ -6,6 +6,9 @@ import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.club.model.ClubType;
+import com.sweetzpot.stravazpot.club.model.Membership;
+import com.sweetzpot.stravazpot.club.model.SportType;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
@@ -14,18 +17,21 @@ import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
 import com.sweetzpot.stravazpot.common.typeadapter.ActivityTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.ClubTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.CoordinatesTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.DistanceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.FrameTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.FriendStatusTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.MembershipTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.PercentageTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResolutionTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SeriesTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.SportTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
 import com.sweetzpot.stravazpot.gear.model.FrameType;
@@ -119,6 +125,9 @@ public class StravaConfig {
                         .registerTypeAdapter(StreamType.class, new StreamTypeTypeAdapter())
                         .registerTypeAdapter(SeriesType.class, new SeriesTypeTypeAdapter())
                         .registerTypeAdapter(Resolution.class, new ResolutionTypeAdapter())
+                        .registerTypeAdapter(ClubType.class, new ClubTypeTypeAdapter())
+                        .registerTypeAdapter(SportType.class, new SportTypeTypeAdapter())
+                        .registerTypeAdapter(Membership.class, new MembershipTypeAdapter())
                         .create();
         }
     }

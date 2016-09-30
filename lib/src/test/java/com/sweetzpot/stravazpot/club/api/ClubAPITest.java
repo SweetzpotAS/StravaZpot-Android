@@ -61,6 +61,17 @@ public class ClubAPITest extends StravaAPITest {
         assertEventsParsedCorrectly(events);
     }
 
+    @Test
+    public void shoudlListUsersClubs() throws Exception {
+        enqueueResponse("[]");
+        ClubAPI clubAPI = givenAClubAPI();
+
+        List<Club> clubs = clubAPI.listMyClubs()
+                                    .execute();
+
+        assertRequestPathContains("/athlete/clubs");
+    }
+
     private ClubAPI givenAClubAPI() {
         return new ClubAPI(givenAValidConfig());
     }

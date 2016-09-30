@@ -36,6 +36,24 @@ public class StreamAPITest extends StravaAPITest{
         assertStreamParsedCorrectly(streams);
     }
 
+    @Test
+    public void shouldRetrieveSegmentEffortStreams() throws Exception {
+        enqueueStreams();
+        StreamAPI streamAPI = givenAStreamAPI();
+
+        List<Stream> streams = streamAPI.getSegmentEffortStreams(123456789L)
+                .forTypes(LATLNG, DISTANCE)
+                .withResolution(LOW)
+                .withSeriesType(SeriesType.DISTANCE)
+                .execute();
+
+        assertRequestPathContains(
+                "/segment_efforts/123456789/streams/latlng,distance",
+                "resolution=low",
+                "series_type=distance"
+        );
+    }
+
     private StreamAPI givenAStreamAPI() {
         return new StreamAPI(givenAValidConfig());
     }

@@ -8,7 +8,9 @@ import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
 import com.sweetzpot.stravazpot.club.model.ClubType;
 import com.sweetzpot.stravazpot.club.model.Membership;
+import com.sweetzpot.stravazpot.club.model.SkillLevel;
 import com.sweetzpot.stravazpot.club.model.SportType;
+import com.sweetzpot.stravazpot.club.model.Terrain;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
@@ -31,8 +33,10 @@ import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SeriesTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.SkillLevelTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SportTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.TerrainTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
 import com.sweetzpot.stravazpot.gear.model.FrameType;
 import com.sweetzpot.stravazpot.route.model.RouteSubtype;
@@ -128,6 +132,8 @@ public class StravaConfig {
                         .registerTypeAdapter(ClubType.class, new ClubTypeTypeAdapter())
                         .registerTypeAdapter(SportType.class, new SportTypeTypeAdapter())
                         .registerTypeAdapter(Membership.class, new MembershipTypeAdapter())
+                        .registerTypeAdapter(SkillLevel.class, new SkillLevelTypeAdapter())
+                        .registerTypeAdapter(Terrain.class, new TerrainTypeAdapter())
                         .create();
         }
     }

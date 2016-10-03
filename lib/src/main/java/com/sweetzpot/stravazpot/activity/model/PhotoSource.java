@@ -13,9 +13,4 @@ public enum PhotoSource {
     public int getRawValue() {
         return rawValue;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(rawValue);
-    }
 }

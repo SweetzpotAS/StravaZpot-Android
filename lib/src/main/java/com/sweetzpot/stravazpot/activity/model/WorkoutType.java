@@ -18,9 +18,4 @@ public enum WorkoutType {
     public int getRawValue() {
         return rawValue;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(rawValue);
-    }
 }

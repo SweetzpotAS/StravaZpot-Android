@@ -14,4 +14,20 @@ public class Speed {
     public float getMetersPerSecond() {
         return metersPerSecond;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Speed speed = (Speed) o;
+
+        return Float.compare(speed.metersPerSecond, metersPerSecond) == 0;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (metersPerSecond != +0.0f ? Float.floatToIntBits(metersPerSecond) : 0);
+    }
 }

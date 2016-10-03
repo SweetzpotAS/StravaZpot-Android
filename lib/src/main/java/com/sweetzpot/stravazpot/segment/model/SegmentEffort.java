@@ -1,13 +1,15 @@
 package com.sweetzpot.stravazpot.segment.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.sweetzpot.stravazpot.activity.model.Achievement;
 import com.sweetzpot.stravazpot.activity.model.Activity;
+import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
-import com.sweetzpot.stravazpot.athlete.model.Athlete;
 
 import java.util.Date;
+import java.util.List;
 
 public class SegmentEffort {
     @SerializedName("id") private long ID;
@@ -31,6 +33,7 @@ public class SegmentEffort {
     @SerializedName("kom_rank") private int komRank;
     @SerializedName("pr_rank") private int prRank;
     @SerializedName("hidden") private boolean hidden;
+    @SerializedName("achievements") private List<Achievement> achievements;
 
     public long getID() {
         return ID;
@@ -114,5 +117,9 @@ public class SegmentEffort {
 
     public boolean isHidden() {
         return hidden;
+    }
+
+    public List<Achievement> getAchievements() {
+        return achievements;
     }
 }

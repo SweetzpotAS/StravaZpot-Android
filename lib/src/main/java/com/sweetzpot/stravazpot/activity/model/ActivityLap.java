@@ -30,7 +30,7 @@ public class ActivityLap {
     @SerializedName("device_watts") private boolean deviceWatts;
     @SerializedName("has_heartrate") private boolean hasHeartRate;
     @SerializedName("max_heartrate") private float maxHeartRate;
-    @SerializedName("average_heartrate") private float averageheartRate;
+    @SerializedName("average_heartrate") private float averageHeartRate;
     @SerializedName("lap_index") private int lapIndex;
 
     public int getID() {
@@ -105,7 +105,7 @@ public class ActivityLap {
         return deviceWatts;
     }
 
-    public boolean isHasHeartRate() {
+    public boolean hasHeartRate() {
         return hasHeartRate;
     }
 
@@ -113,8 +113,8 @@ public class ActivityLap {
         return maxHeartRate;
     }
 
-    public float getAverageheartRate() {
-        return averageheartRate;
+    public float getAverageHeartRate() {
+        return averageHeartRate;
     }
 
     public int getLapIndex() {

@@ -1,6 +1,7 @@
 package com.sweetzpot.stravazpot.activity.api;
 
 import com.sweetzpot.stravazpot.activity.model.Activity;
+import com.sweetzpot.stravazpot.activity.model.ActivityLap;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.activity.model.ActivityZone;
 import com.sweetzpot.stravazpot.activity.model.PhotoSource;
@@ -176,6 +177,18 @@ public class ActivityAPITest extends StravaAPITest {
 
         assertRequestPathContains("/activities/321934/zones");
         assertActivityZonesParsedCorrectly(activityZones);
+    }
+
+    @Test
+    public void shouldListActivityLaps() throws Exception {
+        enqueueActivityLaps();
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        List<ActivityLap> laps = activityAPI.listActivityLaps(321934)
+                                            .execute();
+
+        assertRequestPathContains("/activities/321934/laps");
+        assertActivityLapsParsedCorrectly(laps);
     }
 
     private ActivityAPI givenAnActivityAPI() {
@@ -497,5 +510,67 @@ public class ActivityAPITest extends StravaAPITest {
                 "]";
 
         enqueueResponse(activityZonesJSON);
+    }
+
+    private void assertActivityLapsParsedCorrectly(List<ActivityLap> laps) {
+        assertThat(laps.size(), is(1));
+        ActivityLap lap = laps.get(0);
+        assertThat(lap.getID(), is(401614652));
+        assertThat(lap.getResourceState(), is(ResourceState.SUMMARY));
+        assertThat(lap.getName(), is("Lap 1"));
+        assertThat(lap.getActivity(), is(notNullValue()));
+        assertThat(lap.getAthlete(), is(notNullValue()));
+        assertThat(lap.getElapsedTime(), is(equalTo(Time.seconds(7092))));
+        assertThat(lap.getMovingTime(), is(equalTo(Time.seconds(6870))));
+        assertThat(lap.getStartDate(), isSameDate(makeDate(2, Calendar.NOVEMBER, 2013, 17, 39, 37)));
+        assertThat(lap.getStartDateLocal(), isSameDate(makeDate(2, Calendar.NOVEMBER, 2013, 10, 39, 37)));
+        assertThat(lap.getDistance(), is(equalTo(Distance.meters(42121.5f))));
+        assertThat(lap.getStartIndex(), is(0));
+        assertThat(lap.getEndIndex(), is(6826));
+        assertThat(lap.getTotalElevationGain(), is(equalTo(Distance.meters(766.0f))));
+        assertThat(lap.getMaxSpeed(), is(equalTo(Speed.metersPerSecond(16.8f))));
+        assertThat(lap.getAverageSpeed(), is(equalTo(Speed.metersPerSecond(5.9f))));
+        assertThat(lap.getAverageCadence(), is(64.7f));
+        assertThat(lap.getAverageWatts(), is(156.2f));
+        assertThat(lap.isDeviceWatts(), is(false));
+        assertThat(lap.hasHeartRate(), is(true));
+        assertThat(lap.getAverageHeartRate(), is(141.1f));
+        assertThat(lap.getMaxHeartRate(), is(176.0f));
+        assertThat(lap.getLapIndex(), is(1));
+    }
+
+    private void enqueueActivityLaps() {
+        String activityLapsJSON = "[\n" +
+                "  {\n" +
+                "    \"id\": 401614652,\n" +
+                "    \"resource_state\": 2,\n" +
+                "    \"name\": \"Lap 1\",\n" +
+                "    \"activity\": {\n" +
+                "      \"id\": 123\n" +
+                "    },\n" +
+                "    \"athlete\": {\n" +
+                "      \"id\": 227615\n" +
+                "    },\n" +
+                "    \"elapsed_time\": 7092,\n" +
+                "    \"moving_time\": 6870,\n" +
+                "    \"start_date\": \"2013-11-02T17:39:37Z\",\n" +
+                "    \"start_date_local\": \"2013-11-02T10:39:37Z\",\n" +
+                "    \"distance\": 42121.5,\n" +
+                "    \"start_index\": 0,\n" +
+                "    \"end_index\": 6826,\n" +
+                "    \"total_elevation_gain\": 766.0,\n" +
+                "    \"average_speed\": 5.9,\n" +
+                "    \"max_speed\": 16.8,\n" +
+                "    \"average_cadence\": 64.7,\n" +
+                "    \"average_watts\": 156.2,\n" +
+                "    \"device_watts\": false,\n" +
+                "    \"has_heartrate\": true,\n" +
+                "    \"average_heartrate\": 141.1,\n" +
+                "    \"max_heartrate\": 176.0,\n" +
+                "    \"lap_index\": 1\n" +
+                "  }\n" +
+                "]";
+
+        enqueueResponse(activityLapsJSON);
     }
 }

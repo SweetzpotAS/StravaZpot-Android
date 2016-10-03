@@ -53,14 +53,14 @@ public interface ActivityRest {
 
     @GET("athlete/activities")
     Call<List<Activity>> getMyActivities(
-            @Query("before") Integer before,
-            @Query("after") Integer after,
+            @Query("before") Time before,
+            @Query("after") Time after,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @GET("activities/following")
     Call<List<Activity>> getFriendsActivities(
-            @Query("before") Integer before,
+            @Query("before") Time before,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 

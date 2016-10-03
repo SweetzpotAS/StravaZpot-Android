@@ -15,6 +15,7 @@ import com.sweetzpot.stravazpot.common.model.Time;
 import org.junit.Test;
 
 import java.util.Calendar;
+import java.util.List;
 
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
@@ -105,6 +106,27 @@ public class ActivityAPITest extends StravaAPITest {
                     .execute();
 
         assertRequestPathContains("/activities/321934");
+    }
+
+    @Test
+    public void shouldListUsersActivities() throws Exception {
+        enqueueResponse("[]");
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        List<Activity> activities = activityAPI.listMyActivities()
+                                                .before(Time.seconds(123456789))
+                                                .after(Time.seconds(130000000))
+                                                .inPage(2)
+                                                .perPage(10)
+                                                .execute();
+
+        assertRequestPathContains(
+                "/athlete/activities",
+                "before=123456789",
+                "after=130000000",
+                "page=2",
+                "per_page=10"
+        );
     }
 
     private ActivityAPI givenAnActivityAPI() {

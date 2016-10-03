@@ -37,7 +37,7 @@ public interface ActivityRest {
             @Path("id") Integer id,
             @Query("include_all_efforts") Boolean includeAllEfforts);
 
-    @PUT("activities/{id}")
+    @PUT("activities/{id}") @FormUrlEncoded
     Call<Activity> updateActivity(
             @Path("id") Integer id,
             @Field("name") String name,

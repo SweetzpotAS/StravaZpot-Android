@@ -70,6 +70,32 @@ public class ActivityAPITest extends StravaAPITest {
         assertActivityParsedCorrectly(activity);
     }
 
+    @Test
+    public void shoudlUpdateAnActivity() throws Exception {
+        enqueueActivity();
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        Activity activity = activityAPI.updateActivity(321934)
+                                        .changeName("Afternoon ride")
+                                        .changeType(ActivityType.RIDE)
+                                        .changePrivate(true)
+                                        .changeCommute(true)
+                                        .changeTrainer(true)
+                                        .changeGearID("b321934")
+                                        .changeDescription("A relaxing ride")
+                                        .execute();
+
+        assertRequestBodyContains(
+                "name=Afternoon%20ride",
+                "type=Ride",
+                "private=true",
+                "commute=true",
+                "trainer=true",
+                "gear_id=b321934",
+                "description=A%20relaxing%20ride"
+        );
+    }
+
     private ActivityAPI givenAnActivityAPI() {
         return new ActivityAPI(givenAValidConfig());
     }

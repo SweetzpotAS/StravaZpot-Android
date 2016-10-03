@@ -3,6 +3,7 @@ package com.sweetzpot.stravazpot.activity.api;
 import com.sweetzpot.stravazpot.activity.request.CreateActivityRequest;
 import com.sweetzpot.stravazpot.activity.request.DeleteActivityRequest;
 import com.sweetzpot.stravazpot.activity.request.GetActivityRequest;
+import com.sweetzpot.stravazpot.activity.request.ListFriendActivitiesRequest;
 import com.sweetzpot.stravazpot.activity.request.ListMyActivitiesRequest;
 import com.sweetzpot.stravazpot.activity.request.UpdateActivityRequest;
 import com.sweetzpot.stravazpot.activity.rest.ActivityRest;
@@ -33,5 +34,9 @@ public class ActivityAPI extends StravaAPI {
 
     public ListMyActivitiesRequest listMyActivities() {
         return new ListMyActivitiesRequest(getAPI(ActivityRest.class), this);
+    }
+
+    public ListFriendActivitiesRequest listFriendActivities() {
+        return new ListFriendActivitiesRequest(getAPI(ActivityRest.class), this);
     }
 }

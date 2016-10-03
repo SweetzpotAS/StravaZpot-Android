@@ -129,6 +129,25 @@ public class ActivityAPITest extends StravaAPITest {
         );
     }
 
+    @Test
+    public void shouldListFriendsActivities() throws Exception {
+        enqueueResponse("[]");
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        List<Activity> activities = activityAPI.listFriendActivities()
+                                                .before(Time.seconds(123456789))
+                                                .inPage(2)
+                                                .perPage(10)
+                                                .execute();
+
+        assertRequestPathContains(
+                "/activities/following",
+                "before=123456789",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
     private ActivityAPI givenAnActivityAPI() {
         return new ActivityAPI(givenAValidConfig());
     }

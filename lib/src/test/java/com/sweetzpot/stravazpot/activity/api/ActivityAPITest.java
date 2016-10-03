@@ -6,6 +6,7 @@ import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.activity.model.ActivityZone;
 import com.sweetzpot.stravazpot.activity.model.PhotoSource;
 import com.sweetzpot.stravazpot.activity.model.PhotoSummary;
+import com.sweetzpot.stravazpot.activity.model.Split;
 import com.sweetzpot.stravazpot.activity.model.WorkoutType;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
@@ -236,7 +237,8 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(activity.getCalories(), is(390.5f));
         assertThat(activity.hasKudoed(), is(false));
         assertThat(activity.getSegmentEfforts(), is(notNullValue()));
-        assertThat(activity.getSplitsMetric(), is(notNullValue()));
+        assertThat(activity.getSplitsMetric().size(), is(2));
+        assertSplitParsedCorrectly(activity.getSplitsMetric().get(0));
         assertThat(activity.getSplitsStandard(), is(notNullValue()));
         assertThat(activity.getBestEfforts(), is(notNullValue()));
     }
@@ -246,6 +248,14 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(photos.getPrimaryPhoto().getUniqueID(), is("d64643ec9205"));
         assertThat(photos.getPrimaryPhoto().getUrls().keySet().size(), is(2));
         assertThat(photos.getPrimaryPhoto().getSource(), is(PhotoSource.STRAVA));
+    }
+
+    private void assertSplitParsedCorrectly(Split split) {
+        assertThat(split.getDistance(), is(equalTo(Distance.meters(1002.5f))));
+        assertThat(split.getElapsedTime(), is(equalTo(Time.seconds(276))));
+        assertThat(split.getElevationDifference(), is(equalTo(Distance.meters(0))));
+        assertThat(split.getMovingTime(), is(equalTo(Time.seconds(276))));
+        assertThat(split.getSplit(), is(1));
     }
 
     private void enqueueActivity() {

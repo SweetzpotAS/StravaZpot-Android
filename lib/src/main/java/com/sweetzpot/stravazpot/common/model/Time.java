@@ -29,4 +29,9 @@ public class Time {
     public int hashCode() {
         return seconds;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(seconds);
+    }
 }

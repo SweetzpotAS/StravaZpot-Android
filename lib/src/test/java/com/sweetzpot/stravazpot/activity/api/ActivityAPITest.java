@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.activity.api;
 
 import com.sweetzpot.stravazpot.activity.model.Activity;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
+import com.sweetzpot.stravazpot.activity.model.ActivityZone;
 import com.sweetzpot.stravazpot.activity.model.PhotoSource;
 import com.sweetzpot.stravazpot.activity.model.PhotoSummary;
 import com.sweetzpot.stravazpot.activity.model.WorkoutType;
@@ -163,6 +164,18 @@ public class ActivityAPITest extends StravaAPITest {
                 "page=2",
                 "per_page=10"
         );
+    }
+
+    @Test
+    public void shouldListActivityZones() throws Exception {
+        enqueueActivityZones();
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        List<ActivityZone> activityZones = activityAPI.listActivityZones(321934)
+                                                        .execute();
+
+        assertRequestPathContains("/activities/321934/zones");
+        assertActivityZonesParsedCorrectly(activityZones);
     }
 
     private ActivityAPI givenAnActivityAPI() {
@@ -427,5 +440,62 @@ public class ActivityAPITest extends StravaAPITest {
                 "  ]\n" +
                 "}";
         enqueueResponse(activityJSON);
+    }
+
+    private void assertActivityZonesParsedCorrectly(List<ActivityZone> activityZones) {
+        assertThat(activityZones.size(), is(2));
+        ActivityZone zone = activityZones.get(0);
+        assertThat(zone.getScore(), is(215));
+        assertThat(zone.getDistributionBuckets().size(), is(5));
+        assertThat((double) (zone.getDistributionBuckets().get(0).getMin()), is(0.0));
+        assertThat((double) (zone.getDistributionBuckets().get(0).getMax()), is(115.0));
+        assertThat(zone.getDistributionBuckets().get(0).getTime(), is(1735L));
+        assertThat(zone.getType(), is("heartrate"));
+        assertThat(zone.getResourceState(), is(ResourceState.DETAILED));
+        assertThat(zone.isSensorBased(), is(true));
+        assertThat(zone.getPoints(), is(119));
+        assertThat(zone.hasCustomZones(), is(false));
+        assertThat(zone.getMax(), is(196));
+    }
+
+    private void enqueueActivityZones() {
+        String activityZonesJSON = "[\n" +
+                "  {\n" +
+                "    \"score\": 215,\n" +
+                "    \"distribution_buckets\": [\n" +
+                "      { \"min\": 0,   \"max\":115,  \"time\": 1735 },\n" +
+                "      { \"min\": 115, \"max\": 152, \"time\": 5966 },\n" +
+                "      { \"min\": 152, \"max\": 171, \"time\": 4077 },\n" +
+                "      { \"min\": 171, \"max\": 190, \"time\": 4238 },\n" +
+                "      { \"min\": 190, \"max\": -1,  \"time\": 36 }\n" +
+                "    ],\n" +
+                "    \"type\": \"heartrate\",\n" +
+                "    \"resource_state\": 3,\n" +
+                "    \"sensor_based\": true,\n" +
+                "    \"points\": 119,\n" +
+                "    \"custom_zones\": false,\n" +
+                "    \"max\": 196\n" +
+                "  },\n" +
+                "  {\n" +
+                "    \"distribution_buckets\": [\n" +
+                "      { \"min\": 0,   \"max\": 0,   \"time\": 3043 },\n" +
+                "      { \"min\": 0,   \"max\": 50,  \"time\": 999 },\n" +
+                "      { \"min\": 50,  \"max\": 100, \"time\": 489 },\n" +
+                "      { \"min\": 100, \"max\": 150, \"time\": 737 },\n" +
+                "      { \"min\": 150, \"max\": 200, \"time\": 1299 },\n" +
+                "      { \"min\": 200, \"max\": 250, \"time\": 1478 },\n" +
+                "      { \"min\": 250, \"max\": 300, \"time\": 1523 },\n" +
+                "      { \"min\": 300, \"max\": 350, \"time\": 2154 },\n" +
+                "      { \"min\": 350, \"max\": 400, \"time\": 2226 },\n" +
+                "      { \"min\": 400, \"max\": 450, \"time\": 1181 },\n" +
+                "      { \"min\": 450, \"max\": -1,  \"time\": 923 }\n" +
+                "    ],\n" +
+                "    \"type\": \"power\",\n" +
+                "    \"resource_state\": 3,\n" +
+                "    \"sensor_based\": true\n" +
+                "  }\n" +
+                "]";
+
+        enqueueResponse(activityZonesJSON);
     }
 }

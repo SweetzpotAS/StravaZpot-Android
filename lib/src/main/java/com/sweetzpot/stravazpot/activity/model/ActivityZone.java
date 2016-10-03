@@ -40,7 +40,7 @@ public class ActivityZone {
         return points;
     }
 
-    public boolean isCustomZones() {
+    public boolean hasCustomZones() {
         return customZones;
     }
 

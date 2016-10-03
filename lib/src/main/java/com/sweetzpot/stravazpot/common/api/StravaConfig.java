@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.common.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sweetzpot.stravazpot.activity.model.AchievementType;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
 import com.sweetzpot.stravazpot.activity.model.PhotoSource;
 import com.sweetzpot.stravazpot.activity.model.WorkoutType;
@@ -20,6 +21,7 @@ import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Speed;
 import com.sweetzpot.stravazpot.common.model.Time;
+import com.sweetzpot.stravazpot.common.typeadapter.AchievementTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ActivityTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ClubTypeTypeAdapter;
@@ -143,6 +145,7 @@ public class StravaConfig {
                         .registerTypeAdapter(Speed.class, new SpeedTypeAdapter())
                         .registerTypeAdapter(PhotoSource.class, new PhotoSourceTypeAdapter())
                         .registerTypeAdapter(WorkoutType.class, new WorkoutTypeTypeAdapter())
+                        .registerTypeAdapter(AchievementType.class, new AchievementTypeTypeAdapter())
                         .create();
         }
     }

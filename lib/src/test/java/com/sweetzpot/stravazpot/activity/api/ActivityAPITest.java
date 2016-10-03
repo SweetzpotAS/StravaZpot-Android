@@ -148,6 +148,23 @@ public class ActivityAPITest extends StravaAPITest {
         );
     }
 
+    @Test
+    public void shouldListRelatedActivities() throws Exception {
+        enqueueResponse("[]");
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        List<Activity> activities = activityAPI.listRelatedActivities(321934)
+                                                .inPage(2)
+                                                .perPage(10)
+                                                .execute();
+
+        assertRequestPathContains(
+                "/activities/321934/related",
+                "page=2",
+                "per_page=10"
+        );
+    }
+
     private ActivityAPI givenAnActivityAPI() {
         return new ActivityAPI(givenAValidConfig());
     }

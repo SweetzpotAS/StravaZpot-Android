@@ -1,6 +1,7 @@
 package com.sweetzpot.stravazpot.activity.api;
 
 import com.sweetzpot.stravazpot.activity.request.CreateActivityRequest;
+import com.sweetzpot.stravazpot.activity.request.DeleteActivityRequest;
 import com.sweetzpot.stravazpot.activity.request.GetActivityRequest;
 import com.sweetzpot.stravazpot.activity.request.UpdateActivityRequest;
 import com.sweetzpot.stravazpot.activity.rest.ActivityRest;
@@ -23,5 +24,9 @@ public class ActivityAPI extends StravaAPI {
 
     public UpdateActivityRequest updateActivity(int activityID) {
         return new UpdateActivityRequest(activityID, getAPI(ActivityRest.class), this);
+    }
+
+    public DeleteActivityRequest deleteActivity(int activityID) {
+        return new DeleteActivityRequest(activityID, getAPI(ActivityRest.class), this);
     }
 }

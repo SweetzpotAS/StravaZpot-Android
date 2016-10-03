@@ -96,6 +96,17 @@ public class ActivityAPITest extends StravaAPITest {
         );
     }
 
+    @Test
+    public void shouldDeleteAnActivity() throws Exception {
+        enqueueResponse(204, "");
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        activityAPI.deleteActivity(321934)
+                    .execute();
+
+        assertRequestPathContains("/activities/321934");
+    }
+
     private ActivityAPI givenAnActivityAPI() {
         return new ActivityAPI(givenAValidConfig());
     }

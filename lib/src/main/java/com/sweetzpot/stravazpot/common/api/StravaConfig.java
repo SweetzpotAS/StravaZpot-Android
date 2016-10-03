@@ -3,6 +3,7 @@ package com.sweetzpot.stravazpot.common.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
+import com.sweetzpot.stravazpot.activity.model.PhotoSource;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
@@ -29,6 +30,7 @@ import com.sweetzpot.stravazpot.common.typeadapter.GenderTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MeasurementPreferenceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.MembershipTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.PercentageTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.PhotoSourceTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResolutionTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ResourceStateTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
@@ -137,6 +139,7 @@ public class StravaConfig {
                         .registerTypeAdapter(SkillLevel.class, new SkillLevelTypeAdapter())
                         .registerTypeAdapter(Terrain.class, new TerrainTypeAdapter())
                         .registerTypeAdapter(Speed.class, new SpeedTypeAdapter())
+                        .registerTypeAdapter(PhotoSource.class, new PhotoSourceTypeAdapter())
                         .create();
         }
     }

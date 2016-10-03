@@ -16,6 +16,7 @@ import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
+import com.sweetzpot.stravazpot.common.model.Speed;
 import com.sweetzpot.stravazpot.common.model.Time;
 import com.sweetzpot.stravazpot.common.typeadapter.ActivityTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.AthleteTypeTypeAdapter;
@@ -34,6 +35,7 @@ import com.sweetzpot.stravazpot.common.typeadapter.RouteSubtypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.RouteTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SeriesTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SkillLevelTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.SpeedTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SportTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TerrainTypeAdapter;
@@ -134,6 +136,7 @@ public class StravaConfig {
                         .registerTypeAdapter(Membership.class, new MembershipTypeAdapter())
                         .registerTypeAdapter(SkillLevel.class, new SkillLevelTypeAdapter())
                         .registerTypeAdapter(Terrain.class, new TerrainTypeAdapter())
+                        .registerTypeAdapter(Speed.class, new SpeedTypeAdapter())
                         .create();
         }
     }

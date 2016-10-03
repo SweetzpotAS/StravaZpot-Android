@@ -1,5 +1,7 @@
 package com.sweetzpot.stravazpot.activity.api;
 
+import com.sweetzpot.stravazpot.activity.model.Achievement;
+import com.sweetzpot.stravazpot.activity.model.AchievementType;
 import com.sweetzpot.stravazpot.activity.model.Activity;
 import com.sweetzpot.stravazpot.activity.model.ActivityLap;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
@@ -237,6 +239,7 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(activity.getCalories(), is(390.5f));
         assertThat(activity.hasKudoed(), is(false));
         assertThat(activity.getSegmentEfforts(), is(notNullValue()));
+        assertAchievementsParsedCorrectly(activity.getSegmentEfforts().get(0).getAchievements().get(0));
         assertThat(activity.getSplitsMetric().size(), is(2));
         assertSplitParsedCorrectly(activity.getSplitsMetric().get(0));
         assertThat(activity.getSplitsStandard(), is(notNullValue()));
@@ -256,6 +259,12 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(split.getElevationDifference(), is(equalTo(Distance.meters(0))));
         assertThat(split.getMovingTime(), is(equalTo(Time.seconds(276))));
         assertThat(split.getSplit(), is(1));
+    }
+
+    private void assertAchievementsParsedCorrectly(Achievement achievement) {
+        assertThat(achievement.getTypeID(), is(AchievementType.OVERALL));
+        assertThat(achievement.getType(), is("overall"));
+        assertThat(achievement.getRank(), is(2));
     }
 
     private void enqueueActivity() {

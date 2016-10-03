@@ -7,5 +7,8 @@ public enum WorkoutType {
     RUN_WORKOUT,
     RIDE_DEFAULT,
     RIDE_RACE,
-    RIDE_WORKOUT
+    RIDE_WORKOUT;
+
+    WorkoutType(int ) {
+    }
 }

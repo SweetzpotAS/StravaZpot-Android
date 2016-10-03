@@ -30,4 +30,9 @@ public class Distance {
     public int hashCode() {
         return (meters != +0.0f ? Float.floatToIntBits(meters) : 0);
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(meters);
+    }
 }

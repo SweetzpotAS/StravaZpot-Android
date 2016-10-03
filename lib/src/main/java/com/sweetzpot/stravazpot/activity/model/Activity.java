@@ -277,7 +277,7 @@ public class Activity {
         return sufferScore;
     }
 
-    public boolean isHasKudoed() {
+    public boolean hasKudoed() {
         return hasKudoed;
     }
 

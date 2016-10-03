@@ -2,15 +2,26 @@ package com.sweetzpot.stravazpot.activity.api;
 
 import com.sweetzpot.stravazpot.activity.model.Activity;
 import com.sweetzpot.stravazpot.activity.model.ActivityType;
+import com.sweetzpot.stravazpot.activity.model.PhotoSource;
+import com.sweetzpot.stravazpot.activity.model.PhotoSummary;
+import com.sweetzpot.stravazpot.activity.model.WorkoutType;
 import com.sweetzpot.stravazpot.common.api.StravaAPITest;
+import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
+import com.sweetzpot.stravazpot.common.model.ResourceState;
+import com.sweetzpot.stravazpot.common.model.Speed;
 import com.sweetzpot.stravazpot.common.model.Time;
 
 import org.junit.Test;
 
 import java.util.Calendar;
 
+import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ActivityAPITest extends StravaAPITest {
 
@@ -43,8 +54,77 @@ public class ActivityAPITest extends StravaAPITest {
         );
     }
 
+    @Test
+    public void shouldRetrieveAnActivity() throws Exception {
+        enqueueActivity();
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        Activity activity = activityAPI.getActivity(321934)
+                                        .includeAllEfforts(true)
+                                        .execute();
+
+        assertRequestPathContains(
+                "/activities/321934",
+                "include_all_efforts=true"
+        );
+        assertActivityParsedCorrectly(activity);
+    }
+
     private ActivityAPI givenAnActivityAPI() {
         return new ActivityAPI(givenAValidConfig());
+    }
+
+    private void assertActivityParsedCorrectly(Activity activity) {
+        assertThat(activity.getID(), is(321934));
+        assertThat(activity.getResourceState(), is(ResourceState.DETAILED));
+        assertThat(activity.getExternalID(), is("2012-12-12_21-40-32-80-29011.fit"));
+        assertThat(activity.getUploadID(), is(361720));
+        assertThat(activity.getAthlete(), is(notNullValue()));
+        assertThat(activity.getName(), is("Evening Ride"));
+        assertThat(activity.getDescription(), is("the best ride ever"));
+        assertThat(activity.getDistance(), is(equalTo(Distance.meters(4475.4f))));
+        assertThat(activity.getMovingTime(), is(equalTo(Time.seconds(1303))));
+        assertThat(activity.getElapsedTime(), is(equalTo(Time.seconds(1333))));
+        assertThat(activity.getTotalElevationGain(), is(equalTo(Distance.meters(154.5f))));
+        assertThat(activity.getElevationHigh(), is(equalTo(Distance.meters(331.4f))));
+        assertThat(activity.getElevationLow(), is(equalTo(Distance.meters(276.1f))));
+        assertThat(activity.getType(), is(ActivityType.RUN));
+        assertThat(activity.getStartDate(), isSameDate(makeDate(13, Calendar.DECEMBER, 2012, 3, 43, 19)));
+        assertThat(activity.getStartDateLocal(), isSameDate(makeDate(12, Calendar.DECEMBER, 2012, 19, 43, 19)));
+        assertThat(activity.getTimezone(), is("(GMT-08:00) America/Los_Angeles"));
+        assertThat(activity.getStartCoordinates(), is(equalTo(Coordinates.at(37.8f, -122.27f))));
+        assertThat(activity.getEndCoordinates(), is(equalTo(Coordinates.at(37.8f, -122.27f))));
+        assertThat(activity.getAchievementCount(), is(6));
+        assertThat(activity.getKudosCount(), is(1));
+        assertThat(activity.getCommentCount(), is(1));
+        assertThat(activity.getAthleteCount(), is(1));
+        assertThat(activity.getPhotoCount(), is(0));
+        assertThat(activity.getTotalPhotoCount(), is(0));
+        assertThat(activity.getPhotos(), is(notNullValue()));
+        assertPhotoSummaryParsedCorrectly(activity.getPhotos());
+        assertThat(activity.getMap(), is(notNullValue()));
+        assertThat(activity.isTrainer(), is(false));
+        assertThat(activity.isCommute(), is(false));
+        assertThat(activity.isManual(), is(false));
+        assertThat(activity.isPrivate(), is(false));
+        assertThat(activity.isFlagged(), is(false));
+        assertThat(activity.getWorkoutType(), is(WorkoutType.RUN_LONGRUN));
+        assertThat(activity.getGear(), is(notNullValue()));
+        assertThat(activity.getAverageSpeed(), is(equalTo(Speed.metersPerSecond(3.4f))));
+        assertThat(activity.getMaxSpeed(), is(equalTo(Speed.metersPerSecond(4.514f))));
+        assertThat(activity.getCalories(), is(390.5f));
+        assertThat(activity.hasKudoed(), is(false));
+        assertThat(activity.getSegmentEfforts(), is(notNullValue()));
+        assertThat(activity.getSplitsMetric(), is(notNullValue()));
+        assertThat(activity.getSplitsStandard(), is(notNullValue()));
+        assertThat(activity.getBestEfforts(), is(notNullValue()));
+    }
+
+    private void assertPhotoSummaryParsedCorrectly(PhotoSummary photos) {
+        assertThat(photos.getCount(), is(2));
+        assertThat(photos.getPrimaryPhoto().getUniqueID(), is("d64643ec9205"));
+        assertThat(photos.getPrimaryPhoto().getUrls().keySet().size(), is(2));
+        assertThat(photos.getPrimaryPhoto().getSource(), is(PhotoSource.STRAVA));
     }
 
     private void enqueueActivity() {

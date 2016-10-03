@@ -34,6 +34,16 @@ public class ExceptionsTest extends StravaAPITest{
         activityAPI.getActivity(123456).execute();
     }
 
+    @Test
+    public void shouldThrowAnExceptionIfResultJSONIsWrong() throws Exception {
+        enqueueResponse("{]");
+        ActivityAPI activityAPI = givenAnActivityAPI();
+
+        thrown.expect(StravaAPIException.class);
+
+        activityAPI.getActivity(123456).execute();
+    }
+
     private ActivityAPI givenAWronglyConfiguredActivityAPI() {
         return new ActivityAPI(givenAWrongConfig());
     }

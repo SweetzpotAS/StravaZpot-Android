@@ -1,5 +1,7 @@
 package com.sweetzpot.stravazpot.common.api;
 
+import com.sweetzpot.stravazpot.authenticaton.model.Token;
+
 import retrofit2.Retrofit;
 
 public class StravaConfig extends Config {
@@ -10,6 +12,10 @@ public class StravaConfig extends Config {
 
     public static StravaConfig.Builder withToken(String token) {
         return new StravaConfig.Builder(token);
+    }
+
+    public static StravaConfig.Builder withToken(Token token) {
+        return withToken(token.toString());
     }
 
     public static class Builder {

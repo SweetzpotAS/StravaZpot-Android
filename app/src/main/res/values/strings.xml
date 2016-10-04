@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StravaZpot</string>
+    <string name="login_strava">Login to Strava</string>
 </resources>

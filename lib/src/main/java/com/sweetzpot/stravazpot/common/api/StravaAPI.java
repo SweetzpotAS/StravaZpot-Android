@@ -10,9 +10,9 @@ import retrofit2.Response;
 
 public abstract class StravaAPI {
     private static final int UNAUTHORIZED_CODE = 401;
-    private final StravaConfig config;
+    private final Config config;
 
-    public StravaAPI(StravaConfig config) {
+    public StravaAPI(Config config) {
         this.config = config;
     }
 

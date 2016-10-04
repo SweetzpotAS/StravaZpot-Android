@@ -9,6 +9,7 @@ import com.sweetzpot.stravazpot.activity.model.WorkoutType;
 import com.sweetzpot.stravazpot.athlete.model.AthleteType;
 import com.sweetzpot.stravazpot.athlete.model.FriendStatus;
 import com.sweetzpot.stravazpot.athlete.model.MeasurementPreference;
+import com.sweetzpot.stravazpot.authenticaton.model.Token;
 import com.sweetzpot.stravazpot.club.model.ClubType;
 import com.sweetzpot.stravazpot.club.model.Membership;
 import com.sweetzpot.stravazpot.club.model.SkillLevel;
@@ -45,6 +46,7 @@ import com.sweetzpot.stravazpot.common.typeadapter.SportTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TerrainTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.TokenTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.WorkoutTypeTypeAdapter;
 import com.sweetzpot.stravazpot.gear.model.FrameType;
 import com.sweetzpot.stravazpot.route.model.RouteSubtype;
@@ -121,6 +123,7 @@ public abstract class Config {
                 .registerTypeAdapter(PhotoSource.class, new PhotoSourceTypeAdapter())
                 .registerTypeAdapter(WorkoutType.class, new WorkoutTypeTypeAdapter())
                 .registerTypeAdapter(AchievementType.class, new AchievementTypeTypeAdapter())
+                .registerTypeAdapter(Token.class, new TokenTypeAdapter())
                 .create();
     }
 }

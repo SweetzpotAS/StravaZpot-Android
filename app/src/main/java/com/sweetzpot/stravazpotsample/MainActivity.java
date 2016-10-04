@@ -8,7 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.sweetzpot.stravazpot.authenticaton.api.AccessScope;
+import com.sweetzpot.stravazpot.authenticaton.api.StravaLogin;
 import com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginActivity;
+
+import static com.sweetzpot.stravazpot.authenticaton.api.ApprovalPrompt.AUTO;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void login() {
-        Intent intent = new Intent(this, StravaLoginActivity.class);
-        intent.putExtra(StravaLoginActivity.EXTRA_LOGIN_URL, "https://www.strava.com/oauth/authorize?client_id=13874&response_type=code&redirect_uri=http://truizlop.github.io/token_exchange&scope=write&state=mystate&approval_prompt=force");
-        intent.putExtra(StravaLoginActivity.EXTRA_REDIRECT_URL, "http://truizlop.github.io/token_exchange");
+        Intent intent = StravaLogin.withContext(this)
+                                    .withClientID(13874)
+                                    .withRedirectURI("http://truizlop.github.io/token_exchange")
+                                    .withApprovalPrompt(AUTO)
+                                    .withAccessScope(AccessScope.VIEW_PRIVATE_WRITE)
+                                    .makeIntent();
         startActivityForResult(intent, RQ_LOGIN);
     }
 

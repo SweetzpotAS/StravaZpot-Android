@@ -444,6 +444,28 @@ Gear gear = gearAPI.getGear(GEAR_ID)
                    .execute();
 ```
 
+## Route API
+
+### Create the Route API
+
+```java
+RouteAPI routeAPI = new RouteAPI(config);
+```
+
+### Retrieve a route
+
+```java
+Route route = routeAPI.getRoute(ROUTE_ID)
+                      .execute();
+```
+
+### List athlete's routes
+
+```java
+List<Route> routes = routeAPI.listRoutes(ATHLETE_ID)
+                             .execute();
+```
+
 ## License
 
 

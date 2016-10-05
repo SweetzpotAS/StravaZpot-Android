@@ -551,6 +551,21 @@ List<Segment> segments = segmentAPI.exploreSegmentsInRegion(Bounds.with(Coordina
                                    .execute();
 ```
 
+## Segment Effort API
+
+### Create the Segment Effort API object
+
+```java
+SegmentEffortAPI segmentEffortAPI = new SegmentEffortAPI(config);
+```
+
+### Retrieve a segment effort
+
+```java
+SegmentEffort segmentEffort = segmentEffortAPI.getSegmentEffort(SEGMENT_EFFORT_ID)
+                                              .execute();
+```
+
 ## License
 
 

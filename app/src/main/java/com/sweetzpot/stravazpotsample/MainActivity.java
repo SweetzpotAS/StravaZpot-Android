@@ -4,17 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.sweetzpot.stravazpot.authenticaton.api.AccessScope;
 import com.sweetzpot.stravazpot.authenticaton.api.StravaLogin;
 import com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginActivity;
+import com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginButton;
 
 import static com.sweetzpot.stravazpot.authenticaton.api.ApprovalPrompt.AUTO;
 
 public class MainActivity extends AppCompatActivity {
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     private static final int RQ_LOGIN = 1001;
 
@@ -23,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button loginButton = (Button) findViewById(R.id.login_button);
+        StravaLoginButton loginButton = (StravaLoginButton) findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

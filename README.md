@@ -611,6 +611,17 @@ List<Stream> streams = streamAPI.getRouteStreams(ROUTE_ID)
                                 .execute();
 ```
 
+## Threading
+
+All the APIs in **StravaZpot** perform network requests in a synchronous manner and without switching to a new thread. Therefore, it is up to the user of the library to invoke the API in a suitable thread, and outside the Android UI thread in order to avoid `NetworkOnMainThreadException`.
+
+## Exceptions
+
+**StravaZpot** methods do not have any checked exceptions, but users of the library should be prepared for them to happen. In particular, the following scenarios can arise:
+
+- Strava may return a `401 Unauthorized` response code. In that case, the network request will throw a `StravaUnauthorizedException`. It is up to the user of the library to reuthenticate with Strava to get a new token and retry the request.
+- If any other network error happen, or the request is not successful, it will throw a `StravaAPIException`.
+
 ## License
 
 

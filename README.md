@@ -429,6 +429,21 @@ LeaveResult leaveResult = clubAPI.leaveClub(123456)
                                  .execute();
 ```
 
+## Gear API
+
+### Create the Gear API object
+
+```java
+GearAPI gearAPI = new GearAPI(config);
+```
+
+### Retrieve gear
+
+```java
+Gear gear = gearAPI.getGear(GEAR_ID)
+                   .execute();
+```
+
 ## License
 
 

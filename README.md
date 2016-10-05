@@ -319,6 +319,23 @@ List<Comment> comments = commentAPI.listActivityComments(ACTIVITY_ID)
                                    .execute();
 ```
 
+## Kudos API
+
+### Create the Kudos API object
+
+```java
+KudosAPI kudosAPI = new KudosAPI(config);
+```
+
+### List activity kudoers
+
+```java
+List<Athlete> athletes = kudosAPI.listActivityKudoers(ACTIVITY_ID)
+                                 .inPage(PAGE)
+                                 .perPage(ITEMS_PER_PAGE)
+                                 .execute();
+```
+
 ## License
 
 

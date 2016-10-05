@@ -206,6 +206,101 @@ List<Athlete> followers = friendAPI.getBothFollowing(ATHLETE_ID)
                                    .execute();
 ```
 
+## Activity API
+
+### Create the Activity API object
+
+```java
+ActivityAPI activityAPI = new ActivityAPI(config);
+```
+
+### Create an activity
+
+```java
+Activity activity = activityAPI.createActivity(ACTIVITY_NAME)
+                               .ofType(ActivityType.RUN)
+                               .startingOn(START_DATE)
+                               .withElapsedTime(Time.seconds(SECONDS))
+                               .withDescription(ACTIVITY_DESCRIPTION)
+                               .withDistance(Distance.meters(METERS))
+                               .isPrivate(false)
+                               .withTrainer(true)
+                               .withCommute(false)
+                               .execute();
+```
+
+### Retrieve an activity
+
+```java
+Activity activity = activityAPI.getActivity(ACTIVITY_ID)
+                               .includeAllEfforts(true)
+                               .execute();
+```
+
+### Update an activity
+
+```java
+Activity activity = activityAPI.updateActivity(ACTIVITY_ID)
+                               .changeName(ACTIVITY_NAME)
+                               .changeType(ActivityType.RIDE)
+                               .changePrivate(true)
+                               .changeCommute(true)
+                               .changeTrainer(true)
+                               .changeGearID(GEAR_ID)
+                               .changeDescription(ACTIVITY_DESCRIPTION)
+                               .execute();
+```
+
+### Delete an activity
+
+```java
+activityAPI.deleteActivity(321934)
+           .execute();
+```
+
+### List user's activities
+
+```java
+List<Activity> activities = activityAPI.listMyActivities()
+                                       .before(Time.seconds(BEFORE_SECONDS))
+                                       .after(Time.seconds(AFTER_SECONDS))
+                                       .inPage(PAGE)
+                                       .perPage(ITEMS_PER_PAGE)
+                                       .execute();
+```
+
+### List user's friends' activities
+
+```java
+List<Activity> activities = activityAPI.listFriendActivities()
+                                       .before(Time.seconds(BEFORE_SECONDS))
+                                       .inPage(PAGE)
+                                       .perPage(ITEMS_PER_PAGE)
+                                       .execute();
+```
+
+### List related activities
+
+```java
+List<Activity> activities = activityAPI.listRelatedActivities(ACTIVITY_ID)
+                                       .inPage(PAGE)
+                                       .perPage(ITEMS_PER_PAGE)
+                                       .execute();
+```
+
+### List activity zones
+
+```java
+List<ActivityZone> activityZones = activityAPI.listActivityZones(ACTIVITY_ID)
+                                              .execute();
+```
+
+### List activity laps
+
+```java
+List<ActivityLap> laps = activityAPI.listActivityLaps(ACTIVITY_ID)
+                                    .execute();
+```
 
 ## License
 

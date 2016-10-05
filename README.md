@@ -351,6 +351,84 @@ List<Photo> photos = photoAPI.listAcivityPhotos(ACTIVITY_ID)
                              .execute();
 ```
 
+## Club API
+
+### Create the Club API object
+
+```java
+ClubAPI clubAPI = new ClubAPI(config);
+```
+
+### Retrieve a club
+
+```java
+Club club = clubAPI.getClub(CLUB_ID)
+                   .execute();
+```
+
+### List club announcements
+
+```java
+List<Announcement> announcements = clubAPI.listClubAnnouncements(CLUB_ID)
+                                          .execute();
+```
+
+### List club group events
+
+```java
+List<Event> events = clubAPI.listClubGroupEvents(CLUB_ID)
+                            .execute();
+```
+
+### List user's clubs
+
+```java
+List<Club> clubs = clubAPI.listMyClubs()
+                          .execute();
+```
+
+### List club members
+
+```java
+List<Athlete> athletes = clubAPI.listClubMembers(CLUB_ID)
+                                .inPage(PAGE)
+                                .perPage(ITEMS_PER_PAGE)
+                                .execute();
+```
+
+### List club admins
+
+```java
+List<Athlete> athletes = clubAPI.listClubAdmins(CLUB_ID)
+                                .inPage(PAGE)
+                                .perPage(ITEMS_PER_PAGE)
+                                .execute();
+```
+
+### List club activities
+
+```java
+List<Activity> activities = clubAPI.listClubActivities(CLUB_ID)
+                                   .before(BEFORE)
+                                   .inPage(PAGE)
+                                   .perPage(PER_PAGE)
+                                   .execute();
+```
+
+### Join a club
+
+```java
+JoinResult joinResult = clubAPI.joinClub(123456)
+                               .execute();
+```
+
+### Leave a club
+
+```java
+LeaveResult leaveResult = clubAPI.leaveClub(123456)
+                                 .execute();
+```
+
 ## License
 
 

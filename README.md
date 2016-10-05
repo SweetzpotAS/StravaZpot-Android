@@ -153,6 +153,60 @@ List<SegmentEffort> koms = athleteAPI.listAthleteKOMS(ATHLETE_ID)
                                      .execute();
 ```
 
+## Friend API
+
+### Create the Friend API object
+
+```java
+FriendAPI friendAPI = new FriendAPI(config);
+```
+
+### List user's friends
+
+```java
+List<Athlete> friends = friendAPI.getMyFriends()
+                                 .inPage(PAGE)
+                                 .perPage(ITEMS_PER_PAGE)
+                                 .execute();
+```
+
+### List another athlete's friends
+
+```java
+List<Athlete> friends = friendAPI.getAthleteFriends(ATHLETE_ID)
+                                 .inPage(PAGE)
+                                 .perPage(ITEMS_PER_PAGE)
+                                 .execute();
+```
+
+### List user's followers
+
+```java
+List<Athlete> followers = friendAPI.getMyFollowers()
+                                   .inPage(PAGE)
+                                   .perPage(ITEMS_PER_PAGE)
+                                   .execute();
+```
+
+### List another athlete's followers
+
+```java
+List<Athlete> followers = friendAPI.getAthleteFollowers(123456)
+                                   .inPage(2)
+                                   .perPage(10)
+                                   .execute();
+```
+
+### List common following athletes between two users
+
+```java
+List<Athlete> followers = friendAPI.getBothFollowing(ATHLETE_ID)
+                                   .inPage(PAGE)
+                                   .perPage(PER_PAGE)
+                                   .execute();
+```
+
+
 ## License
 
 

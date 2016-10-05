@@ -1,5 +1,23 @@
-language: java
+language: android
+
+jdk:
+  - oraclejdk8
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-24.0.3
+    - android-24
+    - extra-android-m2repository
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
+cache:
+  directories:
+    - $HOME/.gradle
 
 script:
   ./gradlew clean assemble test
-  

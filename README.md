@@ -82,6 +82,77 @@ Notice that in this call you must provide the Client ID and Secret provided by S
 
 If the previous request is successful, you will get a `LoginResult`, which has a `Token` that you can use in your subsequent API calls, and an `Athlete` instance, representing the authenticated user.
 
+## Athlete API
+
+### StravaConfig
+
+Before introducing the Athlete API, we have to talk about `StravaConfig`. `StravaConfig` is a class required by all the APIs in **StravaZpot** to configure the way it is going to interact with Strava. You can create a single instance of `StravaConfig` as soon as you obtain a token, and reuse it during your app lifecycle. To create an instance of `StravaConfig`:
+
+```java
+StravaConfig config = StravaConfig.withToken(TOKEN)
+                                  .debug()
+                                  .build();
+```
+
+You must provide the token obtained during the authentication process. The call to `debug()` method will show in the Android Monitor what is going on when you do the network requests.
+
+Once you have the configuration object, you can proceed to use all the APIs.
+
+### Create the Athlete API object
+
+```java
+AthleteAPI athleteAPI = new AthleteAPI(config);
+```
+
+### Retrieve current athlete
+
+```java
+Athlete athlete = athleteAPI.retrieveCurrentAthlete()
+                            .execute();
+```
+
+### Retrieve another athlete
+
+```java
+Athlete athlete = athleteAPI.retrieveAthlete(ATHLETE_ID)
+                            .execute();
+```
+
+### Update an athlete
+
+```java
+Athlete athlete = athleteAPI.updateAthlete()
+                            .newCity(CITY)
+                            .newState(STATE)
+                            .newCountry(COUNTRY)
+                            .newSex(Gender.FEMALE)
+                            .newWeight(WEIGHT)
+                            .execute();
+```
+
+### Retrieve athlete's zones
+
+```java
+Zones zones = athleteAPI.getAthleteZones()
+                        .execute();
+```
+
+### Retrieve athlete's totals and stats 
+
+```java
+Stats stats = athleteAPI.getAthleteTotalsAndStats(ATHLETE_ID)
+                        .execute();
+```
+
+### List athlete K/QOMs/CRs
+
+```java
+List<SegmentEffort> koms = athleteAPI.listAthleteKOMS(ATHLETE_ID)
+                                     .inPage(PAGE)
+                                     .perPage(ITEMS_PER_PAGE)
+                                     .execute();
+```
+
 ## License
 
 

@@ -466,6 +466,91 @@ List<Route> routes = routeAPI.listRoutes(ATHLETE_ID)
                              .execute();
 ```
 
+## Segment API
+
+### Create the Segment API object
+
+```java
+SegmentAPI segmentAPI = new SegmentAPI(config);
+```
+
+### Retrieve a segment
+
+```java
+Segment segment = segmentAPI.getSegment(229781)
+                            .execute();
+```
+
+### List user's starred segments
+
+```java
+List<Segment> segments = segmentAPI.listMyStarredSegments()
+                                   .inPage(PAGE)
+                                   .perPage(ITEMS_PER_PAGE)
+                                   .execute();
+```
+
+### List another athlete's starred segments
+
+```java
+List<Segment> segments = segmentAPI.listStarredSegmentsByAthlete(ATHLETE_ID)
+                                   .inPage(PAGE)
+                                   .perPage(PER_PAGE)
+                                   .execute();
+```
+
+### Star a segment
+
+```java
+Segment segment = segmentAPI.starSegment(SEGMENT_ID)
+                            .execute();
+```
+
+### Unstar a segment
+
+```java
+Segment segment = segmentAPI.unstarSegment(229781)
+                            .execute();
+```
+
+### List segment efforts
+
+```java
+List<SegmentEffort> efforts = segmentAPI.listSegmentEfforts(SEGMENT_ID)
+                                        .forAthlete(ATHLETE_ID)
+                                        .startingOn(START_DATE)
+                                        .endingOn(END_DATE)
+                                        .inPage(PAGE)
+                                        .perPage(ITEMS_PER_PAGE)
+                                        .execute();
+```
+
+### Retrieve segment leaderboard
+
+```java
+Leaderboard leaderboard = segmentAPI.getLeaderboardForSegment(SEGMENT_ID)
+                                    .withGender(Gender.FEMALE)
+                                    .inAgeGroup(AgeGroup.AGE_25_34)
+                                    .inWeightClass(WeightClass.KG_75_84)
+                                    .following(true)
+                                    .inClub(CLUB_ID)
+                                    .inDateRange(DateRange.THIS_WEEK)
+                                    .withContextEntries(CONTEXT_ENTRIES)
+                                    .inPage(PAGE)
+                                    .perPage(ITEMS_PER_PAGE)
+                                    .execute();
+```
+
+### Explore segments
+
+```java
+List<Segment> segments = segmentAPI.exploreSegmentsInRegion(Bounds.with(Coordinates.at(SW_LAT, SW_LONG), Coordinates.at(NE_LAT, NE_LONG)))
+                                   .forActivityType(ExploreType.RUNNING)
+                                   .withMinimumClimbCategory(MIN_CLIMB_CATEGORY)
+                                   .withMaximumClimbCategory(MAX_CLIMB_CATEGORY)
+                                   .execute();
+```
+
 ## License
 
 

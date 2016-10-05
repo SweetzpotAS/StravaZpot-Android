@@ -302,6 +302,23 @@ List<ActivityLap> laps = activityAPI.listActivityLaps(ACTIVITY_ID)
                                     .execute();
 ```
 
+## Comment API
+
+### Create the Comment API object
+
+```java
+CommentAPI commentAPI = new CommentAPI(config);
+```
+
+### List activity comments
+
+```java
+List<Comment> comments = commentAPI.listActivityComments(ACTIVITY_ID)
+                                   .inPage(PAGE)
+                                   .perPage(ITEMS_PER_PAGE)
+                                   .execute();
+```
+
 ## License
 
 

@@ -336,6 +336,21 @@ List<Athlete> athletes = kudosAPI.listActivityKudoers(ACTIVITY_ID)
                                  .execute();
 ```
 
+## Photo API
+
+### Create the Photo API object
+
+```java
+PhotoAPI photoAPI = new PhotoAPI(config);
+```
+
+### List activity photos
+
+```java
+List<Photo> photos = photoAPI.listAcivityPhotos(ACTIVITY_ID)
+                             .execute();
+```
+
 ## License
 
 

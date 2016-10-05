@@ -64,6 +64,14 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
+Finally, you need to add the login activity to your manifest:
+
+```xml
+<activity
+    android:name="com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginActivity"
+    android:label="@string/login_strava" />
+```
+
 ### Obtain a Token
 
 Every Strava API call needs a token to prove the user is authenticated and the app has permission to access the API. After you have obtained the code from user login, you need to exchange it with Strava to get a token. You can do it with the following code:
@@ -509,7 +517,7 @@ Segment segment = segmentAPI.starSegment(SEGMENT_ID)
 ### Unstar a segment
 
 ```java
-Segment segment = segmentAPI.unstarSegment(229781)
+Segment segment = segmentAPI.unstarSegment(SEGMENT_ID)
                             .execute();
 ```
 

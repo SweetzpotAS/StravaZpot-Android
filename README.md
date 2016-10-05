@@ -566,6 +566,51 @@ SegmentEffort segmentEffort = segmentEffortAPI.getSegmentEffort(SEGMENT_EFFORT_I
                                               .execute();
 ```
 
+## Stream API
+
+### Create the Stream API object
+
+```java
+StreamAPI streamAPI = new StreamAPI(config);
+```
+
+### Retrieve activity streams
+
+```java
+List<Stream> streams = streamAPI.getActivityStreams(ACTIVITY_ID)
+                                .forTypes(StreamType.LATLNG, StreamType.DISTANCE)
+                                .withResolution(Resolution.LOW)
+                                .withSeriesType(SeriesType.DISTANCE)
+                                .execute();
+```
+
+### Retrieve segment effort streams
+
+```java
+List<Stream> streams = streamAPI.getSegmentEffortStreams(SEGMENT_EFFORT_ID)
+                                .forTypes(StreamType.LATLNG, StreamType.DISTANCE)
+                                .withResolution(Resolution.LOW)
+                                .withSeriesType(SeriesType.DISTANCE)
+                                .execute();
+```
+
+### Retrieve segment streams
+
+```java
+List<Stream> streams = streamAPI.getSegmentStreams(SEGMENT_ID)
+                                .forTypes(StreamType.LATLNG, StreamType.DISTANCE)
+                                .withResolution(Resoulution.LOW)
+                                .withSeriesType(SeriesType.DISTANCE)
+                                .execute();
+```
+
+### Retrieve route streams
+
+```java
+List<Stream> streams = streamAPI.getRouteStreams(ROUTE_ID)
+                                .execute();
+```
+
 ## License
 
 

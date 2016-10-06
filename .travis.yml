@@ -19,5 +19,9 @@ cache:
   directories:
     - $HOME/.gradle
 
+before_install:
+  - echo "sdk.dir=$ANDROID_HOME" > local.properties
+  - echo "bintray.user=user" >> local.properties
+  - echo "bintray.apikey=key" >> local.properties
 script:
-  ./gradlew clean assemble test
+  - ./gradlew clean assemble test

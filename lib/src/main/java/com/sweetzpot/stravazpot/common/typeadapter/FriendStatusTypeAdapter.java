@@ -11,21 +11,11 @@ import java.io.IOException;
 public class FriendStatusTypeAdapter extends TypeAdapter<FriendStatus>{
 
     @Override
-    public void write(JsonWriter out, FriendStatus value) throws IOException {
-        switch (value) {
-            case ACCEPTED:
-                out.value("accepted");
-                break;
-            case PENDING:
-                out.value("pending");
-                break;
-            case BLOCKED:
-                out.value("blocked");
-                break;
-            case NOT_FRIENDS:
-            default:
-                out.nullValue();
-                break;
+    public void write(JsonWriter out, FriendStatus friendStatus) throws IOException {
+        if(friendStatus == FriendStatus.NOT_FRIENDS) {
+            out.nullValue();
+        } else {
+            out.value(friendStatus.toString());
         }
     }
 
@@ -34,12 +24,10 @@ public class FriendStatusTypeAdapter extends TypeAdapter<FriendStatus>{
         if(!in.peek().equals(JsonToken.NULL)) {
             String value = in.nextString();
 
-            if (value.equalsIgnoreCase("accepted")) {
-                return FriendStatus.ACCEPTED;
-            } else if (value.equalsIgnoreCase("pending")) {
-                return FriendStatus.PENDING;
-            } else if (value.equalsIgnoreCase("blocked")) {
-                return FriendStatus.BLOCKED;
+            for(FriendStatus status : FriendStatus.values()) {
+                if(status.toString().equalsIgnoreCase(value)) {
+                    return status;
+                }
             }
         } else {
             in.nextNull();

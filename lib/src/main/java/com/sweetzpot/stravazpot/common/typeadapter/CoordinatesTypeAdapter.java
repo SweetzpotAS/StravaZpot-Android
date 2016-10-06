@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.common.typeadapter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
 
@@ -19,10 +20,15 @@ public class CoordinatesTypeAdapter extends TypeAdapter<Coordinates> {
 
     @Override
     public Coordinates read(JsonReader in) throws IOException {
-        in.beginArray();
-        float latitude = (float) (in.nextDouble());
-        float longitude = (float) (in.nextDouble());
-        in.endArray();
-        return Coordinates.at(latitude, longitude);
+        if(!in.peek().equals(JsonToken.NULL)) {
+            in.beginArray();
+            float latitude = (float) (in.nextDouble());
+            float longitude = (float) (in.nextDouble());
+            in.endArray();
+            return Coordinates.at(latitude, longitude);
+        } else {
+            in.nextNull();
+            return null;
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.common.typeadapter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.sweetzpot.stravazpot.club.model.SportType;
 
@@ -16,11 +17,15 @@ public class SportTypeTypeAdapter extends TypeAdapter<SportType> {
 
     @Override
     public SportType read(JsonReader in) throws IOException {
-        String input = in.nextString();
-        for(SportType type : SportType.values()) {
-            if(type.toString().equalsIgnoreCase(input)) {
-                return type;
+        if(!in.peek().equals(JsonToken.NULL)) {
+            String input = in.nextString();
+            for (SportType type : SportType.values()) {
+                if (type.toString().equalsIgnoreCase(input)) {
+                    return type;
+                }
             }
+        } else {
+            in.nextNull();
         }
         return null;
     }

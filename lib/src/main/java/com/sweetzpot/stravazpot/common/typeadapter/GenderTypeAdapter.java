@@ -11,18 +11,11 @@ import java.io.IOException;
 public class GenderTypeAdapter extends TypeAdapter<Gender> {
 
     @Override
-    public void write(JsonWriter out, Gender value) throws IOException {
-        switch (value) {
-            case MALE:
-                out.value("M");
-                break;
-            case FEMALE:
-                out.value("F");
-                break;
-            case NOT_DEFINED:
-            default:
-                out.nullValue();
-                break;
+    public void write(JsonWriter out, Gender gender) throws IOException {
+        if(gender == Gender.NOT_DEFINED) {
+            out.nullValue();
+        } else {
+            out.value(gender.toString());
         }
     }
 
@@ -30,10 +23,10 @@ public class GenderTypeAdapter extends TypeAdapter<Gender> {
     public Gender read(JsonReader in) throws IOException {
         if(!in.peek().equals(JsonToken.NULL)) {
             String value = in.nextString();
-            if (value.equalsIgnoreCase("M")) {
-                return Gender.MALE;
-            } else if (value.equalsIgnoreCase("F")) {
-                return Gender.FEMALE;
+            for(Gender gender : Gender.values()) {
+                if(gender.toString().equalsIgnoreCase(value)) {
+                    return gender;
+                }
             }
         } else {
             in.nextNull();

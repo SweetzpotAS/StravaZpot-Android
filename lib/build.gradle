@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'stravazpot'
+
+    publishedGroupId = 'com.sweetzpot'
+    libraryName = 'StravaZpot'
+    artifact = 'stravazpot'
+
+    libraryDescription = 'A fluent API to integrate with Strava on Android apps.'
+
+    siteUrl = 'https://github.com/SweetzpotAS/StravaZpot-Android'
+    gitUrl = 'https://github.com/SweetzpotAS/StravaZpot-Android.git'
+
+    libraryVersion = '1.0.0-beta1'
+
+    developerId = 'sweetzpot'
+    developerName = 'SweetZpot AS'
+    developerEmail = 'sweetzpot.as@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -33,3 +57,6 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

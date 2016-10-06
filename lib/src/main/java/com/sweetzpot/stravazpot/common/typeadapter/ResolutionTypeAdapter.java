@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.common.typeadapter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.sweetzpot.stravazpot.stream.model.Resolution;
 
@@ -16,12 +17,16 @@ public class ResolutionTypeAdapter extends TypeAdapter<Resolution> {
 
     @Override
     public Resolution read(JsonReader in) throws IOException {
-        String input = in.nextString();
+        if(!in.peek().equals(JsonToken.NULL)) {
+            String input = in.nextString();
 
-        for(Resolution resolution : Resolution.values()) {
-            if(resolution.toString().equalsIgnoreCase(input)){
-                return resolution;
+            for (Resolution resolution : Resolution.values()) {
+                if (resolution.toString().equalsIgnoreCase(input)) {
+                    return resolution;
+                }
             }
+        } else {
+            in.nextNull();
         }
 
         return null;

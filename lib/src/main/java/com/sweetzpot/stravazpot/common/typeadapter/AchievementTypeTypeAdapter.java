@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.common.typeadapter;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.sweetzpot.stravazpot.activity.model.AchievementType;
 
@@ -16,12 +17,16 @@ public class AchievementTypeTypeAdapter extends TypeAdapter<AchievementType> {
 
     @Override
     public AchievementType read(JsonReader in) throws IOException {
-        int input = in.nextInt();
+        if(!in.peek().equals(JsonToken.NULL)) {
+            int input = in.nextInt();
 
-        for(AchievementType type : AchievementType.values()) {
-            if(type.getRawValue() == input) {
-                return type;
+            for (AchievementType type : AchievementType.values()) {
+                if (type.getRawValue() == input) {
+                    return type;
+                }
             }
+        } else {
+            in.nextNull();
         }
         return null;
     }

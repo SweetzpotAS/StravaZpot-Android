@@ -11,16 +11,8 @@ import java.io.IOException;
 public class MeasurementPreferenceTypeAdapter extends TypeAdapter<MeasurementPreference>{
 
     @Override
-    public void write(JsonWriter out, MeasurementPreference value) throws IOException {
-        switch (value) {
-            case METERS:
-                out.value("meters");
-                break;
-            case FEET:
-            default:
-                out.value("feet");
-                break;
-        }
+    public void write(JsonWriter out, MeasurementPreference measurementPreference) throws IOException {
+        out.value(measurementPreference.toString());
     }
 
     @Override
@@ -28,14 +20,14 @@ public class MeasurementPreferenceTypeAdapter extends TypeAdapter<MeasurementPre
         if(!in.peek().equals(JsonToken.NULL)) {
             String value = in.nextString();
 
-            if(value.equalsIgnoreCase("feet")) {
-                return MeasurementPreference.FEET;
-            } else if(value.equalsIgnoreCase("meters")){
-                return MeasurementPreference.METERS;
+            for(MeasurementPreference measurementPreference : MeasurementPreference.values()) {
+                if(measurementPreference.toString().equalsIgnoreCase(value)) {
+                    return measurementPreference;
+                }
             }
         } else {
             in.nextNull();
         }
-        return MeasurementPreference.FEET;
+        return null;
     }
 }

@@ -631,6 +631,14 @@ All the APIs in **StravaZpot** perform network requests in a synchronous manner 
 - Strava may return a `401 Unauthorized` response code. In that case, the network request will throw a `StravaUnauthorizedException`. It is up to the user of the library to reuthenticate with Strava to get a new token and retry the request.
 - If any other network error happen, or the request is not successful, it will throw a `StravaAPIException`.
 
+## Download
+
+You can get **StravaZpot** from JCenter using Gradle. Just add this line to your build file:
+
+```groovy
+compile 'com.sweetzpot.stravazpot:lib:1.0.0-beta1'
+```
+
 ## License
 
 

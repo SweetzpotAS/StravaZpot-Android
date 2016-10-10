@@ -4,9 +4,9 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'stravazpot'
 
-    publishedGroupId = 'com.sweetzpot'
+    publishedGroupId = 'com.sweetzpot.stravazpot'
     libraryName = 'StravaZpot'
-    artifact = 'stravazpot'
+    artifact = 'lib'
 
     libraryDescription = 'A fluent API to integrate with Strava on Android apps.'
 

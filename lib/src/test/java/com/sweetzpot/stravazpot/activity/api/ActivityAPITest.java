@@ -15,6 +15,7 @@ import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Speed;
+import com.sweetzpot.stravazpot.common.model.Temperature;
 import com.sweetzpot.stravazpot.common.model.Time;
 
 import org.junit.Test;
@@ -235,6 +236,7 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(activity.getWorkoutType(), is(WorkoutType.RUN_LONGRUN));
         assertThat(activity.getGear(), is(notNullValue()));
         assertThat(activity.getAverageSpeed(), is(equalTo(Speed.metersPerSecond(3.4f))));
+        assertThat(activity.getAverageTemperature(), is(equalTo(Temperature.celsiusDegrees(36.2f))));
         assertThat(activity.getMaxSpeed(), is(equalTo(Speed.metersPerSecond(4.514f))));
         assertThat(activity.getCalories(), is(390.5f));
         assertThat(activity.hasKudoed(), is(false));
@@ -335,6 +337,7 @@ public class ActivityAPITest extends StravaAPITest {
                 "    \"resource_state\": 2\n" +
                 "  },\n" +
                 "  \"average_speed\": 3.4,\n" +
+                "  \"average_temp\": 36.2,\n" +
                 "  \"max_speed\": 4.514,\n" +
                 "  \"calories\": 390.5,\n" +
                 "  \"has_kudoed\": false,\n" +

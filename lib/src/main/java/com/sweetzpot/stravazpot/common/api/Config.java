@@ -21,6 +21,7 @@ import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.Percentage;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Speed;
+import com.sweetzpot.stravazpot.common.model.Temperature;
 import com.sweetzpot.stravazpot.common.model.Time;
 import com.sweetzpot.stravazpot.common.typeadapter.AchievementTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.ActivityTypeTypeAdapter;
@@ -44,6 +45,7 @@ import com.sweetzpot.stravazpot.common.typeadapter.SkillLevelTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SpeedTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.SportTypeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.StreamTypeTypeAdapter;
+import com.sweetzpot.stravazpot.common.typeadapter.TemperatureTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TerrainTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TimeTypeAdapter;
 import com.sweetzpot.stravazpot.common.typeadapter.TokenTypeAdapter;
@@ -124,6 +126,7 @@ public abstract class Config {
                 .registerTypeAdapter(WorkoutType.class, new WorkoutTypeTypeAdapter())
                 .registerTypeAdapter(AchievementType.class, new AchievementTypeTypeAdapter())
                 .registerTypeAdapter(Token.class, new TokenTypeAdapter())
+                .registerTypeAdapter(Temperature.class, new TemperatureTypeAdapter())
                 .create();
     }
 }

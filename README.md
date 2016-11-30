@@ -636,7 +636,7 @@ All the APIs in **StravaZpot** perform network requests in a synchronous manner 
 You can get **StravaZpot** from JCenter using Gradle. Just add this line to your build file:
 
 ```groovy
-compile 'com.sweetzpot.stravazpot:lib:1.0.0-beta1'
+compile 'com.sweetzpot.stravazpot:lib:1.0.1'
 ```
 
 ## License

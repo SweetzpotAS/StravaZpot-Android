@@ -115,6 +115,17 @@ public class AthleteAPITest extends StravaAPITest{
         );
     }
 
+    @Test
+    public void shouldNotCrashWithEmptyStats() throws Exception {
+        enqueueEmptyTotalsAndStats();
+        AthleteAPI athleteAPI = givenAnAthleteAPI();
+
+        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615)
+                                .execute();
+
+        assertThat(stats, is(notNullValue()));
+    }
+
     private void assertAthleteParsedCorrectly(Athlete athlete) {
         assertThat(athlete.getID(), is(227615L));
         assertThat(athlete.getResourceState(), is(ResourceState.DETAILED));
@@ -354,5 +365,79 @@ public class AthleteAPITest extends StravaAPITest{
                 "}";
 
         enqueueResponse(statsJSON);
+    }
+
+    private void enqueueEmptyTotalsAndStats() {
+        String totalsJSON = "{\n" +
+                "\"biggest_ride_distance\": null,\n" +
+                "\"biggest_climb_elevation_gain\": null,\n" +
+                "\"recent_ride_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0,\n" +
+                "\"achievement_count\": 0\n" +
+                "},\n" +
+                "\"recent_run_totals\": {\n" +
+                "\"count\": 1,\n" +
+                "\"distance\": 7366.60009765625,\n" +
+                "\"moving_time\": 2788,\n" +
+                "\"elapsed_time\": 2828,\n" +
+                "\"elevation_gain\": 52.69230651855469,\n" +
+                "\"achievement_count\": 0\n" +
+                "},\n" +
+                "\"recent_swim_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0,\n" +
+                "\"achievement_count\": 0\n" +
+                "},\n" +
+                "\"ytd_ride_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0\n" +
+                "},\n" +
+                "\"ytd_run_totals\": {\n" +
+                "\"count\": 1,\n" +
+                "\"distance\": 7367,\n" +
+                "\"moving_time\": 2788,\n" +
+                "\"elapsed_time\": 2828,\n" +
+                "\"elevation_gain\": 53\n" +
+                "},\n" +
+                "\"ytd_swim_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0\n" +
+                "},\n" +
+                "\"all_ride_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0\n" +
+                "},\n" +
+                "\"all_run_totals\": {\n" +
+                "\"count\": 1,\n" +
+                "\"distance\": 7367,\n" +
+                "\"moving_time\": 2788,\n" +
+                "\"elapsed_time\": 2828,\n" +
+                "\"elevation_gain\": 53\n" +
+                "},\n" +
+                "\"all_swim_totals\": {\n" +
+                "\"count\": 0,\n" +
+                "\"distance\": 0,\n" +
+                "\"moving_time\": 0,\n" +
+                "\"elapsed_time\": 0,\n" +
+                "\"elevation_gain\": 0\n" +
+                "}\n" +
+                "}";
+        enqueueResponse(totalsJSON);
     }
 }

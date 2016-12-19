@@ -20,6 +20,7 @@ public class DistanceTypeAdapter extends TypeAdapter<Distance> {
         if(!in.peek().equals(JsonToken.NULL)) {
             return new Distance((float) (in.nextDouble()));
         } else {
+            in.nextNull();
             return null;
         }
     }

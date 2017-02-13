@@ -35,6 +35,16 @@ public class UploadAPITest extends StravaAPITest {
         assertUploadStatusParsedCorrectly(uploadStatus);
     }
 
+    @Test
+    public void shouldCheckUploadStatus() throws Exception {
+        enqueueUploadStatus();
+        UploadAPI uploadAPI = givenAnUploadAPI();
+
+        UploadStatus uploadStatus = uploadAPI.checkUploadStatus(16486788).execute();
+
+        assertRequestPathContains("uploads/16486788");
+    }
+
     private UploadAPI givenAnUploadAPI() {
         return new UploadAPI(givenAValidConfig());
     }

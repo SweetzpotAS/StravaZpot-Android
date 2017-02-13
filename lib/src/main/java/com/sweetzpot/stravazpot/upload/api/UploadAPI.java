@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.upload.api;
 
 import com.sweetzpot.stravazpot.common.api.Config;
 import com.sweetzpot.stravazpot.common.api.StravaAPI;
+import com.sweetzpot.stravazpot.upload.request.CheckUploadStatusRequest;
 import com.sweetzpot.stravazpot.upload.request.UploadFileRequest;
 import com.sweetzpot.stravazpot.upload.rest.UploadRest;
 
@@ -15,5 +16,9 @@ public class UploadAPI extends StravaAPI {
 
     public UploadFileRequest uploadFile(File file) {
         return new UploadFileRequest(file, getAPI(UploadRest.class), this);
+    }
+
+    public CheckUploadStatusRequest checkUploadStatus(int id) {
+        return new CheckUploadStatusRequest(id, getAPI(UploadRest.class), this);
     }
 }

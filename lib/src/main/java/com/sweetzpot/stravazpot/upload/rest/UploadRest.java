@@ -24,7 +24,7 @@ public interface UploadRest {
             @Part("commute") Integer isCommute,
             @Part("data_type") DataType dataType,
             @Part("external_id") String externalID,
-            @Part("file") MultipartBody.Part file);
+            @Part MultipartBody.Part file);
 
     @GET("uploads/{id}")
     Call<UploadStatus> checkUploadStatus(@Path("id") int id);

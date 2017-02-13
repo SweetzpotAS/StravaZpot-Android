@@ -620,6 +620,38 @@ List<Stream> streams = streamAPI.getRouteStreams(ROUTE_ID)
                                 .execute();
 ```
 
+## Upload API
+
+### Create the Upload API object
+
+```java
+UploadAPI uploadAPI = new UploadAPI(config);
+```
+
+### Upload a file
+
+Strava allows you to upload files with formats GPX, FIT or TCX. We recommend to use TCXZpot in order to generate TCX files that can be uploaded to Strava.
+
+```java
+UploadStatus uploadStatus = uploadAPI.uploadFile(new File(<path_to_file>))
+                                     .withDataType(DataType.FIT)
+                                     .withActivityType(UploadActivityType.RIDE)
+                                     .withName("A complete ride around the city")
+                                     .withDescription("No description")
+                                     .isPrivate(false)
+                                     .hasTrainer(false)
+                                     .isCommute(false)
+                                     .withExternalID("test.fit")
+                                     .execute();
+```
+
+### Check upload status
+
+```java
+UploadStatus uploadStatus = uploadAPI.checkUploadStatus(16486788)
+                                     .execute();
+```
+
 ## Threading
 
 All the APIs in **StravaZpot** perform network requests in a synchronous manner and without switching to a new thread. Therefore, it is up to the user of the library to invoke the API in a suitable thread, and outside the Android UI thread in order to avoid `NetworkOnMainThreadException`.
@@ -636,7 +668,7 @@ All the APIs in **StravaZpot** perform network requests in a synchronous manner 
 You can get **StravaZpot** from JCenter using Gradle. Just add this line to your build file:
 
 ```groovy
-compile 'com.sweetzpot.stravazpot:lib:1.0.2'
+compile 'com.sweetzpot.stravazpot:lib:1.1.0'
 ```
 
 ## License

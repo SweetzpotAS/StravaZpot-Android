@@ -76,13 +76,23 @@ public class UploadFileRequest {
     public UploadStatus execute() {
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-        MultipartBody.Part body = MultipartBody.Part.createFormData("file",
-                file.getName(), requestFile);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        Call<UploadStatus> call = restService.upload(activityType, name, description,
-                booleanToInt(isPrivate), booleanToInt(hasTrainer), booleanToInt(isCommute),
-                dataType, externalID, body);
+        Call<UploadStatus> call = restService.upload(
+                requestBodyFromString(activityType.toString()),
+                requestBodyFromString(name),
+                requestBodyFromString(description),
+                booleanToInt(isPrivate),
+                booleanToInt(hasTrainer),
+                booleanToInt(isCommute),
+                requestBodyFromString(dataType.toString()),
+                requestBodyFromString(externalID),
+                body);
         return uploadAPI.execute(call);
+    }
+
+    private RequestBody requestBodyFromString(String str) {
+        return RequestBody.create(MultipartBody.FORM, str);
     }
 
     private Integer booleanToInt(boolean b) {

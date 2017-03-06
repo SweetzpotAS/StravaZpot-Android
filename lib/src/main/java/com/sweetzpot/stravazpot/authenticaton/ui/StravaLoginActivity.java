@@ -64,6 +64,7 @@ public class StravaLoginActivity extends AppCompatActivity {
                     finish();
                     return true;
                 }
+                finish();
                 return false;
             }
         });

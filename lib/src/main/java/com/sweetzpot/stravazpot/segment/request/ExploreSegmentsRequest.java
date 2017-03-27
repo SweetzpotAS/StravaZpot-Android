@@ -2,6 +2,7 @@ package com.sweetzpot.stravazpot.segment.request;
 
 import com.sweetzpot.stravazpot.segment.api.SegmentAPI;
 import com.sweetzpot.stravazpot.segment.model.Bounds;
+import com.sweetzpot.stravazpot.segment.model.ExploreResult;
 import com.sweetzpot.stravazpot.segment.model.ExploreType;
 import com.sweetzpot.stravazpot.segment.model.Segment;
 import com.sweetzpot.stravazpot.segment.rest.SegmentRest;
@@ -41,8 +42,8 @@ public class ExploreSegmentsRequest {
     }
 
     public List<Segment> execute() {
-        Call<List<Segment>> call = restService.exploreSegments(bounds.toString(),
+        Call<ExploreResult> call = restService.exploreSegments(bounds.toString(),
                 activityType, minCategory, maxCategory);
-        return api.execute(call);
+        return api.execute(call).getSegments();
     }
 }

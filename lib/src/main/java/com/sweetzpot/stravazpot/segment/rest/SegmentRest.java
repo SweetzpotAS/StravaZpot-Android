@@ -3,6 +3,7 @@ package com.sweetzpot.stravazpot.segment.rest;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.segment.model.AgeGroup;
 import com.sweetzpot.stravazpot.segment.model.DateRange;
+import com.sweetzpot.stravazpot.segment.model.ExploreResult;
 import com.sweetzpot.stravazpot.segment.model.ExploreType;
 import com.sweetzpot.stravazpot.segment.model.Leaderboard;
 import com.sweetzpot.stravazpot.segment.model.Segment;
@@ -62,7 +63,7 @@ public interface SegmentRest {
             @Query("per_page") Integer perPage);
 
     @GET("segments/explore")
-    Call<List<Segment>> exploreSegments(
+    Call<ExploreResult> exploreSegments(
             @Query("bounds") String bounds,
             @Query("activity_type") ExploreType activityType,
             @Query("min_cat") Integer minCat,

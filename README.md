@@ -59,7 +59,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     if(requestCode == RQ_LOGIN && resultCode == RESULT_OK && data != null) {
-        String code = data.getStringExtra(StravaLoginActivity.RESULT_CODE));
+        String code = data.getStringExtra(StravaLoginActivity.RESULT_CODE);
         // Use code to obtain token
     }
 }
@@ -146,7 +146,7 @@ Zones zones = athleteAPI.getAthleteZones()
                         .execute();
 ```
 
-### Retrieve athlete's totals and stats 
+### Retrieve athlete's totals and stats
 
 ```java
 Stats stats = athleteAPI.getAthleteTotalsAndStats(ATHLETE_ID)
@@ -668,7 +668,7 @@ All the APIs in **StravaZpot** perform network requests in a synchronous manner 
 You can get **StravaZpot** from JCenter using Gradle. Just add this line to your build file:
 
 ```groovy
-compile 'com.sweetzpot.stravazpot:lib:1.1.3'
+compile 'com.sweetzpot.stravazpot:lib:1.1.4'
 ```
 
 ## License

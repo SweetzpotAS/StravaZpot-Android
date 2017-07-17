@@ -59,7 +59,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
     if(requestCode == RQ_LOGIN && resultCode == RESULT_OK && data != null) {
-        String code = data.getStringExtra(StravaLoginActivity.RESULT_CODE));
+        String code = data.getStringExtra(StravaLoginActivity.RESULT_CODE);
         // Use code to obtain token
     }
 }
@@ -146,7 +146,7 @@ Zones zones = athleteAPI.getAthleteZones()
                         .execute();
 ```
 
-### Retrieve athlete's totals and stats 
+### Retrieve athlete's totals and stats
 
 ```java
 Stats stats = athleteAPI.getAthleteTotalsAndStats(ATHLETE_ID)

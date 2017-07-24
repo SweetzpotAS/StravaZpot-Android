@@ -6,7 +6,6 @@ import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
 import com.sweetzpot.stravazpot.common.model.Percentage;
-import com.sweetzpot.stravazpot.common.model.ResourceState;
 import com.sweetzpot.stravazpot.common.model.Time;
 import com.sweetzpot.stravazpot.segment.model.Bounds;
 import com.sweetzpot.stravazpot.segment.model.Leaderboard;
@@ -20,6 +19,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import static com.sweetzpot.stravazpot.common.model.Gender.FEMALE;
+import static com.sweetzpot.stravazpot.common.model.ResourceState.DETAILED;
 import static com.sweetzpot.stravazpot.matchers.DateMatcher.isSameDate;
 import static com.sweetzpot.stravazpot.segment.model.AgeGroup.AGE_25_34;
 import static com.sweetzpot.stravazpot.segment.model.DateRange.THIS_WEEK;
@@ -28,7 +28,6 @@ import static com.sweetzpot.stravazpot.segment.model.WeightClass.KG_75_84;
 import static com.sweetzpot.stravazpot.util.DateUtil.makeDate;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SegmentAPITest extends StravaAPITest{
@@ -193,7 +192,7 @@ public class SegmentAPITest extends StravaAPITest{
 
     private void assertSegmentParsedCorrectly(Segment segment) {
         assertThat(segment.getID(), is(229781));
-        assertThat(segment.getResourceState(), is(ResourceState.DETAILED));
+        assertThat(segment.getResourceState(), is(DETAILED));
         assertThat(segment.getName(), is("Hawk Hill"));
         assertThat(segment.getActivityType(), is(ActivityType.RIDE));
         assertThat(segment.getDistance(), is(equalTo(Distance.meters(2684.82f))));
@@ -212,7 +211,9 @@ public class SegmentAPITest extends StravaAPITest{
         assertThat(segment.getCreatedAt(), isSameDate(makeDate(1, Calendar.JANUARY, 2008, 17, 44, 0)));
         assertThat(segment.getUpdatedAt(), isSameDate(makeDate(4, Calendar.SEPTEMBER, 2013, 20, 0, 50)));
         assertThat(segment.getTotalElevationGain(), is(equalTo(Distance.meters(155.7f))));
-        assertThat(segment.getMap(), is(notNullValue()));
+        assertThat(segment.getMap().getID(), is("s229781"));
+        assertThat(segment.getMap().getPolyline(), is("}g|e...VJr@"));
+        assertThat(segment.getMap().getResourceState(), is(DETAILED));
         assertThat(segment.getEffortCount(), is(51335));
         assertThat(segment.getAthleteCount(), is(7036));
         assertThat(segment.isHazardous(), is(false));

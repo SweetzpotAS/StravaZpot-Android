@@ -23,8 +23,9 @@ public class Route {
     @SerializedName("starred") private boolean starred;
     @SerializedName("timestamp") private long timestamp;
     @SerializedName("segments") private List<Segment> segments;
+    @SerializedName("estimated_moving_time") private int estimatedMovingTime;
 
-    public int getID() {
+	public int getID() {
         return ID;
     }
 
@@ -78,5 +79,9 @@ public class Route {
 
     public List<Segment> getSegments() {
         return segments;
+    }
+
+    public int getEstimatedMovingTime() {
+        return estimatedMovingTime;
     }
 }

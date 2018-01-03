@@ -62,6 +62,7 @@ public class RouteAPITest extends StravaAPITest {
         assertThat(route.getType(), is(RouteType.RIDE));
         assertThat(route.getSubtype(), is(RouteSubtype.MTB));
         assertThat(route.getSegments().size(), is(1));
+        assertThat(route.getEstimatedMovingTime(), is(3432));
     }
 
     private void enqueueRoute() {
@@ -85,6 +86,7 @@ public class RouteAPITest extends StravaAPITest {
                 "  \"starred\": false,\n" +
                 "  \"timestamp\": 1419669292,\n" +
                 "  \"type\": 1,\n" +
+                "  \"estimated_moving_time\": 3432,\n" +
                 "  \"sub_type\": 2,\n" +
                 "  \"segments\": [\n" +
                 "    {\n" +

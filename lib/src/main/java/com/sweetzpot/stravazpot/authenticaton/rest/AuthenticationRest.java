@@ -17,6 +17,5 @@ public interface AuthenticationRest {
             @Field("code") String code);
 
     @POST("/oauth/deauthorize")
-    @FormUrlEncoded
     Call<Void> deauthorize();
 }

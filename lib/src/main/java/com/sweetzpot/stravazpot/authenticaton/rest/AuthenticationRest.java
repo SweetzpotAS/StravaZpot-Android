@@ -15,4 +15,7 @@ public interface AuthenticationRest {
             @Field("client_id") int clientID,
             @Field("client_secret") String clientSecret,
             @Field("code") String code);
+
+    @POST("/oauth/deauthorize")
+    Call<Void> deauthorize();
 }

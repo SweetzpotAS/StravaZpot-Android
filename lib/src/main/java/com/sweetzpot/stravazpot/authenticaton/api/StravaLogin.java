@@ -7,7 +7,7 @@ import com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginActivity;
 
 public class StravaLogin {
 
-    private static final String STRAVA_LOGIN_URL = "https://www.strava.com/oauth/authorize?response_type=code";
+    private static final String STRAVA_LOGIN_URL = "https://www.strava.com/oauth/mobile/authorize?response_type=code";
     private Context context;
     private int clientID;
     private String redirectURI;

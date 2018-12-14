@@ -16,6 +16,7 @@ public class AuthenticationAPITest extends StravaAPITest {
     private static final int ANY_CLIENT_ID = 1234;
     private static final String ANY_CLIENT_SECRET = "any_secret";
     private static final String ANY_CODE = "any_code";
+    private static final String ANY_TOKEN = "any_code";
 
     @Test
     public void shouldRequestAToken() throws Exception {
@@ -33,6 +34,27 @@ public class AuthenticationAPITest extends StravaAPITest {
         );
         assertLoginResultParsedCorrectly(loginResult);
     }
+
+
+    @Test
+    public void shouldRefreshAToken() throws Exception {
+        enqueueToken();
+        AuthenticationAPI authenticationAPI = givenAnAuthenticationAPI();
+
+        LoginResult loginResult = authenticationAPI.refreshTokenForApp(AppCredentials.with(ANY_CLIENT_ID, ANY_CLIENT_SECRET))
+                .withRefreshToken(ANY_TOKEN)
+                .refreshToken();
+
+        assertRequestBodyContains(
+                "client_id=1234",
+                "client_secret=any_secret",
+                "code=any_code"
+        );
+        assertLoginResultParsedCorrectly(loginResult);
+    }
+
+
+
 
     @Test
     public void shouldDeauthorize() throws Exception {
@@ -54,7 +76,7 @@ public class AuthenticationAPITest extends StravaAPITest {
     }
 
     private void assertLoginResultParsedCorrectly(LoginResult loginResult) {
-        assertThat(loginResult.getToken().toString(), is("Bearer 83ebeabdec09f6670863766f792ead24d61fe3f9"));
+        assertThat(loginResult.formAccessToken(), is("Bearer 83ebeabdec09f6670863766f792ead24d61fe3f9"));
         assertThat(loginResult.getAthlete(), is(notNullValue()));
     }
 

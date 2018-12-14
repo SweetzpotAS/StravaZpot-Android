@@ -13,6 +13,7 @@ public class AuthenticationRequest {
     private final AuthenticationRest restService;
     private final AuthenticationAPI api;
     private String code;
+    private String refreshToken;
 
     public AuthenticationRequest(AppCredentials appCredentials, AuthenticationRest restService, AuthenticationAPI api) {
         this.appCredentials = appCredentials;
@@ -23,6 +24,18 @@ public class AuthenticationRequest {
     public AuthenticationRequest withCode(String code) {
         this.code = code;
         return this;
+    }
+
+
+    public AuthenticationRequest withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+
+
+    public LoginResult refreshToken() {
+        Call<LoginResult> call = restService.refreshToken(appCredentials.getClientID(), appCredentials.getClientSecret(),"refresh_token" ,refreshToken);
+        return api.execute(call);
     }
 
     public LoginResult execute() {

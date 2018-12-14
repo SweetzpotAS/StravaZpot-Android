@@ -80,11 +80,11 @@ public class StravaLogin {
     }
 
     private String accessScopeParameter() {
-        if(accessScope != null) {
-            return "&scope=" + accessScope.toString();
-        } else {
-            return "";
+        if(accessScope == null) {
+            accessScope = AccessScope.PUBLIC;
         }
+        return "&scope=" + accessScope.toString();
+
     }
 
 

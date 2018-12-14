@@ -91,6 +91,23 @@ Notice that in this call you must provide the Client ID and Secret provided by S
 
 If the previous request is successful, you will get a `LoginResult`, which has a `Token` that you can use in your subsequent API calls, and an `Athlete` instance, representing the authenticated user.
 
+
+
+
+### Refresh a Token
+
+Access tokens are used by applications to obtain and modify Strava resources on behalf of the authenticated athlete. Refresh tokens are used to obtain new access tokens when older ones expire.
+```java
+AuthenticationConfig config = AuthenticationConfig.create()
+                                                  .debug()
+                                                  .build();
+AuthenticationAPI api = new AuthenticationAPI(config);
+LoginResult loginResult = authenticationAPI.refreshTokenForApp(AppCredentials.with(CLIENT_ID,CLIENT_SECRET))
+                .withRefreshToken(TOKEN)
+                .refreshToken();
+
+```
+
 ### Deauthorize
 
 ```java

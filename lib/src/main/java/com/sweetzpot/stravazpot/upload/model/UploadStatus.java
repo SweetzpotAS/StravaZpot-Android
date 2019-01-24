@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class UploadStatus {
 
-    @SerializedName("id") private int id;
+    @SerializedName("id") private long id;
     @SerializedName("external_id") private String externalID;
     @SerializedName("error") private String error;
     @SerializedName("status") private String status;
-    @SerializedName("activity_id") private Integer activityID;
+    @SerializedName("activity_id") private Long activityID;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class UploadStatus {
         return status;
     }
 
-    public Integer getActivityID() {
+    public Long getActivityID() {
         return activityID;
     }
 }

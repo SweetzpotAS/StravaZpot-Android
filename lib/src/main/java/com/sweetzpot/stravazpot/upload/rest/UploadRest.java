@@ -26,5 +26,5 @@ public interface UploadRest {
             @Part MultipartBody.Part file);
 
     @GET("uploads/{id}")
-    Call<UploadStatus> checkUploadStatus(@Path("id") int id);
+    Call<UploadStatus> checkUploadStatus(@Path("id") long id);
 }

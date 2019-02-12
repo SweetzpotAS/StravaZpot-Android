@@ -15,6 +15,7 @@ import com.sweetzpot.stravazpot.club.model.Membership;
 import com.sweetzpot.stravazpot.club.model.SkillLevel;
 import com.sweetzpot.stravazpot.club.model.SportType;
 import com.sweetzpot.stravazpot.club.model.Terrain;
+import com.sweetzpot.stravazpot.common.api.security.OKHttpUtil;
 import com.sweetzpot.stravazpot.common.model.Coordinates;
 import com.sweetzpot.stravazpot.common.model.Distance;
 import com.sweetzpot.stravazpot.common.model.Gender;
@@ -87,7 +88,7 @@ public abstract class Config {
             builder.addInterceptor(interceptor);
         }
 
-        OkHttpClient client = builder.build();
+        OkHttpClient client = OKHttpUtil.enableTls12OnPreLollipop(builder).build();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(baseURL)
                 .client(client)

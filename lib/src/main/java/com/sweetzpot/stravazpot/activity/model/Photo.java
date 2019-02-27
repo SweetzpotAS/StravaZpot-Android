@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Photo {
     @SerializedName("unique_id") private String uniqueID;
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("activity_id") private int activityID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("urls") private HashMap<String, String> urls;
@@ -26,7 +26,7 @@ public class Photo {
         return uniqueID;
     }
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                                     .withRedirectURI("http://truizlop.github.io/token_exchange")
                                     .withApprovalPrompt(AUTO)
                                     .withAccessScope(AccessScope.WRITE)
-                                    .makeIntent();
+                                    .makeWebIntent();
         startActivityForResult(intent, RQ_LOGIN);
     }
 

@@ -3,11 +3,14 @@ package com.sweetzpot.stravazpot.authenticaton.api;
 import android.content.Context;
 import android.content.Intent;
 
+import android.net.Uri;
 import com.sweetzpot.stravazpot.authenticaton.ui.StravaLoginActivity;
 
 public class StravaLogin {
 
-    private static final String STRAVA_LOGIN_URL = "https://www.strava.com/oauth/mobile/authorize?response_type=code";
+    private static final String STRAVA_LOGIN_URL_MOBILE = "https://www.strava.com/oauth/mobile/authorize";
+    private static final String STRAVA_LOGIN_URL_WEB = "https://www.strava.com/oauth/authorize";
+
     private Context context;
     private int clientID;
     private String redirectURI;
@@ -42,30 +45,44 @@ public class StravaLogin {
         return this;
     }
 
-    public Intent makeIntent() {
+
+    public Intent makeMobileIntent() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, makeLoginURL(STRAVA_LOGIN_URL_MOBILE));
+        return intent;
+    }
+
+
+    public Intent makeWebIntent() {
         Intent intent = new Intent(context, StravaLoginActivity.class);
-        intent.putExtra(StravaLoginActivity.EXTRA_LOGIN_URL, makeLoginURL());
+        intent.putExtra(StravaLoginActivity.EXTRA_LOGIN_URL, makeLoginURL(STRAVA_LOGIN_URL_WEB).toString());
         intent.putExtra(StravaLoginActivity.EXTRA_REDIRECT_URL, redirectURI);
         return intent;
     }
 
-    private String makeLoginURL() {
-        StringBuilder loginURLBuilder = new StringBuilder();
-        loginURLBuilder.append(STRAVA_LOGIN_URL);
-        loginURLBuilder.append(clientIDParameter());
-        loginURLBuilder.append(redirectURIParameter());
-        loginURLBuilder.append(approvalPromptParameter());
-        loginURLBuilder.append(accessScopeParameter());
-        return loginURLBuilder.toString();
+
+
+    private Uri makeLoginURL(String url) {
+
+        return Uri.parse(url)
+                .buildUpon()
+                .appendQueryParameter("client_id", clientIDParameter())
+                .appendQueryParameter("redirect_uri", redirectURIParameter())
+                .appendQueryParameter("response_type", "code")
+                .appendQueryParameter("approval_prompt", approvalPromptParameter())
+                .appendQueryParameter("scope", accessScopeParameter())
+                .build();
     }
 
+
+
+
     private String clientIDParameter() {
-        return "&client_id=" + clientID;
+        return "" + clientID;
     }
 
     private String redirectURIParameter() {
         if(redirectURI != null) {
-            return "&redirect_uri=" + redirectURI;
+            return redirectURI;
         } else {
             return "";
         }
@@ -73,7 +90,7 @@ public class StravaLogin {
 
     private String approvalPromptParameter() {
         if(approvalPrompt != null) {
-            return "&approval_prompt=" + approvalPrompt.toString();
+            return approvalPrompt.toString();
         } else {
             return "";
         }
@@ -83,7 +100,7 @@ public class StravaLogin {
         if(accessScope == null) {
             accessScope = AccessScope.PUBLIC;
         }
-        return "&scope=" + accessScope.toString();
+        return accessScope.toString();
 
     }
 

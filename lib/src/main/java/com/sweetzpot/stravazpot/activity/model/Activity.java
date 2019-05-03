@@ -16,10 +16,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Activity {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("external_id") private String externalID;
-    @SerializedName("upload_id") private int uploadID;
+    @SerializedName("upload_id") private long uploadID;
     @SerializedName("athlete") private Athlete athlete;
     @SerializedName("name") private String name;
     @SerializedName("description") private String description;
@@ -35,12 +35,12 @@ public class Activity {
     @SerializedName("timezone") private String timezone;
     @SerializedName("start_latlng") private Coordinates startCoordinates;
     @SerializedName("end_latlng") private Coordinates endCoordinates;
-    @SerializedName("achievement_count") private int achievementCount;
-    @SerializedName("kudos_count") private int kudosCount;
-    @SerializedName("comment_count") private int commentCount;
-    @SerializedName("athlete_count") private int athleteCount;
-    @SerializedName("photo_count") private int photoCount;
-    @SerializedName("total_photo_count") private int totalPhotoCount;
+    @SerializedName("achievement_count") private long achievementCount;
+    @SerializedName("kudos_count") private long kudosCount;
+    @SerializedName("comment_count") private long commentCount;
+    @SerializedName("athlete_count") private long athleteCount;
+    @SerializedName("photo_count") private long photoCount;
+    @SerializedName("total_photo_count") private long totalPhotoCount;
     @SerializedName("photos") private PhotoSummary photos;
     @SerializedName("map") private Map map;
     @SerializedName("trainer") private boolean trainer;
@@ -58,22 +58,22 @@ public class Activity {
     @SerializedName("average_cadence") private float averageCadence;
     @SerializedName("average_temp") private Temperature averageTemperature;
     @SerializedName("average_watts") private float averageWatts;
-    @SerializedName("max_watts") private int maxWatts;
-    @SerializedName("weighted_average_watts") private int weightedAverageWatts;
+    @SerializedName("max_watts") private long maxWatts;
+    @SerializedName("weighted_average_watts") private long weightedAverageWatts;
     @SerializedName("kilojoules") private float kilojoules;
     @SerializedName("device_watts") private boolean deviceWatts;
     @SerializedName("has_heartrate") private boolean hasHeartRate;
     @SerializedName("average_heartrate") private float averageHeartRate;
-    @SerializedName("max_heartrate") private int maxHeartRate;
+    @SerializedName("max_heartrate") private long maxHeartRate;
     @SerializedName("calories") private float calories;
-    @SerializedName("suffer_score") private int sufferScore;
+    @SerializedName("suffer_score") private long sufferScore;
     @SerializedName("has_kudoed") private boolean hasKudoed;
     @SerializedName("segment_efforts") private List<SegmentEffort> segmentEfforts;
     @SerializedName("best_efforts") private List<SegmentEffort> bestEfforts;
     @SerializedName("splits_metric") private List<Split> splitsMetric;
     @SerializedName("splits_standard") private List<Split> splitsStandard;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
@@ -85,7 +85,7 @@ public class Activity {
         return externalID;
     }
 
-    public int getUploadID() {
+    public long getUploadID() {
         return uploadID;
     }
 
@@ -149,27 +149,27 @@ public class Activity {
         return endCoordinates;
     }
 
-    public int getAchievementCount() {
+    public long getAchievementCount() {
         return achievementCount;
     }
 
-    public int getKudosCount() {
+    public long getKudosCount() {
         return kudosCount;
     }
 
-    public int getCommentCount() {
+    public long getCommentCount() {
         return commentCount;
     }
 
-    public int getAthleteCount() {
+    public long getAthleteCount() {
         return athleteCount;
     }
 
-    public int getPhotoCount() {
+    public long getPhotoCount() {
         return photoCount;
     }
 
-    public int getTotalPhotoCount() {
+    public long getTotalPhotoCount() {
         return totalPhotoCount;
     }
 
@@ -241,11 +241,11 @@ public class Activity {
         return averageWatts;
     }
 
-    public int getMaxWatts() {
+    public long getMaxWatts() {
         return maxWatts;
     }
 
-    public int getWeightedAverageWatts() {
+    public long getWeightedAverageWatts() {
         return weightedAverageWatts;
     }
 
@@ -265,7 +265,7 @@ public class Activity {
         return averageHeartRate;
     }
 
-    public int getMaxHeartRate() {
+    public long getMaxHeartRate() {
         return maxHeartRate;
     }
 
@@ -273,7 +273,7 @@ public class Activity {
         return calories;
     }
 
-    public int getSufferScore() {
+    public long getSufferScore() {
         return sufferScore;
     }
 

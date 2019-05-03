@@ -200,10 +200,10 @@ public class ActivityAPITest extends StravaAPITest {
     }
 
     private void assertActivityParsedCorrectly(Activity activity) {
-        assertThat(activity.getID(), is(321934));
+        assertThat(activity.getID(), is(321934L));
         assertThat(activity.getResourceState(), is(ResourceState.DETAILED));
         assertThat(activity.getExternalID(), is("2012-12-12_21-40-32-80-29011.fit"));
-        assertThat(activity.getUploadID(), is(361720));
+        assertThat(activity.getUploadID(), is(2448808580L));
         assertThat(activity.getAthlete(), is(notNullValue()));
         assertThat(activity.getName(), is("Evening Ride"));
         assertThat(activity.getDescription(), is("the best ride ever"));
@@ -219,12 +219,12 @@ public class ActivityAPITest extends StravaAPITest {
         assertThat(activity.getTimezone(), is("(GMT-08:00) America/Los_Angeles"));
         assertThat(activity.getStartCoordinates(), is(equalTo(Coordinates.at(37.8f, -122.27f))));
         assertThat(activity.getEndCoordinates(), is(equalTo(Coordinates.at(37.8f, -122.27f))));
-        assertThat(activity.getAchievementCount(), is(6));
-        assertThat(activity.getKudosCount(), is(1));
-        assertThat(activity.getCommentCount(), is(1));
-        assertThat(activity.getAthleteCount(), is(1));
-        assertThat(activity.getPhotoCount(), is(0));
-        assertThat(activity.getTotalPhotoCount(), is(0));
+        assertThat(activity.getAchievementCount(), is(6L));
+        assertThat(activity.getKudosCount(), is(1L));
+        assertThat(activity.getCommentCount(), is(1L));
+        assertThat(activity.getAthleteCount(), is(1L));
+        assertThat(activity.getPhotoCount(), is(0L));
+        assertThat(activity.getTotalPhotoCount(), is(0L));
         assertThat(activity.getPhotos(), is(notNullValue()));
         assertPhotoSummaryParsedCorrectly(activity.getPhotos());
         assertThat(activity.getMap(), is(notNullValue()));
@@ -274,7 +274,7 @@ public class ActivityAPITest extends StravaAPITest {
                 "  \"id\": 321934,\n" +
                 "  \"resource_state\": 3,\n" +
                 "  \"external_id\": \"2012-12-12_21-40-32-80-29011.fit\",\n" +
-                "  \"upload_id\": 361720,\n" +
+                "  \"upload_id\": 2448808580,\n" +
                 "  \"athlete\": {\n" +
                 "    \"id\": 227615,\n" +
                 "    \"resource_state\": 1\n" +

@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 
 import com.sweetzpot.stravazpot.R;
 
-public class StravaLoginButton extends ImageButton {
+public class StravaLoginButton extends android.support.v7.widget.AppCompatImageButton {
     public StravaLoginButton(Context context) {
         this(context, null);
     }

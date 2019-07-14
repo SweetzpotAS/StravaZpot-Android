@@ -91,6 +91,14 @@ Notice that in this call you must provide the Client ID and Secret provided by S
 
 If the previous request is successful, you will get a `LoginResult`, which has a `Token` that you can use in your subsequent API calls, and an `Athlete` instance, representing the authenticated user.
 
+### Deauthorize
+
+```java
+AuthenticationAPI api = new AuthenticationAPI(config);
+authenticationAPI.deauthorize()
+                 .execute();
+```
+
 ## Athlete API
 
 ### StravaConfig
@@ -668,13 +676,13 @@ All the APIs in **StravaZpot** perform network requests in a synchronous manner 
 You can get **StravaZpot** from JCenter using Gradle. Just add this line to your build file:
 
 ```groovy
-compile 'com.sweetzpot.stravazpot:lib:1.2'
+compile 'com.sweetzpot.stravazpot:lib:1.3.1'
 ```
 
 ## License
 
 
-    Copyright 2016 SweetZpot AS
+    Copyright 2018 SweetZpot AS
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

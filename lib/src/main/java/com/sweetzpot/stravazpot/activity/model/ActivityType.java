@@ -26,6 +26,7 @@ public enum ActivityType {
     STANDUP_PADDLING("StandUpPaddling"),
     SURFING("Surfing"),
     VIRTUAL_RIDE("VirtualRide"),
+    VIRTUAL_RUN("VirtualRun"),
     WEIGHT_TRAINING("WeightTraining"),
     WINDSURF("Windsurf"),
     WORKOUT("Workout"),

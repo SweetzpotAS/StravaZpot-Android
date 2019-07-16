@@ -25,5 +25,6 @@ before_install:
   - echo "sdk.dir=$ANDROID_HOME" > local.properties
   - echo "bintray.user=user" >> local.properties
   - echo "bintray.apikey=key" >> local.properties
+  - yes | sdkmanager "platforms;android-27"
 script:
   - ./gradlew clean assemble test

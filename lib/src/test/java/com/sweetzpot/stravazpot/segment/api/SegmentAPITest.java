@@ -191,7 +191,7 @@ public class SegmentAPITest extends StravaAPITest{
     }
 
     private void assertSegmentParsedCorrectly(Segment segment) {
-        assertThat(segment.getID(), is(229781));
+        assertThat(segment.getID(), is(229781L));
         assertThat(segment.getResourceState(), is(DETAILED));
         assertThat(segment.getName(), is("Hawk Hill"));
         assertThat(segment.getActivityType(), is(ActivityType.RIDE));
@@ -266,7 +266,7 @@ public class SegmentAPITest extends StravaAPITest{
         assertThat(leaderboard.getEntries().size(), is(2));
         LeaderboardEntry entry = leaderboard.getEntries().get(0);
         assertThat(entry.getAthleteName(), is("Jim Whimpey"));
-        assertThat(entry.getAthleteID(), is(123529));
+        assertThat(entry.getAthleteID(), is(123529L));
         assertThat(entry.getAthleteGender(), is(Gender.MALE));
         assertThat(entry.getAverageHeartRate(), is(190.5f));
         assertThat(entry.getAverageWatts(), is(460.8f));
@@ -275,8 +275,8 @@ public class SegmentAPITest extends StravaAPITest{
         assertThat(entry.getMovingTime(), is(equalTo(Time.seconds(360))));
         assertThat(entry.getStartDate(), isSameDate(makeDate(29, Calendar.MARCH, 2013, 13, 49, 35)));
         assertThat(entry.getStartDateLocal(), isSameDate(makeDate(29, Calendar.MARCH, 2013, 6, 49, 35)));
-        assertThat(entry.getActivityID(), is(46320211));
-        assertThat(entry.getEffortID(), is(801006623));
+        assertThat(entry.getActivityID(), is(46320211L));
+        assertThat(entry.getEffortID(), is(801006623L));
         assertThat(entry.getRank(), is(1));
         assertThat(entry.getAthleteProfile(), is("http://pics.com/227615/large.jpg"));
     }

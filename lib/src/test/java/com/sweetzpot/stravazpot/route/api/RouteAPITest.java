@@ -50,7 +50,7 @@ public class RouteAPITest extends StravaAPITest {
         assertThat(route.getDescription(), is(""));
         assertThat(route.getDistance(), is(equalTo(Distance.meters(173625.6f))));
         assertThat(route.getElevationGain(), is(equalTo(Distance.meters(2964.6f))));
-        assertThat(route.getID(), is(1263727));
+        assertThat(route.getID(), is(1263727L));
         assertThat(route.getMap().getID(), is("r1263727"));
         assertThat(route.getMap().getSummaryPolyline(), is("qyrFxswgV|"));
         assertThat(route.getMap().getResourceState(), is(ResourceState.DETAILED));

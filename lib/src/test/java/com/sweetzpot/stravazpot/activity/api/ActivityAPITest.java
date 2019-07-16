@@ -200,10 +200,10 @@ public class ActivityAPITest extends StravaAPITest {
     }
 
     private void assertActivityParsedCorrectly(Activity activity) {
-        assertThat(activity.getID(), is(321934));
+        assertThat(activity.getID(), is(321934L));
         assertThat(activity.getResourceState(), is(ResourceState.DETAILED));
         assertThat(activity.getExternalID(), is("2012-12-12_21-40-32-80-29011.fit"));
-        assertThat(activity.getUploadID(), is(361720));
+        assertThat(activity.getUploadID(), is(361720L));
         assertThat(activity.getAthlete(), is(notNullValue()));
         assertThat(activity.getName(), is("Evening Ride"));
         assertThat(activity.getDescription(), is("the best ride ever"));
@@ -537,7 +537,7 @@ public class ActivityAPITest extends StravaAPITest {
     private void assertActivityLapsParsedCorrectly(List<ActivityLap> laps) {
         assertThat(laps.size(), is(1));
         ActivityLap lap = laps.get(0);
-        assertThat(lap.getID(), is(401614652));
+        assertThat(lap.getID(), is(401614652L));
         assertThat(lap.getResourceState(), is(ResourceState.SUMMARY));
         assertThat(lap.getName(), is("Lap 1"));
         assertThat(lap.getActivity(), is(notNullValue()));

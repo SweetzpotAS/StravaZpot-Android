@@ -42,8 +42,8 @@ public class CommentAPITest extends StravaAPITest {
     private void assertCommentsParsedCorrectly(List<Comment> comments) {
         assertThat(comments.size(), is(1));
         Comment comment = comments.get(0);
-        assertThat(comment.getID(), is(26));
-        assertThat(comment.getActivityID(), is(123));
+        assertThat(comment.getID(), is(26L));
+        assertThat(comment.getActivityID(), is(123L));
         assertThat(comment.getResourceState(), is(ResourceState.SUMMARY));
         assertThat(comment.getText(), is("Nice ride!!!"));
         assertThat(comment.getAthlete(), is(notNullValue()));

@@ -9,7 +9,7 @@ import com.sweetzpot.stravazpot.segment.model.Segment;
 import java.util.List;
 
 public class Route {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("name") private String name;
     @SerializedName("description") private String description;
@@ -25,7 +25,7 @@ public class Route {
     @SerializedName("segments") private List<Segment> segments;
     @SerializedName("estimated_moving_time") private int estimatedMovingTime;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

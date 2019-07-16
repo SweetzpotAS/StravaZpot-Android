@@ -7,14 +7,14 @@ import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import java.util.Date;
 
 public class Announcement {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
-    @SerializedName("club_id") private int clubID;
+    @SerializedName("club_id") private long clubID;
     @SerializedName("athlete") private Athlete athlete;
     @SerializedName("created_at") private Date createdAt;
     @SerializedName("message") private String message;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
@@ -22,7 +22,7 @@ public class Announcement {
         return resourceState;
     }
 
-    public int getClubID() {
+    public long getClubID() {
         return clubID;
     }
 

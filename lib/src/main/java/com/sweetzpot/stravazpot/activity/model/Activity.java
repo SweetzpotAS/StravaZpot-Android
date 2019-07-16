@@ -16,10 +16,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Activity {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("external_id") private String externalID;
-    @SerializedName("upload_id") private int uploadID;
+    @SerializedName("upload_id") private long uploadID;
     @SerializedName("athlete") private Athlete athlete;
     @SerializedName("name") private String name;
     @SerializedName("description") private String description;
@@ -73,7 +73,7 @@ public class Activity {
     @SerializedName("splits_metric") private List<Split> splitsMetric;
     @SerializedName("splits_standard") private List<Split> splitsStandard;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
@@ -85,7 +85,7 @@ public class Activity {
         return externalID;
     }
 
-    public int getUploadID() {
+    public long getUploadID() {
         return uploadID;
     }
 

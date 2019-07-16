@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.sweetzpot.stravazpot.common.model.ResourceState;
 
 public class Club {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("name") private String name;
     @SerializedName("profile_medium") private String profileMedium;
@@ -27,7 +27,7 @@ public class Club {
     @SerializedName("following_count") private int followingCount;
     @SerializedName("url") private String url;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

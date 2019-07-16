@@ -7,14 +7,14 @@ import com.sweetzpot.stravazpot.athlete.model.Athlete;
 import java.util.Date;
 
 public class Comment {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
-    @SerializedName("activity_id") private int activityID;
+    @SerializedName("activity_id") private long activityID;
     @SerializedName("text") private String text;
     @SerializedName("athlete") private Athlete athlete;
     @SerializedName("created_at") private Date createdAt;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
@@ -22,7 +22,7 @@ public class Comment {
         return resourceState;
     }
 
-    public int getActivityID() {
+    public long getActivityID() {
         return activityID;
     }
 

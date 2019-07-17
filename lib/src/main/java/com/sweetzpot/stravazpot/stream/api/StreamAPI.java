@@ -14,7 +14,7 @@ public class StreamAPI extends StravaAPI {
         super(config);
     }
 
-    public GetActivityStreamsRequest getActivityStreams(int activityID) {
+    public GetActivityStreamsRequest getActivityStreams(long activityID) {
         return new GetActivityStreamsRequest(activityID, getAPI(StreamRest.class), this);
     }
 

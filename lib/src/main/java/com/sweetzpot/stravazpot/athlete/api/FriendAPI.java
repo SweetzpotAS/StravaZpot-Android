@@ -19,7 +19,7 @@ public class FriendAPI extends StravaAPI {
         return new GetMyFriendsRequest(getAPI(FriendRest.class), this);
     }
 
-    public GetAthleteFriendsRequest getAthleteFriends(int athleteID) {
+    public GetAthleteFriendsRequest getAthleteFriends(long athleteID) {
         return new GetAthleteFriendsRequest(athleteID, getAPI(FriendRest.class), this);
     }
 
@@ -27,11 +27,11 @@ public class FriendAPI extends StravaAPI {
         return new GetMyFollowersRequest(getAPI(FriendRest.class), this);
     }
 
-    public GetAthleteFollowersRequest getAthleteFollowers(int athleteID) {
+    public GetAthleteFollowersRequest getAthleteFollowers(long athleteID) {
         return new GetAthleteFollowersRequest(athleteID, getAPI(FriendRest.class), this);
     }
 
-    public GetBothFollowingRequest getBothFollowing(int athleteID) {
+    public GetBothFollowingRequest getBothFollowing(long athleteID) {
         return new GetBothFollowingRequest(athleteID, getAPI(FriendRest.class), this);
     }
 }

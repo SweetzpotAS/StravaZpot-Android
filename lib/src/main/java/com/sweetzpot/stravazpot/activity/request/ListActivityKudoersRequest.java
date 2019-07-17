@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class ListActivityKudoersRequest {
 
-    private final int activityID;
+    private final long activityID;
     private final KudosRest restService;
     private final KudosAPI api;
     private Integer page;
     private Integer perPage;
 
-    public ListActivityKudoersRequest(int activityID, KudosRest restService, KudosAPI api) {
+    public ListActivityKudoersRequest(long activityID, KudosRest restService, KudosAPI api) {
         this.activityID = activityID;
         this.restService = restService;
         this.api = api;

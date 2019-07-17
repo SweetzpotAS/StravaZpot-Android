@@ -10,11 +10,11 @@ import retrofit2.Call;
 
 public class GetRouteStreamsRequest {
 
-    private final int routeID;
+    private final long routeID;
     private final StreamRest restService;
     private final StreamAPI api;
 
-    public GetRouteStreamsRequest(int routeID, StreamRest restService, StreamAPI api) {
+    public GetRouteStreamsRequest(long routeID, StreamRest restService, StreamAPI api) {
         this.routeID = routeID;
         this.restService = restService;
         this.api = api;

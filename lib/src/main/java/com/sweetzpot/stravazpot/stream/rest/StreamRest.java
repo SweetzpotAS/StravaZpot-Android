@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 public interface StreamRest {
     @GET("activities/{id}/streams/{types}")
     Call<List<Stream>> getActivityStreams(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Path("types") String types,
             @Query("resolution") Resolution resolution,
             @Query("series_type") SeriesType seriesType);
@@ -28,11 +28,11 @@ public interface StreamRest {
 
     @GET("segments/{id}/streams/{types}")
     Call<List<Stream>> getSegmentStreams(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Path("types") String types,
             @Query("resolution") Resolution resolution,
             @Query("series_type") SeriesType seriesType);
 
     @GET("routes/{id}/streams")
-    Call<List<Stream>> getRouteStreams(@Path("id") Integer id);
+    Call<List<Stream>> getRouteStreams(@Path("id") Long id);
 }

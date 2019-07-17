@@ -21,7 +21,7 @@ public interface AthleteRest {
     Call<Athlete> getCurrentAthlete();
 
     @GET("athletes/{id}")
-    Call<Athlete> getAthlete(@Path("id") Integer id);
+    Call<Athlete> getAthlete(@Path("id") Long id);
 
     @PUT("athlete") @FormUrlEncoded
     Call<Athlete> updateAthlete(
@@ -35,11 +35,11 @@ public interface AthleteRest {
     Call<Zones> getAthleteZones();
 
     @GET("athletes/{id}/stats")
-    Call<Stats> getAthleteStats(@Path("id") Integer id);
+    Call<Stats> getAthleteStats(@Path("id") Long id);
 
     @GET("athletes/{id}/koms")
     Call<List<SegmentEffort>> listAthleteKOMS(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 }

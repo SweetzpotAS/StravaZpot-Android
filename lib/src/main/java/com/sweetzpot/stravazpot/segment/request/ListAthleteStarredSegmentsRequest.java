@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class ListAthleteStarredSegmentsRequest {
 
-    private final int athleteID;
+    private final long athleteID;
     private final SegmentRest restService;
     private final SegmentAPI api;
     private Integer page;
     private Integer perPage;
 
-    public ListAthleteStarredSegmentsRequest(int athleteID, SegmentRest restService, SegmentAPI api) {
+    public ListAthleteStarredSegmentsRequest(long athleteID, SegmentRest restService, SegmentAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

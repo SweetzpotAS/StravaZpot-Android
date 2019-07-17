@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class ListAthleteKOMSRequest {
 
-    private final int athleteID;
+    private final long athleteID;
     private final AthleteRest restService;
     private final AthleteAPI api;
     private Integer page;
     private Integer perPage;
 
-    public ListAthleteKOMSRequest(int athleteID, AthleteRest restService, AthleteAPI api) {
+    public ListAthleteKOMSRequest(long athleteID, AthleteRest restService, AthleteAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

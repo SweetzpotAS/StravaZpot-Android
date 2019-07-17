@@ -22,7 +22,7 @@ import retrofit2.http.Query;
 
 public interface SegmentRest {
     @GET("segments/{id}")
-    Call<Segment> getSegment(@Path("id") Integer id);
+    Call<Segment> getSegment(@Path("id") Long id);
 
     @GET("segments/starred")
     Call<List<Segment>> getMyStarredSegments(
@@ -31,19 +31,19 @@ public interface SegmentRest {
 
     @GET("athletes/{id}/segments/starred")
     Call<List<Segment>> getAthleteStarredSegments(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @PUT("segments/{id}/starred") @FormUrlEncoded
     Call<Segment> starSegment(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Field("starred") Boolean starred);
 
     @GET("segments/{id}/all_efforts")
     Call<List<SegmentEffort>> getSegmentEfforts(
-            @Path("id") Integer id,
-            @Query("athlete_id") Integer athleteID,
+            @Path("id") Long id,
+            @Query("athlete_id") Long athleteID,
             @Query("start_date_local") String startDate,
             @Query("end_date_local") String endDate,
             @Query("page") Integer page,
@@ -51,12 +51,12 @@ public interface SegmentRest {
 
     @GET("segments/{id}/leaderboard")
     Call<Leaderboard> getSegmentLeaderboard(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("gender") Gender gender,
             @Query("age_group") AgeGroup ageGroup,
             @Query("weight_class") WeightClass weightClass,
             @Query("following") Boolean following,
-            @Query("club_id") Integer clubID,
+            @Query("club_id") Long clubID,
             @Query("date_range") DateRange dateRange,
             @Query("context_entries") Integer contextEntries,
             @Query("page") Integer page,

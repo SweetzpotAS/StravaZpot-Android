@@ -18,39 +18,39 @@ import retrofit2.http.Query;
 
 public interface ClubRest {
     @GET("clubs/{id}")
-    Call<Club> getClub(@Path("id") Integer id);
+    Call<Club> getClub(@Path("id") Long id);
 
     @GET("clubs/{id}/announcements")
-    Call<List<Announcement>> getClubAnnouncements(@Path("id") Integer id);
+    Call<List<Announcement>> getClubAnnouncements(@Path("id") Long id);
 
     @GET("clubs/{id}/group_events")
-    Call<List<Event>> getClubGroupEvents(@Path("id") Integer id);
+    Call<List<Event>> getClubGroupEvents(@Path("id") Long id);
 
     @GET("athlete/clubs")
     Call<List<Club>> getMyClubs();
 
     @GET("clubs/{id}/members")
     Call<List<Athlete>> getClubMembers(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @GET("clubs/{id}/admins")
     Call<List<Athlete>> getClubAdmins(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @GET("clubs/{id}/activities")
     Call<List<Activity>> getClubActivities(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("before") Integer before,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @POST("clubs/{id}/join")
-    Call<JoinResult> joinClub(@Path("id") Integer id);
+    Call<JoinResult> joinClub(@Path("id") Long id);
 
     @POST("clubs/{id}/leave")
-    Call<LeaveResult> leaveClub(@Path("id") Integer id);
+    Call<LeaveResult> leaveClub(@Path("id") Long id);
 }

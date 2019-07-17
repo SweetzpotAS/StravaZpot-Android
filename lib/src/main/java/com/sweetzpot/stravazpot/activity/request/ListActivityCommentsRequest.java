@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class ListActivityCommentsRequest {
 
-    private final int activityID;
+    private final long activityID;
     private final CommentsRest restService;
     private final CommentAPI api;
     private Integer page;
     private Integer perPage;
 
-    public ListActivityCommentsRequest(int activityID, CommentsRest restService, CommentAPI api) {
+    public ListActivityCommentsRequest(long activityID, CommentsRest restService, CommentAPI api) {
         this.activityID = activityID;
         this.restService = restService;
         this.api = api;

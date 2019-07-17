@@ -12,20 +12,20 @@ import retrofit2.Call;
 
 public class GetSegmentLeaderboardRequest {
 
-    private final int segmentID;
+    private final long segmentID;
     private final SegmentRest restService;
     private final SegmentAPI api;
     private Gender gender;
     private AgeGroup ageGroup;
     private WeightClass weightClass;
     private Boolean following;
-    private Integer clubID;
+    private Long clubID;
     private DateRange dateRange;
     private Integer contextEntries;
     private Integer page;
     private Integer perPage;
 
-    public GetSegmentLeaderboardRequest(int segmentID, SegmentRest restService, SegmentAPI api) {
+    public GetSegmentLeaderboardRequest(long segmentID, SegmentRest restService, SegmentAPI api) {
         this.segmentID = segmentID;
         this.restService = restService;
         this.api = api;
@@ -51,7 +51,7 @@ public class GetSegmentLeaderboardRequest {
         return this;
     }
 
-    public GetSegmentLeaderboardRequest inClub(int clubID) {
+    public GetSegmentLeaderboardRequest inClub(long clubID) {
         this.clubID = clubID;
         return this;
     }

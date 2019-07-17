@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 public interface KudosRest {
     @GET("activities/{id}/kudos")
     Call<List<Athlete>> getActivityKudos(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 }

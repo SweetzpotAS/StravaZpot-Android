@@ -34,12 +34,12 @@ public interface ActivityRest {
 
     @GET("activities/{id}")
     Call<Activity> getActivity(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("include_all_efforts") Boolean includeAllEfforts);
 
     @PUT("activities/{id}") @FormUrlEncoded
     Call<Activity> updateActivity(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Field("name") String name,
             @Field("type") ActivityType type,
             @Field("private") Boolean isPrivate,
@@ -49,7 +49,7 @@ public interface ActivityRest {
             @Field("description") String description);
 
     @DELETE("activities/{id}")
-    Call<Void> deleteActivity(@Path("id") Integer id);
+    Call<Void> deleteActivity(@Path("id") Long id);
 
     @GET("athlete/activities")
     Call<List<Activity>> getMyActivities(
@@ -66,13 +66,13 @@ public interface ActivityRest {
 
     @GET("activities/{id}/related")
     Call<List<Activity>> getRelatedActivities(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @GET("activities/{id}/zones")
-    Call<List<ActivityZone>> getActivityZones(@Path("id") Integer id);
+    Call<List<ActivityZone>> getActivityZones(@Path("id") Long id);
 
     @GET("activities/{id}/laps")
-    Call<List<ActivityLap>> getActivityLaps(@Path("id") Integer id);
+    Call<List<ActivityLap>> getActivityLaps(@Path("id") Long id);
 }

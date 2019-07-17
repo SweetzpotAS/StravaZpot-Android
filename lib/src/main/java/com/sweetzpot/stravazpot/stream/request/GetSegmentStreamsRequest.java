@@ -13,14 +13,14 @@ import retrofit2.Call;
 
 public class GetSegmentStreamsRequest {
 
-    private final int segmentID;
+    private final long segmentID;
     private final StreamRest restService;
     private final StreamAPI api;
     private StreamType[] types;
     private Resolution resolution;
     private SeriesType seriesType;
 
-    public GetSegmentStreamsRequest(int segmentID, StreamRest restService, StreamAPI api) {
+    public GetSegmentStreamsRequest(long segmentID, StreamRest restService, StreamAPI api) {
         this.segmentID = segmentID;
         this.restService = restService;
         this.api = api;

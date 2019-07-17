@@ -8,11 +8,11 @@ import retrofit2.Call;
 
 public class GetSegmentRequest {
 
-    private final int segmentID;
+    private final long segmentID;
     private final SegmentRest restService;
     private final SegmentAPI api;
 
-    public GetSegmentRequest(int segmentID, SegmentRest restService, SegmentAPI api) {
+    public GetSegmentRequest(long segmentID, SegmentRest restService, SegmentAPI api) {
         this.segmentID = segmentID;
         this.restService = restService;
         this.api = api;

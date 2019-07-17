@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class ListClubAdminsRequest {
 
-    private final int clubID;
+    private final long clubID;
     private final ClubRest restService;
     private final ClubAPI api;
     private Integer page;
     private Integer perPage;
 
-    public ListClubAdminsRequest(int clubID, ClubRest restService, ClubAPI api) {
+    public ListClubAdminsRequest(long clubID, ClubRest restService, ClubAPI api) {
         this.clubID = clubID;
         this.restService = restService;
         this.api = api;

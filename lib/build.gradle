@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 ext {
     bintrayRepo = 'maven'
@@ -7,6 +8,7 @@ ext {
     publishedGroupId = 'com.alessionunzi.stravazpot'
     libraryName = 'StravaZpot'
     artifact = 'lib'
+    group='com.github.alessionunzi'
 
     libraryDescription = 'A fluent API to integrate with Strava on Android apps. Forked from https://github.com/SweetzpotAS/StravaZpot-Android'
 

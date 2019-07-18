@@ -34,7 +34,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueClub();
         ClubAPI clubAPI = givenAClubAPI();
 
-        Club club = clubAPI.getClub(1)
+        Club club = clubAPI.getClub(1L)
                         .execute();
 
         assertRequestPathContains("/clubs/1");
@@ -46,7 +46,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueAnnouncements();
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Announcement> announcements = clubAPI.listClubAnnouncements(109984)
+        List<Announcement> announcements = clubAPI.listClubAnnouncements(109984L)
                                                     .execute();
 
         assertRequestPathContains("/clubs/109984/announcements");
@@ -58,7 +58,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueGroupEvents();
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Event> events = clubAPI.listClubGroupEvents(1)
+        List<Event> events = clubAPI.listClubGroupEvents(1L)
                                     .execute();
 
         assertRequestPathContains("/clubs/1/group_events");
@@ -81,7 +81,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Athlete> athletes = clubAPI.listClubMembers(123456)
+        List<Athlete> athletes = clubAPI.listClubMembers(123456L)
                                         .inPage(2)
                                         .perPage(10)
                                         .execute();
@@ -98,7 +98,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Athlete> athletes = clubAPI.listClubAdmins(123456)
+        List<Athlete> athletes = clubAPI.listClubAdmins(123456L)
                 .inPage(2)
                 .perPage(10)
                 .execute();
@@ -115,7 +115,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Activity> activities = clubAPI.listClubActivities(123456)
+        List<Activity> activities = clubAPI.listClubActivities(123456L)
                                             .before(12598723)
                                             .inPage(2)
                                             .perPage(10)
@@ -134,7 +134,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueJoinResult();
         ClubAPI clubAPI = givenAClubAPI();
 
-        JoinResult joinResult = clubAPI.joinClub(123456)
+        JoinResult joinResult = clubAPI.joinClub(123456L)
                                         .execute();
 
         assertRequestPathContains("/clubs/123456/join");
@@ -146,7 +146,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueLeaveResult();
         ClubAPI clubAPI = givenAClubAPI();
 
-        LeaveResult leaveResult = clubAPI.leaveClub(123456)
+        LeaveResult leaveResult = clubAPI.leaveClub(123456L)
                                             .execute();
 
         assertRequestPathContains("/clubs/123456/leave");

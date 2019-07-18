@@ -14,7 +14,7 @@ public class KudosAPITest extends StravaAPITest {
         enqueueResponse("[]");
         KudosAPI kudosAPI = givenAKudosAPI();
 
-        List<Athlete> athletes = kudosAPI.listActivityKudoers(123456)
+        List<Athlete> athletes = kudosAPI.listActivityKudoers(123456L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();

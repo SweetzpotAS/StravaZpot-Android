@@ -23,7 +23,7 @@ public class RouteAPITest extends StravaAPITest {
         enqueueRoute();
         RouteAPI routeAPI = givenARouteAPI();
 
-        Route route = routeAPI.getRoute(1263727)
+        Route route = routeAPI.getRoute(1263727L)
                                 .execute();
 
         assertRequestSentTo("/routes/1263727");
@@ -35,7 +35,7 @@ public class RouteAPITest extends StravaAPITest {
         enqueueResponse("[]");
         RouteAPI routeAPI = givenARouteAPI();
 
-        List<Route> routes = routeAPI.listRoutes(123456)
+        List<Route> routes = routeAPI.listRoutes(123456L)
                                 .execute();
 
         assertRequestSentTo("/athletes/123456/routes");

@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AuthenticationAPITest extends StravaAPITest {
 
-    private static final int ANY_CLIENT_ID = 1234;
+    private static final long ANY_CLIENT_ID = 1234;
     private static final String ANY_CLIENT_SECRET = "any_secret";
     private static final String ANY_CODE = "any_code";
 

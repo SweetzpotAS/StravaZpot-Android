@@ -18,7 +18,7 @@ public class UploadAPI extends StravaAPI {
         return new UploadFileRequest(file, getAPI(UploadRest.class), this);
     }
 
-    public CheckUploadStatusRequest checkUploadStatus(int id) {
+    public CheckUploadStatusRequest checkUploadStatus(long id) {
         return new CheckUploadStatusRequest(id, getAPI(UploadRest.class), this);
     }
 }

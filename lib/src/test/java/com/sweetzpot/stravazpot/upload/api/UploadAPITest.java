@@ -40,7 +40,7 @@ public class UploadAPITest extends StravaAPITest {
         enqueueUploadStatus();
         UploadAPI uploadAPI = givenAnUploadAPI();
 
-        UploadStatus uploadStatus = uploadAPI.checkUploadStatus(16486788).execute();
+        UploadStatus uploadStatus = uploadAPI.checkUploadStatus(16486788L).execute();
 
         assertRequestPathContains("uploads/16486788");
     }

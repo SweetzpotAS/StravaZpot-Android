@@ -37,7 +37,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueSegment();
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        Segment segment = segmentAPI.getSegment(229781)
+        Segment segment = segmentAPI.getSegment(229781L)
                                     .execute();
 
         assertRequestSentTo("/segments/229781");
@@ -66,7 +66,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueResponse("[]");
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        List<Segment> segments = segmentAPI.listStarredSegmentsByAthlete(123456)
+        List<Segment> segments = segmentAPI.listStarredSegmentsByAthlete(123456L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();
@@ -83,7 +83,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueSegment();
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        Segment segment = segmentAPI.starSegment(229781)
+        Segment segment = segmentAPI.starSegment(229781L)
                 .execute();
 
         assertRequestPathContains("/segments/229781/starred");
@@ -94,7 +94,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueSegment();
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        Segment segment = segmentAPI.starSegment(229781)
+        Segment segment = segmentAPI.starSegment(229781L)
                                     .execute();
 
         assertRequestBodyContains("starred=true");
@@ -105,7 +105,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueSegment();
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        Segment segment = segmentAPI.unstarSegment(229781)
+        Segment segment = segmentAPI.unstarSegment(229781L)
                 .execute();
 
         assertRequestBodyContains("starred=false");
@@ -116,8 +116,8 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueResponse("[]");
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        List<SegmentEffort> efforts = segmentAPI.listSegmentEfforts(123456)
-                                                .forAthlete(98765)
+        List<SegmentEffort> efforts = segmentAPI.listSegmentEfforts(123456L)
+                                                .forAthlete(98765L)
                                                 .startingOn(makeDate(20, Calendar.JANUARY, 2015, 12, 33, 50))
                                                 .endingOn(makeDate(12, Calendar.SEPTEMBER, 2016, 22, 0, 59))
                                                 .inPage(2)
@@ -139,7 +139,7 @@ public class SegmentAPITest extends StravaAPITest{
         enqueueLeaderboard();
         SegmentAPI segmentAPI = givenASegmentAPI();
 
-        Leaderboard leaderboard = segmentAPI.getLeaderboardForSegment(123456)
+        Leaderboard leaderboard = segmentAPI.getLeaderboardForSegment(123456L)
                                             .withGender(FEMALE)
                                             .inAgeGroup(AGE_25_34)
                                             .inWeightClass(KG_75_84)

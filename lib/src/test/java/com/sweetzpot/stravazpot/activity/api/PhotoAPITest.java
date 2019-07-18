@@ -22,7 +22,7 @@ public class PhotoAPITest extends StravaAPITest {
         enqueuePhotos();
         PhotoAPI photoAPI = givenAPhotoAPI();
 
-        List<Photo> photos = photoAPI.listAcivityPhotos(81121657)
+        List<Photo> photos = photoAPI.listAcivityPhotos(81121657L)
                                         .execute();
 
         assertRequestPathContains(

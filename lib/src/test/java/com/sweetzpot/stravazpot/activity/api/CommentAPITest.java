@@ -22,7 +22,7 @@ public class CommentAPITest extends StravaAPITest {
         enqueueComments();
         CommentAPI commentAPI = givenACommentAPI();
 
-        List<Comment> comments = commentAPI.listActivityComments(123)
+        List<Comment> comments = commentAPI.listActivityComments(123L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();

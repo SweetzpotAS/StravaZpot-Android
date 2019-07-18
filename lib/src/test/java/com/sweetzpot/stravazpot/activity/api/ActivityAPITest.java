@@ -66,7 +66,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueActivity();
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        Activity activity = activityAPI.getActivity(321934)
+        Activity activity = activityAPI.getActivity(321934L)
                                         .includeAllEfforts(true)
                                         .execute();
 
@@ -82,7 +82,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueActivity();
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        Activity activity = activityAPI.updateActivity(321934)
+        Activity activity = activityAPI.updateActivity(321934L)
                                         .changeName("Afternoon ride")
                                         .changeType(ActivityType.RIDE)
                                         .changePrivate(true)
@@ -108,7 +108,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueResponse(204, "");
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        activityAPI.deleteActivity(321934)
+        activityAPI.deleteActivity(321934L)
                     .execute();
 
         assertRequestPathContains("/activities/321934");
@@ -159,7 +159,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        List<Activity> activities = activityAPI.listRelatedActivities(321934)
+        List<Activity> activities = activityAPI.listRelatedActivities(321934L)
                                                 .inPage(2)
                                                 .perPage(10)
                                                 .execute();
@@ -176,7 +176,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueActivityZones();
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        List<ActivityZone> activityZones = activityAPI.listActivityZones(321934)
+        List<ActivityZone> activityZones = activityAPI.listActivityZones(321934L)
                                                         .execute();
 
         assertRequestPathContains("/activities/321934/zones");
@@ -188,7 +188,7 @@ public class ActivityAPITest extends StravaAPITest {
         enqueueActivityLaps();
         ActivityAPI activityAPI = givenAnActivityAPI();
 
-        List<ActivityLap> laps = activityAPI.listActivityLaps(321934)
+        List<ActivityLap> laps = activityAPI.listActivityLaps(321934L)
                                             .execute();
 
         assertRequestPathContains("/activities/321934/laps");

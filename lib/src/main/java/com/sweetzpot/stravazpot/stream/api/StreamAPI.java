@@ -22,11 +22,11 @@ public class StreamAPI extends StravaAPI {
         return new GetSegmentEffortStreamsRequest(segmentEffortID, getAPI(StreamRest.class), this);
     }
 
-    public GetSegmentStreamsRequest getSegmentStreams(int segmentID) {
+    public GetSegmentStreamsRequest getSegmentStreams(long segmentID) {
         return new GetSegmentStreamsRequest(segmentID, getAPI(StreamRest.class), this);
     }
 
-    public GetRouteStreamsRequest getRouteStreams(int routeID) {
+    public GetRouteStreamsRequest getRouteStreams(long routeID) {
         return new GetRouteStreamsRequest(routeID, getAPI(StreamRest.class), this);
     }
 }

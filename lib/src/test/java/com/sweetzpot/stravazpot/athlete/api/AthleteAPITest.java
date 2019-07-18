@@ -45,7 +45,7 @@ public class AthleteAPITest extends StravaAPITest{
         enqueueAthlete();
         AthleteAPI athleteAPI = givenAnAthleteAPI();
 
-        Athlete athlete = athleteAPI.retrieveAthlete(227615)
+        Athlete athlete = athleteAPI.retrieveAthlete(227615L)
                                     .execute();
 
         assertRequestSentTo("/athletes/227615");
@@ -91,7 +91,7 @@ public class AthleteAPITest extends StravaAPITest{
         enqueueTotalsAndStats();
         AthleteAPI athleteAPI = givenAnAthleteAPI();
 
-        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615)
+        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615L)
                                 .execute();
 
         assertRequestSentTo("/athletes/227615/stats");
@@ -103,7 +103,7 @@ public class AthleteAPITest extends StravaAPITest{
         enqueueResponse("[]");
         AthleteAPI athleteAPI = givenAnAthleteAPI();
 
-        List<SegmentEffort> koms = athleteAPI.listAthleteKOMS(227615)
+        List<SegmentEffort> koms = athleteAPI.listAthleteKOMS(227615L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();
@@ -120,7 +120,7 @@ public class AthleteAPITest extends StravaAPITest{
         enqueueEmptyTotalsAndStats();
         AthleteAPI athleteAPI = givenAnAthleteAPI();
 
-        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615)
+        Stats stats = athleteAPI.getAthleteTotalsAndStats(227615L)
                                 .execute();
 
         assertThat(stats, is(notNullValue()));

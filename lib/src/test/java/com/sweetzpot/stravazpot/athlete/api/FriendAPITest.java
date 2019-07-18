@@ -31,7 +31,7 @@ public class FriendAPITest extends StravaAPITest{
         enqueueResponse("[]");
         FriendAPI friendAPI = givenAFriendAPI();
 
-        List<Athlete> friends = friendAPI.getAthleteFriends(123456)
+        List<Athlete> friends = friendAPI.getAthleteFriends(123456L)
                                         .inPage(2)
                                         .perPage(10)
                                         .execute();
@@ -65,7 +65,7 @@ public class FriendAPITest extends StravaAPITest{
         enqueueResponse("[]");
         FriendAPI friendAPI = givenAFriendAPI();
 
-        List<Athlete> followers = friendAPI.getAthleteFollowers(123456)
+        List<Athlete> followers = friendAPI.getAthleteFollowers(123456L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();
@@ -82,7 +82,7 @@ public class FriendAPITest extends StravaAPITest{
         enqueueResponse("[]");
         FriendAPI friendAPI = givenAFriendAPI();
 
-        List<Athlete> followers = friendAPI.getBothFollowing(123456)
+        List<Athlete> followers = friendAPI.getBothFollowing(123456L)
                                             .inPage(2)
                                             .perPage(10)
                                             .execute();

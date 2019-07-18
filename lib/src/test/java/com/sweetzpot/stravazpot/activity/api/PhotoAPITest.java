@@ -22,7 +22,7 @@ public class PhotoAPITest extends StravaAPITest {
         enqueuePhotos();
         PhotoAPI photoAPI = givenAPhotoAPI();
 
-        List<Photo> photos = photoAPI.listAcivityPhotos(81121657)
+        List<Photo> photos = photoAPI.listAcivityPhotos(81121657L)
                                         .execute();
 
         assertRequestPathContains(
@@ -39,8 +39,8 @@ public class PhotoAPITest extends StravaAPITest {
     private void assertPhotosParsedCorrectly(List<Photo> photos) {
         assertThat(photos.size(), is(2));
         Photo photo = photos.get(0);
-        assertThat(photo.getID(), is(10701863));
-        assertThat(photo.getActivityID(), is(81121657));
+        assertThat(photo.getID(), is(10701863L));
+        assertThat(photo.getActivityID(), is(81121657L));
         assertThat(photo.getRef(), is("http://instagram.com/p/eAvA-tir85/"));
         assertThat(photo.getUid(), is("540638730806542137_2865686"));
         assertThat(photo.getType(), is("InstagramPhoto"));

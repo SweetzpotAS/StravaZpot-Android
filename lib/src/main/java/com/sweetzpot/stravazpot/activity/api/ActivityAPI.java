@@ -23,15 +23,15 @@ public class ActivityAPI extends StravaAPI {
         return new CreateActivityRequest(name, getAPI(ActivityRest.class), this);
     }
 
-    public GetActivityRequest getActivity(int activityID) {
+    public GetActivityRequest getActivity(long activityID) {
         return new GetActivityRequest(activityID, getAPI(ActivityRest.class), this);
     }
 
-    public UpdateActivityRequest updateActivity(int activityID) {
+    public UpdateActivityRequest updateActivity(long activityID) {
         return new UpdateActivityRequest(activityID, getAPI(ActivityRest.class), this);
     }
 
-    public DeleteActivityRequest deleteActivity(int activityID) {
+    public DeleteActivityRequest deleteActivity(long activityID) {
         return new DeleteActivityRequest(activityID, getAPI(ActivityRest.class), this);
     }
 
@@ -43,15 +43,15 @@ public class ActivityAPI extends StravaAPI {
         return new ListFriendActivitiesRequest(getAPI(ActivityRest.class), this);
     }
 
-    public ListRelatedActivitiesRequest listRelatedActivities(int activityID) {
+    public ListRelatedActivitiesRequest listRelatedActivities(long activityID) {
         return new ListRelatedActivitiesRequest(activityID, getAPI(ActivityRest.class), this);
     }
 
-    public ListActivityZonesRequest listActivityZones(int activityID) {
+    public ListActivityZonesRequest listActivityZones(long activityID) {
         return new ListActivityZonesRequest(activityID, getAPI(ActivityRest.class), this);
     }
 
-    public ListActivityLapsRequest listActivityLaps(int activityID) {
+    public ListActivityLapsRequest listActivityLaps(long activityID) {
         return new ListActivityLapsRequest(activityID, getAPI(ActivityRest.class), this);
     }
 }

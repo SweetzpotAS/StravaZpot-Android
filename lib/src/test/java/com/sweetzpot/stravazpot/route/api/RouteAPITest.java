@@ -23,7 +23,7 @@ public class RouteAPITest extends StravaAPITest {
         enqueueRoute();
         RouteAPI routeAPI = givenARouteAPI();
 
-        Route route = routeAPI.getRoute(1263727)
+        Route route = routeAPI.getRoute(1263727L)
                                 .execute();
 
         assertRequestSentTo("/routes/1263727");
@@ -35,7 +35,7 @@ public class RouteAPITest extends StravaAPITest {
         enqueueResponse("[]");
         RouteAPI routeAPI = givenARouteAPI();
 
-        List<Route> routes = routeAPI.listRoutes(123456)
+        List<Route> routes = routeAPI.listRoutes(123456L)
                                 .execute();
 
         assertRequestSentTo("/athletes/123456/routes");
@@ -50,7 +50,7 @@ public class RouteAPITest extends StravaAPITest {
         assertThat(route.getDescription(), is(""));
         assertThat(route.getDistance(), is(equalTo(Distance.meters(173625.6f))));
         assertThat(route.getElevationGain(), is(equalTo(Distance.meters(2964.6f))));
-        assertThat(route.getID(), is(1263727));
+        assertThat(route.getID(), is(1263727L));
         assertThat(route.getMap().getID(), is("r1263727"));
         assertThat(route.getMap().getSummaryPolyline(), is("qyrFxswgV|"));
         assertThat(route.getMap().getResourceState(), is(ResourceState.DETAILED));

@@ -20,7 +20,7 @@ public class AthleteAPI extends StravaAPI {
         return new CurrentAthleteRequest(getAPI(AthleteRest.class), this);
     }
 
-    public AthleteRequest retrieveAthlete(int athleteID) {
+    public AthleteRequest retrieveAthlete(long athleteID) {
         return new AthleteRequest(athleteID, getAPI(AthleteRest.class), this);
     }
 
@@ -32,11 +32,11 @@ public class AthleteAPI extends StravaAPI {
         return new GetZonesRequest(getAPI(AthleteRest.class), this);
     }
 
-    public GetTotalsAndStatsRequest getAthleteTotalsAndStats(int athleteID) {
+    public GetTotalsAndStatsRequest getAthleteTotalsAndStats(long athleteID) {
         return new GetTotalsAndStatsRequest(athleteID, getAPI(AthleteRest.class), this);
     }
 
-    public ListAthleteKOMSRequest listAthleteKOMS(int athleteID) {
+    public ListAthleteKOMSRequest listAthleteKOMS(long athleteID) {
         return new ListAthleteKOMSRequest(athleteID, getAPI(AthleteRest.class), this);
     }
 }

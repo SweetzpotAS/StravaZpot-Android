@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class LeaderboardEntry {
     @SerializedName("athlete_name") private String athleteName;
-    @SerializedName("athlete_id") private int athleteID;
+    @SerializedName("athlete_id") private long athleteID;
     @SerializedName("athlete_gender") private Gender athleteGender;
     @SerializedName("average_hr") private float averageHeartRate;
     @SerializedName("average_watts") private float averageWatts;
@@ -18,8 +18,8 @@ public class LeaderboardEntry {
     @SerializedName("moving_time") private Time movingTime;
     @SerializedName("start_date") private Date startDate;
     @SerializedName("start_date_local") private Date startDateLocal;
-    @SerializedName("activity_id") private int activityID;
-    @SerializedName("effort_id") private int effortID;
+    @SerializedName("activity_id") private long activityID;
+    @SerializedName("effort_id") private long effortID;
     @SerializedName("rank") private int rank;
     @SerializedName("athlete_profile") private String athleteProfile;
 
@@ -27,7 +27,7 @@ public class LeaderboardEntry {
         return athleteName;
     }
 
-    public int getAthleteID() {
+    public long getAthleteID() {
         return athleteID;
     }
 
@@ -63,11 +63,11 @@ public class LeaderboardEntry {
         return startDateLocal;
     }
 
-    public int getActivityID() {
+    public long getActivityID() {
         return activityID;
     }
 
-    public int getEffortID() {
+    public long getEffortID() {
         return effortID;
     }
 

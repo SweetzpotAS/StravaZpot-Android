@@ -9,7 +9,7 @@ import retrofit2.Call;
 
 public class UpdateActivityRequest {
 
-    private final int activityID;
+    private final long activityID;
     private final ActivityRest restService;
     private final ActivityAPI api;
     private String name;
@@ -20,7 +20,7 @@ public class UpdateActivityRequest {
     private String gearID;
     private String description;
 
-    public UpdateActivityRequest(int activityID, ActivityRest restService, ActivityAPI api) {
+    public UpdateActivityRequest(long activityID, ActivityRest restService, ActivityAPI api) {
         this.activityID = activityID;
         this.restService = restService;
         this.api = api;

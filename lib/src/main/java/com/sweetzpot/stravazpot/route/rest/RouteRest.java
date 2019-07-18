@@ -10,8 +10,8 @@ import retrofit2.http.Path;
 
 public interface RouteRest {
     @GET("routes/{id}")
-    Call<Route> getRoute(@Path("id") Integer id);
+    Call<Route> getRoute(@Path("id") Long id);
 
     @GET("athletes/{id}/routes")
-    Call<List<Route>> getAthleteRoutes(@Path("id") Integer id);
+    Call<List<Route>> getAthleteRoutes(@Path("id") Long id);
 }

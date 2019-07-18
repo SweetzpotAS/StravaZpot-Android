@@ -14,22 +14,22 @@ import retrofit2.Call;
 public class ListSegmentEffortsRequest {
 
     private final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-    private final int segmentID;
+    private final long segmentID;
     private final SegmentRest restService;
     private final SegmentAPI api;
-    private Integer athleteID;
+    private Long athleteID;
     private Date startDateLocal;
     private Date endDateLocal;
     private Integer page;
     private Integer perPage;
 
-    public ListSegmentEffortsRequest(int segmentID, SegmentRest restService, SegmentAPI api) {
+    public ListSegmentEffortsRequest(long segmentID, SegmentRest restService, SegmentAPI api) {
         this.segmentID = segmentID;
         this.restService = restService;
         this.api = api;
     }
 
-    public ListSegmentEffortsRequest forAthlete(int athleteID) {
+    public ListSegmentEffortsRequest forAthlete(long athleteID) {
         this.athleteID = athleteID;
         return this;
     }

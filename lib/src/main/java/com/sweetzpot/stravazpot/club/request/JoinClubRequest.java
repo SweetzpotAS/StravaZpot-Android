@@ -8,11 +8,11 @@ import retrofit2.Call;
 
 public class JoinClubRequest {
 
-    private final int clubID;
+    private final long clubID;
     private final ClubRest restService;
     private final ClubAPI api;
 
-    public JoinClubRequest(int clubID, ClubRest restService, ClubAPI api) {
+    public JoinClubRequest(long clubID, ClubRest restService, ClubAPI api) {
         this.clubID = clubID;
         this.restService = restService;
         this.api = api;

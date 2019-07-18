@@ -22,7 +22,7 @@ public class StreamAPITest extends StravaAPITest{
         enqueueStreams();
         StreamAPI streamAPI = givenAStreamAPI();
 
-        List<Stream> streams = streamAPI.getActivityStreams(123456)
+        List<Stream> streams = streamAPI.getActivityStreams(123456L)
                                         .forTypes(LATLNG, DISTANCE)
                                         .withResolution(LOW)
                                         .withSeriesType(SeriesType.DISTANCE)
@@ -59,7 +59,7 @@ public class StreamAPITest extends StravaAPITest{
         enqueueStreams();
         StreamAPI streamAPI = givenAStreamAPI();
 
-        List<Stream> streams = streamAPI.getSegmentStreams(123456)
+        List<Stream> streams = streamAPI.getSegmentStreams(123456L)
                 .forTypes(LATLNG, DISTANCE)
                 .withResolution(LOW)
                 .withSeriesType(SeriesType.DISTANCE)
@@ -77,7 +77,7 @@ public class StreamAPITest extends StravaAPITest{
         enqueueStreams();
         StreamAPI streamAPI = givenAStreamAPI();
 
-        List<Stream> streams = streamAPI.getRouteStreams(123456)
+        List<Stream> streams = streamAPI.getRouteStreams(123456L)
                                         .execute();
 
         assertRequestPathContains(

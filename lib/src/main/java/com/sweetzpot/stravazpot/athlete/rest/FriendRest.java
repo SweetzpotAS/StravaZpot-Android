@@ -17,7 +17,7 @@ public interface FriendRest {
 
     @GET("athletes/{id}/friends")
     Call<List<Athlete>> getFriends(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
@@ -28,13 +28,13 @@ public interface FriendRest {
 
     @GET("athletes/{id}/followers")
     Call<List<Athlete>> getFollowers(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 
     @GET("athletes/{id}/both-following")
     Call<List<Athlete>> getBothFollowing(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("page") Integer page,
             @Query("per_page") Integer perPage);
 }

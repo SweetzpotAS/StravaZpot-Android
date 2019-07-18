@@ -10,11 +10,11 @@ import retrofit2.Call;
 
 public class ListRoutesRequest {
 
-    private final int athleteID;
+    private final long athleteID;
     private final RouteRest restService;
     private final RouteAPI api;
 
-    public ListRoutesRequest(int athleteID, RouteRest restService, RouteAPI api) {
+    public ListRoutesRequest(long athleteID, RouteRest restService, RouteAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

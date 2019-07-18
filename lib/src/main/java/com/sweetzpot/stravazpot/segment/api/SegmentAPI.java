@@ -18,7 +18,7 @@ public class SegmentAPI extends StravaAPI{
         super(config);
     }
 
-    public GetSegmentRequest getSegment(int segmentID) {
+    public GetSegmentRequest getSegment(long segmentID) {
         return new GetSegmentRequest(segmentID, getAPI(SegmentRest.class), this);
     }
 
@@ -26,23 +26,23 @@ public class SegmentAPI extends StravaAPI{
         return new ListMyStarredSegmentsRequest(getAPI(SegmentRest.class), this);
     }
 
-    public ListAthleteStarredSegmentsRequest listStarredSegmentsByAthlete(int athleteID) {
+    public ListAthleteStarredSegmentsRequest listStarredSegmentsByAthlete(long athleteID) {
         return new ListAthleteStarredSegmentsRequest(athleteID, getAPI(SegmentRest.class), this);
     }
 
-    public StarSegmentRequest starSegment(int segmentID) {
+    public StarSegmentRequest starSegment(long segmentID) {
         return new StarSegmentRequest(segmentID, true, getAPI(SegmentRest.class), this);
     }
 
-    public StarSegmentRequest unstarSegment(int segmentID) {
+    public StarSegmentRequest unstarSegment(long segmentID) {
         return new StarSegmentRequest(segmentID, false, getAPI(SegmentRest.class), this);
     }
 
-    public ListSegmentEffortsRequest listSegmentEfforts(int segmentID) {
+    public ListSegmentEffortsRequest listSegmentEfforts(long segmentID) {
         return new ListSegmentEffortsRequest(segmentID, getAPI(SegmentRest.class), this);
     }
 
-    public GetSegmentLeaderboardRequest getLeaderboardForSegment(int segmentID) {
+    public GetSegmentLeaderboardRequest getLeaderboardForSegment(long segmentID) {
         return new GetSegmentLeaderboardRequest(segmentID, getAPI(SegmentRest.class), this);
     }
 

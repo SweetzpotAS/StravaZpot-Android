@@ -11,7 +11,7 @@ public class KudosAPI extends StravaAPI {
         super(config);
     }
 
-    public ListActivityKudoersRequest listActivityKudoers(int activityID) {
+    public ListActivityKudoersRequest listActivityKudoers(long activityID) {
         return new ListActivityKudoersRequest(activityID, getAPI(KudosRest.class), this);
     }
 }

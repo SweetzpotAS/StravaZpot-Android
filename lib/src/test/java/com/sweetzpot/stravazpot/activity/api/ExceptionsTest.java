@@ -21,7 +21,7 @@ public class ExceptionsTest extends StravaAPITest{
 
         thrown.expect(StravaUnauthorizedException.class);
 
-        activityAPI.getActivity(123456).execute();
+        activityAPI.getActivity(123456L).execute();
     }
 
     @Test
@@ -31,7 +31,7 @@ public class ExceptionsTest extends StravaAPITest{
 
         thrown.expect(StravaAPIException.class);
 
-        activityAPI.getActivity(123456).execute();
+        activityAPI.getActivity(123456L).execute();
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ExceptionsTest extends StravaAPITest{
 
         thrown.expect(StravaAPIException.class);
 
-        activityAPI.getActivity(123456).execute();
+        activityAPI.getActivity(123456L).execute();
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ExceptionsTest extends StravaAPITest{
 
         thrown.expect(StravaAPIException.class);
         
-        activityAPI.getActivity(123456).execute();
+        activityAPI.getActivity(123456L).execute();
     }
 
     private ActivityAPI givenAWronglyConfiguredActivityAPI() {

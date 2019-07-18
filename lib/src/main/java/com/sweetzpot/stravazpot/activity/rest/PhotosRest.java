@@ -12,6 +12,6 @@ import retrofit2.http.Query;
 public interface PhotosRest {
     @GET("activities/{id}/photos")
     Call<List<Photo>> getActivityPhotos(
-            @Path("id") Integer id,
+            @Path("id") Long id,
             @Query("photo_sources") Boolean photoSources);
 }

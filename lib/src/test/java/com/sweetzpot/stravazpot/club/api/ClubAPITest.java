@@ -34,7 +34,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueClub();
         ClubAPI clubAPI = givenAClubAPI();
 
-        Club club = clubAPI.getClub(1)
+        Club club = clubAPI.getClub(1L)
                         .execute();
 
         assertRequestPathContains("/clubs/1");
@@ -46,7 +46,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueAnnouncements();
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Announcement> announcements = clubAPI.listClubAnnouncements(109984)
+        List<Announcement> announcements = clubAPI.listClubAnnouncements(109984L)
                                                     .execute();
 
         assertRequestPathContains("/clubs/109984/announcements");
@@ -58,7 +58,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueGroupEvents();
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Event> events = clubAPI.listClubGroupEvents(1)
+        List<Event> events = clubAPI.listClubGroupEvents(1L)
                                     .execute();
 
         assertRequestPathContains("/clubs/1/group_events");
@@ -81,7 +81,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Athlete> athletes = clubAPI.listClubMembers(123456)
+        List<Athlete> athletes = clubAPI.listClubMembers(123456L)
                                         .inPage(2)
                                         .perPage(10)
                                         .execute();
@@ -98,7 +98,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Athlete> athletes = clubAPI.listClubAdmins(123456)
+        List<Athlete> athletes = clubAPI.listClubAdmins(123456L)
                 .inPage(2)
                 .perPage(10)
                 .execute();
@@ -115,7 +115,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueResponse("[]");
         ClubAPI clubAPI = givenAClubAPI();
 
-        List<Activity> activities = clubAPI.listClubActivities(123456)
+        List<Activity> activities = clubAPI.listClubActivities(123456L)
                                             .before(12598723)
                                             .inPage(2)
                                             .perPage(10)
@@ -134,7 +134,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueJoinResult();
         ClubAPI clubAPI = givenAClubAPI();
 
-        JoinResult joinResult = clubAPI.joinClub(123456)
+        JoinResult joinResult = clubAPI.joinClub(123456L)
                                         .execute();
 
         assertRequestPathContains("/clubs/123456/join");
@@ -146,7 +146,7 @@ public class ClubAPITest extends StravaAPITest {
         enqueueLeaveResult();
         ClubAPI clubAPI = givenAClubAPI();
 
-        LeaveResult leaveResult = clubAPI.leaveClub(123456)
+        LeaveResult leaveResult = clubAPI.leaveClub(123456L)
                                             .execute();
 
         assertRequestPathContains("/clubs/123456/leave");
@@ -158,7 +158,7 @@ public class ClubAPITest extends StravaAPITest {
     }
 
     private void assertClubParsedCorrectly(Club club) {
-        assertThat(club.getID(), is(1));
+        assertThat(club.getID(), is(1L));
         assertThat(club.getResourceState(), is(ResourceState.DETAILED));
         assertThat(club.getName(), is("Team Strava Cycling"));
         assertThat(club.getProfileMedium(), is("http://pics.com/clubs/1/medium.jpg"));
@@ -213,9 +213,9 @@ public class ClubAPITest extends StravaAPITest {
     private void assertAnnouncementsParsedCorrectly(List<Announcement> announcements) {
         assertThat(announcements.size(), is(1));
         Announcement announcement = announcements.get(0);
-        assertThat(announcement.getID(), is(1219827));
+        assertThat(announcement.getID(), is(1219827L));
         assertThat(announcement.getResourceState(), is(ResourceState.SUMMARY));
-        assertThat(announcement.getClubID(), is(109984));
+        assertThat(announcement.getClubID(), is(109984L));
         assertThat(announcement.getAthlete(), is(notNullValue()));
         assertThat(announcement.getCreatedAt(), isSameDate(makeDate(1, Calendar.APRIL, 2015, 21, 14, 2)));
         assertThat(announcement.getMessage(), is("hello club"));
@@ -254,15 +254,15 @@ public class ClubAPITest extends StravaAPITest {
     private void assertEventsParsedCorrectly(List<Event> events) {
         assertThat(events.size(), is(1));
         Event event = events.get(0);
-        assertThat(event.getID(), is(1234567));
+        assertThat(event.getID(), is(1234567L));
         assertThat(event.getResourceState(), is(ResourceState.SUMMARY));
         assertThat(event.getTitle(), is("Test Group Event"));
         assertThat(event.getDescription(), is("Very fun group ride"));
-        assertThat(event.getClubID(), is(1));
+        assertThat(event.getClubID(), is(1L));
         assertThat(event.getOrganizingAthlete(), is(notNullValue()));
         assertThat(event.getActivityType(), is(ActivityType.RIDE));
         assertThat(event.getCreatedAt(), isSameDate(makeDate(26, Calendar.AUGUST, 2009, 13, 42, 5)));
-        assertThat(event.getRouteID(), is(123456));
+        assertThat(event.getRouteID(), is(123456L));
         assertThat(event.isWomenOnly(), is(false));
         assertThat(event.isPrivate(), is(true));
         assertThat(event.getSkillLevel(), is(SkillLevel.CASUAL));

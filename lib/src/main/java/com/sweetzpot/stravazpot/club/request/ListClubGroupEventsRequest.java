@@ -10,11 +10,11 @@ import retrofit2.Call;
 
 public class ListClubGroupEventsRequest {
 
-    private final int clubID;
+    private final long clubID;
     private final ClubRest restService;
     private final ClubAPI api;
 
-    public ListClubGroupEventsRequest(int clubID, ClubRest restService, ClubAPI api) {
+    public ListClubGroupEventsRequest(long clubID, ClubRest restService, ClubAPI api) {
         this.clubID = clubID;
         this.restService = restService;
         this.api = api;

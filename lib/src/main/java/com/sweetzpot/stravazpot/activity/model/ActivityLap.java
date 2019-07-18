@@ -10,7 +10,7 @@ import com.sweetzpot.stravazpot.common.model.Time;
 import java.util.Date;
 
 public class ActivityLap {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("name") private String name;
     @SerializedName("activity") private Activity activity;
@@ -33,7 +33,7 @@ public class ActivityLap {
     @SerializedName("average_heartrate") private float averageHeartRate;
     @SerializedName("lap_index") private int lapIndex;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

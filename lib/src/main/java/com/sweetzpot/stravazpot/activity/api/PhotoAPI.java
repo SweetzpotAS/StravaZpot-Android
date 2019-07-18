@@ -11,7 +11,7 @@ public class PhotoAPI extends StravaAPI{
         super(config);
     }
 
-    public ListActivityPhotosRequest listAcivityPhotos(int activityID) {
+    public ListActivityPhotosRequest listAcivityPhotos(long activityID) {
         return new ListActivityPhotosRequest(activityID, getAPI(PhotosRest.class), this);
     }
 }

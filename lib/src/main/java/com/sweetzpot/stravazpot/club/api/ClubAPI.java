@@ -19,15 +19,15 @@ public class ClubAPI extends StravaAPI {
         super(config);
     }
 
-    public GetClubRequest getClub(int clubID) {
+    public GetClubRequest getClub(long clubID) {
         return new GetClubRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public ListClubAnnouncementsRequest listClubAnnouncements(int clubID) {
+    public ListClubAnnouncementsRequest listClubAnnouncements(long clubID) {
         return new ListClubAnnouncementsRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public ListClubGroupEventsRequest listClubGroupEvents(int clubID) {
+    public ListClubGroupEventsRequest listClubGroupEvents(Long clubID) {
         return new ListClubGroupEventsRequest(clubID, getAPI(ClubRest.class), this);
     }
 
@@ -35,23 +35,23 @@ public class ClubAPI extends StravaAPI {
         return new ListMyClubsRequest(getAPI(ClubRest.class), this);
     }
 
-    public ListClubMembersRequest listClubMembers(int clubID) {
+    public ListClubMembersRequest listClubMembers(Long clubID) {
         return new ListClubMembersRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public ListClubAdminsRequest listClubAdmins(int clubID) {
+    public ListClubAdminsRequest listClubAdmins(Long clubID) {
         return new ListClubAdminsRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public ListClubActivitiesRequest listClubActivities(int clubID) {
+    public ListClubActivitiesRequest listClubActivities(Long clubID) {
         return new ListClubActivitiesRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public JoinClubRequest joinClub(int clubID) {
+    public JoinClubRequest joinClub(Long clubID) {
         return new JoinClubRequest(clubID, getAPI(ClubRest.class), this);
     }
 
-    public LeaveClubRequest leaveClub(int clubID) {
+    public LeaveClubRequest leaveClub(Long clubID) {
         return new LeaveClubRequest(clubID, getAPI(ClubRest.class), this);
     }
 }

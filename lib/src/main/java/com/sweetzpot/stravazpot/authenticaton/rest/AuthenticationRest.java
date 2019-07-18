@@ -12,7 +12,7 @@ public interface AuthenticationRest {
     @POST("/oauth/token")
     @FormUrlEncoded
     Call<LoginResult> token(
-            @Field("client_id") int clientID,
+            @Field("client_id") Long clientID,
             @Field("client_secret") String clientSecret,
             @Field("code") String code);
 

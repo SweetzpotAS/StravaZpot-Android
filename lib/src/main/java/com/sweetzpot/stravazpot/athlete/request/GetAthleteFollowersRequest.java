@@ -10,13 +10,13 @@ import retrofit2.Call;
 
 public class GetAthleteFollowersRequest {
 
-    private final int athleteID;
+    private final long athleteID;
     private final FriendRest restService;
     private final FriendAPI api;
     private Integer page;
     private Integer perPage;
 
-    public GetAthleteFollowersRequest(int athleteID, FriendRest restService, FriendAPI api) {
+    public GetAthleteFollowersRequest(long athleteID, FriendRest restService, FriendAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

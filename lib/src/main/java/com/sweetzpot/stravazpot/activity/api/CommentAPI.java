@@ -11,7 +11,7 @@ public class CommentAPI extends StravaAPI {
         super(config);
     }
 
-    public ListActivityCommentsRequest listActivityComments(int activityID) {
+    public ListActivityCommentsRequest listActivityComments(long activityID) {
         return new ListActivityCommentsRequest(activityID, getAPI(CommentsRest.class), this);
     }
 }

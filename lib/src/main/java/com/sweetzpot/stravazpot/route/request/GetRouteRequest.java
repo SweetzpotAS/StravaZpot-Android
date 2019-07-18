@@ -8,11 +8,11 @@ import retrofit2.Call;
 
 public class GetRouteRequest {
 
-    private final int routeID;
+    private final long routeID;
     private final RouteRest restService;
     private final RouteAPI api;
 
-    public GetRouteRequest(int routeID, RouteRest restService, RouteAPI api) {
+    public GetRouteRequest(long routeID, RouteRest restService, RouteAPI api) {
         this.routeID = routeID;
         this.restService = restService;
         this.api = api;

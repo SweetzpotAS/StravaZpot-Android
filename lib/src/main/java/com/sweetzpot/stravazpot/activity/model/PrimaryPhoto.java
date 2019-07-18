@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.HashMap;
 
 public class PrimaryPhoto {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("source") private PhotoSource source;
     @SerializedName("unique_id") private String uniqueID;
     @SerializedName("urls") private HashMap<String, String> urls;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

@@ -9,15 +9,15 @@ import java.util.Date;
 import java.util.List;
 
 public class Event {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("title") private String title;
     @SerializedName("description") private String description;
-    @SerializedName("club_id") private int clubID;
+    @SerializedName("club_id") private long clubID;
     @SerializedName("organizing_athlete") private Athlete organizingAthlete;
     @SerializedName("activity_type") private ActivityType activityType;
     @SerializedName("created_at") private Date createdAt;
-    @SerializedName("route_id") private int routeID;
+    @SerializedName("route_id") private long routeID;
     @SerializedName("women_only") private boolean womenOnly;
     @SerializedName("private") private boolean isPrivate;
     @SerializedName("skill_levels") private SkillLevel skillLevel;
@@ -25,7 +25,7 @@ public class Event {
     @SerializedName("upcoming_occurrences") private List<Date> upcomingOccurrences;
     @SerializedName("address") private String address;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 
@@ -41,7 +41,7 @@ public class Event {
         return description;
     }
 
-    public int getClubID() {
+    public long getClubID() {
         return clubID;
     }
 
@@ -57,7 +57,7 @@ public class Event {
         return createdAt;
     }
 
-    public int getRouteID() {
+    public long getRouteID() {
         return routeID;
     }
 

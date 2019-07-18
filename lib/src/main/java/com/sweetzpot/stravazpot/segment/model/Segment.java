@@ -11,7 +11,7 @@ import com.sweetzpot.stravazpot.route.model.Map;
 import java.util.Date;
 
 public class Segment {
-    @SerializedName("id") private int ID;
+    @SerializedName("id") private long ID;
     @SerializedName("resource_state") private ResourceState resourceState;
     @SerializedName("name") private String name;
     @SerializedName("activity_type") private ActivityType activityType;
@@ -37,7 +37,7 @@ public class Segment {
     @SerializedName("hazardous") private boolean hazardous;
     @SerializedName("star_count") private int starCount;
 
-    public int getID() {
+    public long getID() {
         return ID;
     }
 

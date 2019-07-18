@@ -7,11 +7,11 @@ import com.sweetzpot.stravazpot.athlete.rest.AthleteRest;
 import retrofit2.Call;
 
 public class AthleteRequest {
-    private final int athleteID;
+    private final long athleteID;
     private final AthleteRest restService;
     private final AthleteAPI api;
 
-    public AthleteRequest(int athleteID, AthleteRest restService, AthleteAPI api) {
+    public AthleteRequest(long athleteID, AthleteRest restService, AthleteAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

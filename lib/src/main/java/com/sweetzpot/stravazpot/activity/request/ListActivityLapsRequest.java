@@ -10,11 +10,11 @@ import retrofit2.Call;
 
 public class ListActivityLapsRequest {
 
-    private final int activityID;
+    private final long activityID;
     private final ActivityRest restService;
     private final ActivityAPI api;
 
-    public ListActivityLapsRequest(int activityID, ActivityRest restService, ActivityAPI api) {
+    public ListActivityLapsRequest(long activityID, ActivityRest restService, ActivityAPI api) {
         this.activityID = activityID;
         this.restService = restService;
         this.api = api;

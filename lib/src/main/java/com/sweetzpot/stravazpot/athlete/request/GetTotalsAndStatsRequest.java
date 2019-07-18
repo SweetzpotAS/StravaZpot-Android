@@ -8,11 +8,11 @@ import retrofit2.Call;
 
 public class GetTotalsAndStatsRequest {
 
-    private final int athleteID;
+    private final long athleteID;
     private final AthleteRest restService;
     private final AthleteAPI api;
 
-    public GetTotalsAndStatsRequest(int athleteID, AthleteRest restService, AthleteAPI api) {
+    public GetTotalsAndStatsRequest(long athleteID, AthleteRest restService, AthleteAPI api) {
         this.athleteID = athleteID;
         this.restService = restService;
         this.api = api;

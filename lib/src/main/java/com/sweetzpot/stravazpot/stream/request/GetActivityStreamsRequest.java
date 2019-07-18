@@ -13,14 +13,14 @@ import retrofit2.Call;
 
 public class GetActivityStreamsRequest {
 
-    private final int activityID;
+    private final long activityID;
     private final StreamRest restService;
     private final StreamAPI api;
     private StreamType[] types;
     private Resolution resolution;
     private SeriesType seriesType;
 
-    public GetActivityStreamsRequest(int activityID, StreamRest restService, StreamAPI api) {
+    public GetActivityStreamsRequest(long activityID, StreamRest restService, StreamAPI api) {
         this.activityID = activityID;
         this.restService = restService;
         this.api = api;

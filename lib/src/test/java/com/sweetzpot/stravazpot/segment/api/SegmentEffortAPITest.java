@@ -24,7 +24,7 @@ public class SegmentEffortAPITest extends StravaAPITest {
         enqueueSegmentEffort();
         SegmentEffortAPI segmentEffortAPI = givenASegmentEfforAPI();
 
-        SegmentEffort segmentEffort = segmentEffortAPI.getSegmentEffort(269990681)
+        SegmentEffort segmentEffort = segmentEffortAPI.getSegmentEffort(269990681L)
                                                         .execute();
 
         assertRequestPathContains(

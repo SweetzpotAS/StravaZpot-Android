@@ -12,11 +12,11 @@ public class RouteAPI extends StravaAPI{
         super(config);
     }
 
-    public GetRouteRequest getRoute(int routeID) {
+    public GetRouteRequest getRoute(long routeID) {
         return new GetRouteRequest(routeID, getAPI(RouteRest.class), this);
     }
 
-    public ListRoutesRequest listRoutes(int athleteID) {
+    public ListRoutesRequest listRoutes(long athleteID) {
         return new ListRoutesRequest(athleteID, getAPI(RouteRest.class), this);
     }
 }

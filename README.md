@@ -1,4 +1,3 @@
-# StravaZpot [![Build Status](https://travis-ci.org/SweetzpotAS/StravaZpot-Android.svg?branch=master)](https://travis-ci.org/SweetzpotAS/StravaZpot-Android)
 
 A fluent API to integrate with Strava on Android apps.
 

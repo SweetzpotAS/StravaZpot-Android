@@ -17,6 +17,10 @@ public class AuthenticationAPI extends StravaAPI{
         return new AuthenticationRequest(appCredentials, getAPI(AuthenticationRest.class), this);
     }
 
+    public AuthenticationRequest refreshTokenForApp(AppCredentials appCredentials) {
+        return new AuthenticationRequest(appCredentials, getAPI(AuthenticationRest.class), this);
+    }
+
     public DeauthorizationRequest deauthorize() {
         return new DeauthorizationRequest(getAPI(AuthenticationRest.class), this);
     }

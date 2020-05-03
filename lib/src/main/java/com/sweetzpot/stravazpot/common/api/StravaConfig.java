@@ -11,9 +11,12 @@ public class StravaConfig extends Config {
     }
 
     public static StravaConfig.Builder withToken(String token) {
-        return new StravaConfig.Builder(token);
+        return new StravaConfig.Builder("Bearer "+ token);
     }
 
+    @Deprecated
+    /**There is no need to continue using this method
+     * **/
     public static StravaConfig.Builder withToken(Token token) {
         return withToken(token.toString());
     }

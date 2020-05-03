@@ -1,4 +1,3 @@
-# StravaZpot [![Build Status](https://travis-ci.org/SweetzpotAS/StravaZpot-Android.svg?branch=master)](https://travis-ci.org/SweetzpotAS/StravaZpot-Android)
 
 A fluent API to integrate with Strava on Android apps.
 
@@ -90,6 +89,23 @@ LoginResult result = api.getTokenForApp(AppCredentials.with(CLIENT_ID, CLIENT_SE
 Notice that in this call you must provide the Client ID and Secret provided by Strava when you registered your application, and the code obtained during the login process. Also, the execution of the previous code involves a network request; **you are responsible for calling this code in a suitable thread, outside the UI thread**. Otherwise, you will get an exception.
 
 If the previous request is successful, you will get a `LoginResult`, which has a `Token` that you can use in your subsequent API calls, and an `Athlete` instance, representing the authenticated user.
+
+
+
+
+### Refresh a Token
+
+Access tokens are used by applications to obtain and modify Strava resources on behalf of the authenticated athlete. Refresh tokens are used to obtain new access tokens when older ones expire.
+```java
+AuthenticationConfig config = AuthenticationConfig.create()
+                                                  .debug()
+                                                  .build();
+AuthenticationAPI api = new AuthenticationAPI(config);
+LoginResult loginResult = authenticationAPI.refreshTokenForApp(AppCredentials.with(CLIENT_ID,CLIENT_SECRET))
+                .withRefreshToken(TOKEN)
+                .refreshToken();
+
+```
 
 ### Deauthorize
 
